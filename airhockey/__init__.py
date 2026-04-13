@@ -10,9 +10,12 @@ try:
 except:
     print('Some air hockey components not installed. Does not work on Apple Silicon')
 from airhockey.airhockey_simple_tasks import AirHockeyPuckVelEnv, AirHockeyPuckHeightEnv, AirHockeyPuckCatchEnv 
-from airhockey.airhockey_simple_tasks import AirHockeyPuckJuggleEnv, AirHockeyPuckJuggleLinearTopEnv, AirHockeyPuckJuggleNoBaseRewardEnv, AirHockeyPuckJuggleUpperHalfRewardEnv, AirHockeyPuckJuggleUpperHalfMidBandRewardEnv, AirHockeyPuckStrikeEnv, AirHockeyPuckTouchEnv, AirHockeyPaddleFreeMovementEnv
+from airhockey.airhockey_simple_tasks import AirHockeyPuckJuggleEnv, AirHockeyPuckJuggleLinearTopEnv, AirHockeyPuckJuggleNoBaseRewardEnv, AirHockeyPuckJuggleUpperHalfRewardEnv, AirHockeyPuckJuggleUpperHalfMidBandRewardEnv, AirHockeyPuckStrikeEnv, AirHockeyPuckTouchEnv, AirHockeyPaddleFreeMovementEnv, AirHockeyFlatTableEnv
 from airhockey.airhockey_hierarchical_tasks  import AirHockeyMoveBlockEnv, AirHockeyStrikeCrowdEnv
-from robosuite.utils.mjcf_utils import xml_path_completion as robosuite_xml_path_completion
+try:
+    from robosuite.utils.mjcf_utils import xml_path_completion as robosuite_xml_path_completion
+except ImportError:
+    robosuite_xml_path_completion = None
 # from airhockey.airhockey_goal_tasks import AirHockeyPuckGoalPositionEnv, AirHockeyPuckGoalPositionVelocityEnv, AirHockeyPuckReachPositionDynamicNegRegionsEnv
 # from airhockey.airhockey_goal_tasks import AirHockeyPaddleReachPositionEnv, AirHockeyPaddleReachPositionVelocityEnv, AirHockeyPaddleReachPositionNegRegionsEnv
 from airhockey.airhockey_tasks.paddle_reach_position import AirHockeyPaddleReachPositionEnv
@@ -45,13 +48,13 @@ def custom_xml_path_completion(xml_path):
         full_path = os.path.join(ASSETS_ROOT, xml_path)
     return full_path
 
-from robosuite.models import assets_root
-import os
-arena_fp = custom_xml_path_completion("arenas/air_hockey_table.xml")
-arena_fp_dst = os.path.join(assets_root, "arenas/air_hockey_table.xml")
-os.makedirs(os.path.dirname(arena_fp_dst), exist_ok=True)
-import shutil
-shutil.copyfile(arena_fp, arena_fp_dst)
+if robosuite_xml_path_completion is not None:
+    from robosuite.models import assets_root
+    arena_fp = custom_xml_path_completion("arenas/air_hockey_table.xml")
+    arena_fp_dst = os.path.join(assets_root, "arenas/air_hockey_table.xml")
+    os.makedirs(os.path.dirname(arena_fp_dst), exist_ok=True)
+    import shutil
+    shutil.copyfile(arena_fp, arena_fp_dst)
 
 def AirHockeyEnv(cfg):
     # check what task
@@ -97,15 +100,19 @@ def AirHockeyEnv(cfg):
         task_env = AirHockeyPuckGoalPositionObstaclesEnv
     elif task == "paddle_free_movement":
         task_env = AirHockeyPaddleFreeMovementEnv
+    elif task == "flat_table":
+        task_env = AirHockeyFlatTableEnv
     else:
         raise ValueError("Task {} not recognized".format(task))
     return task_env.from_dict(cfg)
 
-robosuite_robot_assets_fp = robosuite_xml_path_completion(os.path.join('robots', 'ur5e'))
-robot_xml_fp = custom_xml_path_completion(os.path.join('robots', 'ur5e', 'robot.xml'))
-new_folder_fp = robosuite_xml_path_completion(os.path.join('robots', 'custom_ur5e'))
-out_robot_xml_fp = robosuite_xml_path_completion(os.path.join(new_folder_fp, 'custom_robot.xml'))
-if not os.path.exists(new_folder_fp):
-    shutil.copytree(robosuite_robot_assets_fp, new_folder_fp)
-shutil.copy(robot_xml_fp, out_robot_xml_fp)
+if robosuite_xml_path_completion is not None:
+    import shutil
+    robosuite_robot_assets_fp = robosuite_xml_path_completion(os.path.join('robots', 'ur5e'))
+    robot_xml_fp = custom_xml_path_completion(os.path.join('robots', 'ur5e', 'robot.xml'))
+    new_folder_fp = robosuite_xml_path_completion(os.path.join('robots', 'custom_ur5e'))
+    out_robot_xml_fp = robosuite_xml_path_completion(os.path.join(new_folder_fp, 'custom_robot.xml'))
+    if not os.path.exists(new_folder_fp):
+        shutil.copytree(robosuite_robot_assets_fp, new_folder_fp)
+    shutil.copy(robot_xml_fp, out_robot_xml_fp)
 

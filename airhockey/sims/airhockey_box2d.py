@@ -762,19 +762,29 @@ class AirHockeyBox2D:
         pos = self.base_coord_to_box2d(pos)
         vel = self.base_coord_to_box2d(vel)
         vertices = [([-self.block_width / 2, -self.block_width / 2]), ([self.block_width / 2, -self.block_width / 2]), ([self.block_width / 2, self.block_width / 2]), ([-self.block_width / 2, self.block_width / 2])]
-        block = self.world.CreateDynamicBody(
-            fixtures=b2FixtureDef(
-                shape=b2PolygonShape(vertices=vertices),
-                density=self.block_density,
-                restitution=1.0,
-                filter=b2Filter(maskBits=1, categoryBits=1)),
-            bullet=True,
-            position=pos,
-            linearVelocity=vel,
-            linearDamping=self.puck_damping
-        )
-        if not affected_by_gravity:
-            block.gravityScale = 0
+        if movable:
+            block = self.world.CreateDynamicBody(
+                fixtures=b2FixtureDef(
+                    shape=b2PolygonShape(vertices=vertices),
+                    density=self.block_density,
+                    restitution=1.0,
+                    filter=b2Filter(maskBits=1, categoryBits=1)),
+                bullet=True,
+                position=pos,
+                linearVelocity=vel,
+                linearDamping=self.puck_damping
+            )
+            if not affected_by_gravity:
+                block.gravityScale = 0
+        else:
+            # Static obstacle: cannot be moved by paddle or puck
+            block = self.world.CreateStaticBody(
+                fixtures=b2FixtureDef(
+                    shape=b2PolygonShape(vertices=vertices),
+                    restitution=1.0,
+                    filter=b2Filter(maskBits=1, categoryBits=1)),
+                position=pos
+            )
         self.blocks[name] = block
         self.block_initial_positions[name] = pos
         self.object_dict[name] = block

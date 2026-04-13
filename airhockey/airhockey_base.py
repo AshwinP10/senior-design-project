@@ -489,7 +489,20 @@ class AirHockeyBaseEnv(ABC, Env):
         
         puck_within_ego_goal = False
         puck_within_alt_goal = False
-                    
+
+        # Terminate when puck enters a goal (past either end of the table)
+        if "pucks" in state_info and len(state_info["pucks"]) > 0:
+            puck_x = state_info["pucks"][0]["position"][0]
+            goal_margin = self.puck_radius + 0.02
+            if puck_x >= self.table_x_bot + goal_margin:
+                # Puck in player's goal (scored on you)
+                puck_within_alt_goal = True
+                terminated = True
+            elif puck_x <= self.table_x_top - goal_margin:
+                # Puck in opponent's goal (you scored)
+                puck_within_ego_goal = True
+                terminated = True
+
         return terminated, truncated, puck_within_home, puck_within_alt_home, puck_within_ego_goal, puck_within_alt_goal
 
 
@@ -626,7 +639,7 @@ class AirHockeyBaseEnv(ABC, Env):
         info['paddle_puck_collision_count'] = int(next_state.get('paddle_puck_collision_count', 0))
 
         hit_a_puck = False
-        is_finished, truncated, puck_within_home, puck_within_alt_home, puck_within_goal, _ = self.has_finished(next_state)
+        is_finished, truncated, puck_within_home, puck_within_alt_home, puck_within_ego_goal, puck_within_alt_goal = self.has_finished(next_state)
         if not truncated:
             reward, success = self.get_base_reward(next_state)
             # scale reward
@@ -656,6 +669,8 @@ class AirHockeyBaseEnv(ABC, Env):
             info['episode_return'] = self.episode_return
             info['episode_length'] = self.episode_length
             info['motion_data'] = self.episode_motion_data.copy()
+            info['puck_within_ego_goal'] = puck_within_ego_goal
+            info['puck_within_alt_goal'] = puck_within_alt_goal
             # Reset for next episode
             self.episode_motion_data = {'velocity_mags': [], 'acceleration_mags': [], 'jerk_mags': []}
 

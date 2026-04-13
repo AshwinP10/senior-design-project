@@ -501,3 +501,49 @@ class AirHockeyPaddleFreeMovementEnv(AirHockeyBaseEnv):
 
     def get_observation(self, state_info, obs_type="vel", **kwargs):
         return self.get_observation_by_type(state_info, obs_type=obs_type, **kwargs)
+
+
+class AirHockeyFlatTableEnv(AirHockeyBaseEnv):
+    """
+    Flat table for RL oneshot/obstacle setup: one paddle, one puck, optional static obstacles.
+    Puck spawns at center with zero velocity so it does not drift. User can place static
+    blocks (cubes) that the puck and paddle collide with but cannot move.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if not hasattr(self, 'user_block_positions'):
+            self.user_block_positions = []
+
+    def initialize_spaces(self, obs_type):
+        low, high = self.init_observation(obs_type)
+        self.action_space = self.single_action_space = Box(low=-1, high=1, shape=(2,), dtype=np.float32)
+        self.reward_range = Box(low=-1, high=1)
+        self.reward = AirHockeyPaddleFreeMovementReward(self)
+
+    @staticmethod
+    def from_dict(state_dict):
+        return AirHockeyFlatTableEnv(**state_dict)
+
+    def get_puck_configuration(self, bad_regions=None):
+        """Puck at table center with zero velocity for easy reset and no drift."""
+        return (0.0, 0.0), (0.0, 0.0)
+
+    def create_world_objects(self):
+        # Paddle: standard position (player side)
+        name = 'paddle_ego'
+        pos, vel = self.get_paddle_configuration(name)
+        self.simulator.spawn_paddle(pos, vel, name)
+        # Puck: center, zero vel
+        name = 'puck_{}'.format(0)
+        pos, vel = self.get_puck_configuration()
+        self.simulator.spawn_puck(pos, vel, name)
+        # User-placed static blocks (survive reset)
+        for i, pos in enumerate(getattr(self, 'user_block_positions', [])):
+            self.simulator.spawn_block(pos, (0.0, 0.0), 'user_block_{}'.format(i), affected_by_gravity=False, movable=False)
+
+    def validate_configuration(self):
+        assert self.num_pucks == 1
+        assert self.num_paddles == 1
+
+    def get_observation(self, state_info, obs_type="vel", **kwargs):
+        return self.get_observation_by_type(state_info, obs_type=obs_type, **kwargs)
