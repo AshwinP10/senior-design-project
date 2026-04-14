@@ -298,6 +298,9 @@ class AirHockeyBox2D:
             # <= 0 disables norm clipping.
             'max_acceleration_norm': 0.0,
             'max_jerk_norm': 0.0,
+            # When True, removes the end wall at table_y_max (game table_x_top = opponent goal)
+            # so the puck can pass through and trigger goal detection in has_finished.
+            'open_goal_wall': False,
         }
 
         kwargs = {**defaults, **kwargs}
@@ -446,8 +449,22 @@ class AirHockeyBox2D:
             ((self.table_x_max, self.table_y_min), (self.table_x_max, self.table_y_max), self.side_wall_restitution),
             # Bottom / top end walls.
             ((self.table_x_min, self.table_y_min), (self.table_x_max, self.table_y_min), self.end_wall_restitution),
-            ((self.table_x_min, self.table_y_max), (self.table_x_max, self.table_y_max), self.end_wall_restitution),
         ]
+        # open_goal_wall cuts a centered gap in the opponent end wall (table_y_max).
+        # goal_width controls the opening size; the rest of the wall stays solid.
+        goal_width = float(getattr(config, 'goal_width', 0.0))
+        if config.open_goal_wall and goal_width > 0:
+            half_gap = goal_width / 2
+            wall_segments.append(
+                ((self.table_x_min, self.table_y_max), (-half_gap, self.table_y_max), self.end_wall_restitution)
+            )
+            wall_segments.append(
+                ((half_gap, self.table_y_max), (self.table_x_max, self.table_y_max), self.end_wall_restitution)
+            )
+        else:
+            wall_segments.append(
+                ((self.table_x_min, self.table_y_max), (self.table_x_max, self.table_y_max), self.end_wall_restitution)
+            )
         for p1, p2, restitution in wall_segments:
             self.ground_body.CreateFixture(
                 b2FixtureDef(

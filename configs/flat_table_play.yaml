@@ -17,6 +17,8 @@ air_hockey:
     block_density: 500
     render_size: 360
     width: 0.8636
+    open_goal_wall: true
+    goal_width: 0.30
 
   num_paddles: 1
   num_pucks: 1

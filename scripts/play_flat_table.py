@@ -88,6 +88,7 @@ def main():
     obs, _ = env.reset()
     start = time.time()
     step_count = 0
+    score = 0
 
     # Draw and show first frame so the window appears (required on some Windows setups)
     frame = renderer.get_frame()
@@ -120,6 +121,15 @@ def main():
         frame = renderer.get_frame()
         cv2.putText(frame, "Left-click: place cube | R: reset puck | C: clear cubes | Q/ESC: quit", (8, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 0), 1)
         cv2.putText(frame, "Left-click: place cube | R: reset puck | C: clear cubes | Q/ESC: quit", (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1)
+
+        # Scoreboard box
+        score_text = f"Goals: {score}"
+        (tw, th), _ = cv2.getTextSize(score_text, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 2)
+        box_x, box_y = frame.shape[1] // 2 - tw // 2 - 8, 6
+        cv2.rectangle(frame, (box_x, box_y), (box_x + tw + 16, box_y + th + 12), (30, 30, 30), -1)
+        cv2.rectangle(frame, (box_x, box_y), (box_x + tw + 16, box_y + th + 12), (200, 200, 200), 1)
+        cv2.putText(frame, score_text, (box_x + 8, box_y + th + 4), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+
         cv2.imshow(WINDOW_NAME, frame)
         key = cv2.waitKey(20)
 
@@ -152,6 +162,9 @@ def main():
             print("fps (approx): {:.1f}".format(500 / (time.time() - start)))
             start = time.time()
         if terminated or truncated:
+            if info.get("puck_within_ego_goal"):
+                score += 1
+                print(f"Goal! Score: {score}")
             obs, _ = env.reset()
 
     cv2.destroyAllWindows()
