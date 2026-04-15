@@ -219,3 +219,6 @@ demo/
 *.out
 .cursor/
 shared/
+
+# trained model outputs
+models/
