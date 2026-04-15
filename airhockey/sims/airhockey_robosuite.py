@@ -838,7 +838,8 @@ class AirHockeyRobosuite(AirHockeySim):
                 puck_y_pos = puck_pos[1]
                 puck_x_vel = puck_vel[0]
                 puck_y_vel = puck_vel[1]
-                state_info['pucks'].append({'position': (puck_x_pos, puck_y_pos), 
+                state_info['pucks'].append({'name': puck_name,
+                                'position': (puck_x_pos, puck_y_pos), 
                                 'velocity': (puck_x_vel, puck_y_vel)})
 
         if len(self.block_names) > 0:
@@ -848,7 +849,7 @@ class AirHockeyRobosuite(AirHockeySim):
                 block_pos = self.robosuite_to_high_level_coords(block_pos, object_type='block')
                 block_x_pos = block_pos[0]
                 block_y_pos = block_pos[1]
-                state_info['blocks'].append({'position': (block_x_pos, block_y_pos)})
+                state_info['blocks'].append({'name': block_name, 'position': (block_x_pos, block_y_pos)})
                 
         for key in obs.keys():
             if 'image' in key:

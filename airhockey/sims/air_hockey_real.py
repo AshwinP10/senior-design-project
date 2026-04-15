@@ -499,7 +499,8 @@ class AirHockeyReal:
         state_info['paddles']['paddle_ego']['velocity'] = copy.deepcopy(self.speed[:2])
         state_info['paddles']['paddle_ego']['history'] = self.paddle_history[- self.paddle_history_len :]
         state_info["pucks"] = list()
-        state_info["pucks"].append({"history": self.puck_history[- self.puck_history_len:], 
+        state_info["pucks"].append({"name": "puck_0",
+                                    "history": self.puck_history[- self.puck_history_len:], 
                                     "position": copy.deepcopy(self.puck), 
                                     "velocity": np.array(self.puck_history[-1])[:2] - np.array(self.puck_history[-2])[:2], 
                                     "occluded": np.array(self.puck_history[-1])[-1:]})

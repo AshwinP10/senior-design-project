@@ -604,7 +604,8 @@ class AirHockeyBox2D:
                 initial_x_pos = self.block_initial_positions[block_name][0]
                 initial_y_pos = self.block_initial_positions[block_name][1]
 
-                state_info['blocks'].append({'current_position': (block_x_pos, block_y_pos),
+                state_info['blocks'].append({'name': block_name,
+                                        'current_position': (block_x_pos, block_y_pos),
                                         'initial_position': (initial_x_pos, initial_y_pos)})
 
         if len(self.pucks) > 0:
@@ -618,7 +619,8 @@ class AirHockeyBox2D:
                 puck_box2d_observed = self._base_to_box2d_coords(puck_base_xy_observed)
                 puck_x_vel = self.pucks[puck_name].linearVelocity[0]
                 puck_y_vel = self.pucks[puck_name].linearVelocity[1]
-                state_info['pucks'].append({'position': (float(puck_box2d_observed[0]), float(puck_box2d_observed[1])),
+                state_info['pucks'].append({'name': puck_name,
+                                'position': (float(puck_box2d_observed[0]), float(puck_box2d_observed[1])),
                                 'velocity': (puck_x_vel, puck_y_vel),
                                 'occluded': int(occluded)})
 

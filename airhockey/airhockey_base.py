@@ -304,6 +304,58 @@ class AirHockeyBaseEnv(ABC, Env):
         obs = self.get_observation(state_info, obs_type=self.obs_type, puck_history=self.simulator.puck_history, paddle_history=self.simulator.paddle_history)
         return obs, state_info
 
+    @staticmethod
+    def _serialize_state_vector(values):
+        if values is None:
+            return None
+        return [float(v) for v in values]
+
+    def build_timestamped_state_snapshot(self, timestamp_seconds):
+        state_info = copy.deepcopy(self.current_state)
+
+        snapshot = {
+            "timestamp_seconds": float(timestamp_seconds),
+            "step": int(self.current_timestep),
+            "paddles": [],
+            "pucks": [],
+            "obstacles": [],
+        }
+
+        for paddle_name, paddle_data in state_info.get("paddles", {}).items():
+            snapshot["paddles"].append(
+                {
+                    "name": paddle_name,
+                    "position": self._serialize_state_vector(paddle_data.get("position")),
+                    "velocity": self._serialize_state_vector(paddle_data.get("velocity")),
+                    "acceleration": self._serialize_state_vector(paddle_data.get("acceleration")),
+                    "force": self._serialize_state_vector(paddle_data.get("force")),
+                    "jerk": self._serialize_state_vector(paddle_data.get("jerk")),
+                }
+            )
+
+        for puck_index, puck_data in enumerate(state_info.get("pucks", [])):
+            snapshot["pucks"].append(
+                {
+                    "name": puck_data.get("name", f"puck_{puck_index}"),
+                    "position": self._serialize_state_vector(puck_data.get("position")),
+                    "velocity": self._serialize_state_vector(puck_data.get("velocity")),
+                    "occluded": int(puck_data.get("occluded", 0)),
+                }
+            )
+
+        for obstacle_index, obstacle_data in enumerate(state_info.get("blocks", [])):
+            position = obstacle_data.get("current_position", obstacle_data.get("position"))
+            initial_position = obstacle_data.get("initial_position", obstacle_data.get("position"))
+            snapshot["obstacles"].append(
+                {
+                    "name": obstacle_data.get("name", f"obstacle_{obstacle_index}"),
+                    "position": self._serialize_state_vector(position),
+                    "initial_position": self._serialize_state_vector(initial_position),
+                }
+            )
+
+        return snapshot
+
     def define_get_observation(self, getter, obs_type=""):
         if len(obs_type) > 0: self.obs_type = obs_type
         self.get_observation_by_type = getter

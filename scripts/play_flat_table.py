@@ -8,6 +8,8 @@ Or:   python scripts/play_flat_table.py --cfg configs/flat_table_play.yaml
 """
 import sys
 import os
+import json
+from pathlib import Path
 
 _repo_root = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
 if _repo_root not in sys.path:
@@ -26,6 +28,7 @@ WINDOW_NAME = "Flat table — Left-click: cube | R: reset | C: clear cubes"
 _mouse_xy = [None, None]
 _mouse_inside = [False]
 _click_place = [False]  # True on LBUTTONDOWN so we add one block per click
+_EVENT_MOUSELEAVE = getattr(cv2, "EVENT_MOUSELEAVE", None)
 
 
 def _on_mouse(event, x, y, _unused_a, _unused_b):
@@ -35,7 +38,7 @@ def _on_mouse(event, x, y, _unused_a, _unused_b):
         _mouse_inside[0] = True
         if event == cv2.EVENT_LBUTTONDOWN:
             _click_place[0] = True
-    elif event == cv2.EVENT_MOUSELEAVE:
+    elif _EVENT_MOUSELEAVE is not None and event == _EVENT_MOUSELEAVE:
         _mouse_inside[0] = False
 
 
@@ -59,6 +62,18 @@ def main():
     print("Loading config and env...", flush=True)
     parser = argparse.ArgumentParser(description="Flat table: place cubes, play with paddle.")
     parser.add_argument("--cfg", type=str, default=None, help="Config YAML (default: configs/flat_table_play.yaml)")
+    parser.add_argument(
+        "--timestamp-log-path",
+        type=str,
+        default="runs/flat_table_timestamps.json",
+        help="Where to save 5-second table snapshots as JSON.",
+    )
+    parser.add_argument(
+        "--timestamp-interval-seconds",
+        type=float,
+        default=5.0,
+        help="Snapshot cadence in simulated seconds.",
+    )
     args = parser.parse_args()
 
     cfg_path = args.cfg or os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "configs", "flat_table_play.yaml"))
@@ -88,6 +103,26 @@ def main():
     obs, _ = env.reset()
     start = time.time()
     step_count = 0
+    simulator_hz = float(getattr(env.simulator, "step_frequency", 20))
+    sample_interval_steps = max(1, int(round(args.timestamp_interval_seconds * simulator_hz)))
+    timestamp_log = {
+        "sample_interval_seconds": float(args.timestamp_interval_seconds),
+        "simulator_step_frequency": simulator_hz,
+        "samples": [],
+    }
+
+    def record_timestamp_sample(force=False):
+        if not force and step_count == 0:
+            return
+        if not force and (step_count % sample_interval_steps != 0):
+            return
+        elapsed_seconds = step_count / simulator_hz
+        timestamp_log["samples"].append(env.build_timestamped_state_snapshot(elapsed_seconds))
+
+    def write_timestamp_log():
+        output_path = Path(args.timestamp_log_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(timestamp_log, indent=2))
 
     # Draw and show first frame so the window appears (required on some Windows setups)
     frame = renderer.get_frame()
@@ -148,12 +183,24 @@ def main():
 
         obs, rew, terminated, truncated, info = env.step(action)
         step_count += 1
+        record_timestamp_sample()
         if step_count % 500 == 0:
             print("fps (approx): {:.1f}".format(500 / (time.time() - start)))
             start = time.time()
         if terminated or truncated:
+            record_timestamp_sample(force=True)
             obs, _ = env.reset()
+            step_count = 0
 
+    record_timestamp_sample(force=True)
+    write_timestamp_log()
+    print(
+        "Saved {} timestamp samples to {}".format(
+            len(timestamp_log["samples"]),
+            os.path.abspath(args.timestamp_log_path),
+        ),
+        flush=True,
+    )
     cv2.destroyAllWindows()
     try:
         cv2.waitKey(1)
