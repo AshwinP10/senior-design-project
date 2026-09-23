@@ -1,0 +1,10 @@
+# Python 3.10/3.11; intentionally excludes robot drivers, MuJoCo and mujoco-py.
+# Install torch separately for the target GPU driver, then install this file.
+numpy==1.26.4
+gymnasium==0.29.1
+stable-baselines3==2.2.1
+Box2D==2.3.10
+PyYAML==6.0.2
+opencv-python-headless==4.10.0.84
+matplotlib==3.9.4
+tensorboard==2.18.0

@@ -219,3 +219,8 @@ demo/
 *.out
 .cursor/
 shared/
+
+# Reproducible precision-striker experiments (keep checkpoints out of Git).
+runs/
+logs/
+tensorboard_logs/

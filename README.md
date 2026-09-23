@@ -1,5 +1,13 @@
 # Air Hockey Reinforcement Learning Environment
 
+## Precision striker and headless TACC training
+
+See [the implementation plan and runbook](docs/PRECISION_STRIKER_PLAN.md) for the
+senior-design scoring task, access status, GPU batch jobs and acceptance criteria.
+The new `scripts.train_precision_striker` and `scripts.eval_precision_striker` entry
+points support headless training and terminal playback. Existing tasks remain available.
+Training checkpoints alone do not establish the report's 80% scoring target.
+
 This contains an air hockey simulation environment powered by Box2D. It is fast (C++ back-end), capable of self-play, 1v1 play, and easy goal-conditioned reinforcement learning, resulting in a rich testbed for various algorithms.
 
 
@@ -73,4 +81,4 @@ Legacy:
 - run desired script in scripts/real
     - ex: python scripts/real/teleoperate.py --cfg configs/baseline_configs/puck_vel_real.yaml
 - When prompted in the terminal, run the program using the play button in the bottom middle of the touchpad
-- follow prompts on the terminal. Hold 'q' to end trajectories 
+- follow prompts on the terminal. Hold 'q' to end trajectories
