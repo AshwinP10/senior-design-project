@@ -1,0 +1,22 @@
+{
+  "layout": 4,
+  "shot": 10,
+  "seed": 31090,
+  "blocks": [
+    [
+      -0.43029359896068986,
+      -0.10216637997234937
+    ]
+  ],
+  "outcome": "goal",
+  "success": true,
+  "initial_velocity": [
+    0.8674845862813608,
+    0.010686135507678827
+  ],
+  "hit": true,
+  "obstacle_collision": false,
+  "steps": 38,
+  "trajectory": "layout_04_shot_10.npz",
+  "inference_p95_ms": 0.6432700043660589
+}

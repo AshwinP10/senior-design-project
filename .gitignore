@@ -224,3 +224,8 @@ shared/
 runs/
 logs/
 tensorboard_logs/
+
+# Report render intermediates stay local; the small evaluated model is deliverable.
+tmp/
+!models/precision-striker-v2/policy.zip
+!models/precision-striker-v2/vecnormalize.pkl

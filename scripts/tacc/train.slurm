@@ -26,11 +26,13 @@ RUN="${RUN_DIR:-$WORK/airhockey-runs/$SLURM_JOB_ID}"
 "$PYTHON" -m unittest discover -s tests -v
 "$PYTHON" -u -m scripts.train_precision_striker \
     --device cuda --envs 8 --vector subproc --rollout 512 \
-    --steps "${TRAIN_STEPS:-32768}" --obstacles "${OBSTACLES:-0}" \
+    --steps "${TRAIN_STEPS:-32768}" --obstacles "${OBSTACLES:-1}" \
+    --speed-min "${SPEED_MIN:-0.3}" --speed-max "${SPEED_MAX:-1.5}" \
     --seed "${TRAIN_SEED:-0}" --output "$RUN"
 "$PYTHON" -u -m scripts.eval_precision_striker \
-    --run "$RUN" --output "$RUN/evaluation" --obstacles "${OBSTACLES:-0}" \
-    --layouts 2 --shots 5
+    --run "$RUN" --output "$RUN/evaluation" --obstacles "${OBSTACLES:-1}" \
+    --speed-min "${SPEED_MIN:-0.3}" --speed-max "${SPEED_MAX:-1.5}" \
+    --layouts "${EVAL_LAYOUTS:-2}" --shots "${EVAL_SHOTS:-5}"
 "$PYTHON" -m pip freeze > "$RUN/environment.freeze"
 echo "Finished. Results: $RUN"
-echo "Terminal replay: $PYTHON -m scripts.eval_precision_striker --run $RUN --output $RUN/replay --layouts 1 --shots 1 --obstacles ${OBSTACLES:-0} --terminal"
+echo "Terminal replay: $PYTHON -m scripts.eval_precision_striker --run $RUN --output $RUN/replay --layouts 1 --shots 1 --obstacles ${OBSTACLES:-1} --terminal"

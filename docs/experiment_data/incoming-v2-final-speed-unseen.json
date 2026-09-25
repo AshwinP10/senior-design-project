@@ -1,0 +1,1345 @@
+{
+  "task_version": "precision-striker-v2-incoming",
+  "run": "runs\\incoming-v2-final",
+  "seed": 43000,
+  "episodes": 60,
+  "successes": 5,
+  "scoring_rate": 0.08333333333333333,
+  "wilson_95_interval": [
+    0.03611992405048589,
+    0.18069168468112481
+  ],
+  "collision_episodes": 19,
+  "outcomes": {
+    "timeout": 23,
+    "goal": 5,
+    "obstacle_collision": 19,
+    "conceded": 12,
+    "escaped": 1
+  },
+  "completed": true,
+  "report_protocol": false,
+  "records": [
+    {
+      "layout": 0,
+      "shot": 0,
+      "seed": 44000,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.6927485524967412,
+        0.04311546201323026
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_00_shot_00.npz",
+      "inference_p95_ms": 3.8576400038436973
+    },
+    {
+      "layout": 0,
+      "shot": 1,
+      "seed": 44001,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "goal",
+      "success": true,
+      "initial_velocity": [
+        1.9171790281197196,
+        0.403452799082647
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 47,
+      "trajectory": "layout_00_shot_01.npz",
+      "inference_p95_ms": 1.4171600050758568
+    },
+    {
+      "layout": 0,
+      "shot": 2,
+      "seed": 44002,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.4972935942929964,
+        -0.15898132670164178
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 85,
+      "trajectory": "layout_00_shot_02.npz",
+      "inference_p95_ms": 1.35658000363037
+    },
+    {
+      "layout": 0,
+      "shot": 3,
+      "seed": 44003,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.6609898743066616,
+        0.20534665441100886
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 75,
+      "trajectory": "layout_00_shot_03.npz",
+      "inference_p95_ms": 1.4344099996378643
+    },
+    {
+      "layout": 0,
+      "shot": 4,
+      "seed": 44004,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.5255243649427774,
+        -0.38617444494800546
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 42,
+      "trajectory": "layout_00_shot_04.npz",
+      "inference_p95_ms": 1.6363949878723358
+    },
+    {
+      "layout": 0,
+      "shot": 5,
+      "seed": 44005,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.9226012575544122,
+        -0.133124679855318
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_00_shot_05.npz",
+      "inference_p95_ms": 1.3500700006261466
+    },
+    {
+      "layout": 0,
+      "shot": 6,
+      "seed": 44006,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.717518884841175,
+        0.3841929308001502
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_00_shot_06.npz",
+      "inference_p95_ms": 1.1603150167502463
+    },
+    {
+      "layout": 0,
+      "shot": 7,
+      "seed": 44007,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.8526418276317993,
+        0.031169602139438965
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 26,
+      "trajectory": "layout_00_shot_07.npz",
+      "inference_p95_ms": 0.9962749973055907
+    },
+    {
+      "layout": 0,
+      "shot": 8,
+      "seed": 44008,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.535599092893238,
+        0.09858643056424903
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 179,
+      "trajectory": "layout_00_shot_08.npz",
+      "inference_p95_ms": 1.4049500110559165
+    },
+    {
+      "layout": 0,
+      "shot": 9,
+      "seed": 44009,
+      "blocks": [
+        [
+          -0.354316931334264,
+          -0.09344870438852385
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.9524718622332453,
+        0.39714260079092933
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_00_shot_09.npz",
+      "inference_p95_ms": 1.3047500091488473
+    },
+    {
+      "layout": 1,
+      "shot": 0,
+      "seed": 44010,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.5588779554061987,
+        0.0900029856049379
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_01_shot_00.npz",
+      "inference_p95_ms": 1.6702349908882748
+    },
+    {
+      "layout": 1,
+      "shot": 1,
+      "seed": 44011,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.8262417280102745,
+        -0.23679979890778755
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_01_shot_01.npz",
+      "inference_p95_ms": 1.2192649999633431
+    },
+    {
+      "layout": 1,
+      "shot": 2,
+      "seed": 44012,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.580170851020268,
+        0.1800204870665159
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_01_shot_02.npz",
+      "inference_p95_ms": 1.2427099980413912
+    },
+    {
+      "layout": 1,
+      "shot": 3,
+      "seed": 44013,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.4985842546850214,
+        0.2454518651788303
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 173,
+      "trajectory": "layout_01_shot_03.npz",
+      "inference_p95_ms": 1.3563199958298358
+    },
+    {
+      "layout": 1,
+      "shot": 4,
+      "seed": 44014,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "escaped",
+      "success": false,
+      "initial_velocity": [
+        1.5018876664715324,
+        0.2868277368874163
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 122,
+      "trajectory": "layout_01_shot_04.npz",
+      "inference_p95_ms": 1.1878249933943152
+    },
+    {
+      "layout": 1,
+      "shot": 5,
+      "seed": 44015,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.5058282629338682,
+        -0.13824757339496951
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 112,
+      "trajectory": "layout_01_shot_05.npz",
+      "inference_p95_ms": 1.078389988106209
+    },
+    {
+      "layout": 1,
+      "shot": 6,
+      "seed": 44016,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.820450061073808,
+        0.05433600928480639
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 86,
+      "trajectory": "layout_01_shot_06.npz",
+      "inference_p95_ms": 1.5128499799175188
+    },
+    {
+      "layout": 1,
+      "shot": 7,
+      "seed": 44017,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.9199697564302574,
+        0.04918092124845657
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 55,
+      "trajectory": "layout_01_shot_07.npz",
+      "inference_p95_ms": 1.3540700136218216
+    },
+    {
+      "layout": 1,
+      "shot": 8,
+      "seed": 44018,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.717294155186296,
+        0.40266550240374194
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 101,
+      "trajectory": "layout_01_shot_08.npz",
+      "inference_p95_ms": 1.5842999855522066
+    },
+    {
+      "layout": 1,
+      "shot": 9,
+      "seed": 44019,
+      "blocks": [
+        [
+          -0.5452167873139542,
+          0.10181425722068987
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.663694564019818,
+        0.24923685715108898
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 67,
+      "trajectory": "layout_01_shot_09.npz",
+      "inference_p95_ms": 1.0604400013107806
+    },
+    {
+      "layout": 2,
+      "shot": 0,
+      "seed": 44020,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.880273976809902,
+        -0.31096176321120933
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 52,
+      "trajectory": "layout_02_shot_00.npz",
+      "inference_p95_ms": 1.3568599955760872
+    },
+    {
+      "layout": 2,
+      "shot": 1,
+      "seed": 44021,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "goal",
+      "success": true,
+      "initial_velocity": [
+        1.7710522704757317,
+        0.11775580146976351
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 52,
+      "trajectory": "layout_02_shot_01.npz",
+      "inference_p95_ms": 2.8031099878717205
+    },
+    {
+      "layout": 2,
+      "shot": 2,
+      "seed": 44022,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.6456743894404409,
+        -0.2181482238406193
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_02_shot_02.npz",
+      "inference_p95_ms": 1.9834050151985134
+    },
+    {
+      "layout": 2,
+      "shot": 3,
+      "seed": 44023,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.5608592797133936,
+        0.2249032175880682
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_02_shot_03.npz",
+      "inference_p95_ms": 3.553915006341409
+    },
+    {
+      "layout": 2,
+      "shot": 4,
+      "seed": 44024,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.499134354725422,
+        -0.23795230446433913
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_02_shot_04.npz",
+      "inference_p95_ms": 2.057535013591404
+    },
+    {
+      "layout": 2,
+      "shot": 5,
+      "seed": 44025,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.733422614330153,
+        0.13409140267986785
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_02_shot_05.npz",
+      "inference_p95_ms": 1.8007549981120972
+    },
+    {
+      "layout": 2,
+      "shot": 6,
+      "seed": 44026,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "goal",
+      "success": true,
+      "initial_velocity": [
+        1.7633722808151044,
+        -0.3300778302946969
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 79,
+      "trajectory": "layout_02_shot_06.npz",
+      "inference_p95_ms": 5.961619995650832
+    },
+    {
+      "layout": 2,
+      "shot": 7,
+      "seed": 44027,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.5492831865500651,
+        0.021129068072202613
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_02_shot_07.npz",
+      "inference_p95_ms": 5.499660008354106
+    },
+    {
+      "layout": 2,
+      "shot": 8,
+      "seed": 44028,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.8952438594790533,
+        0.4316556052101618
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 32,
+      "trajectory": "layout_02_shot_08.npz",
+      "inference_p95_ms": 4.783274997316765
+    },
+    {
+      "layout": 2,
+      "shot": 9,
+      "seed": 44029,
+      "blocks": [
+        [
+          -0.3505203912343098,
+          -0.006968877600394829
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.5491484138995684,
+        0.16873386678364996
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 15,
+      "trajectory": "layout_02_shot_09.npz",
+      "inference_p95_ms": 3.921889999764971
+    },
+    {
+      "layout": 3,
+      "shot": 0,
+      "seed": 44030,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.6598866946503608,
+        0.24705694965586872
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_03_shot_00.npz",
+      "inference_p95_ms": 2.987650000432033
+    },
+    {
+      "layout": 3,
+      "shot": 1,
+      "seed": 44031,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.8041734834770764,
+        0.20523031002265585
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_03_shot_01.npz",
+      "inference_p95_ms": 2.0679099849076
+    },
+    {
+      "layout": 3,
+      "shot": 2,
+      "seed": 44032,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.920249030453805,
+        -0.1695243311768926
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_03_shot_02.npz",
+      "inference_p95_ms": 1.0675200042896902
+    },
+    {
+      "layout": 3,
+      "shot": 3,
+      "seed": 44033,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.6363833701000208,
+        -0.11950456814208137
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 14,
+      "trajectory": "layout_03_shot_03.npz",
+      "inference_p95_ms": 1.3075549984932875
+    },
+    {
+      "layout": 3,
+      "shot": 4,
+      "seed": 44034,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.6004147641096684,
+        -0.36572670163802384
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_03_shot_04.npz",
+      "inference_p95_ms": 1.3475649859174155
+    },
+    {
+      "layout": 3,
+      "shot": 5,
+      "seed": 44035,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.7148927924257156,
+        0.1231026780067911
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 144,
+      "trajectory": "layout_03_shot_05.npz",
+      "inference_p95_ms": 1.253144981455989
+    },
+    {
+      "layout": 3,
+      "shot": 6,
+      "seed": 44036,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.8415931459159631,
+        0.3699312613284869
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 35,
+      "trajectory": "layout_03_shot_06.npz",
+      "inference_p95_ms": 1.4666000060969953
+    },
+    {
+      "layout": 3,
+      "shot": 7,
+      "seed": 44037,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.5076491181044391,
+        0.07345407764636318
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 63,
+      "trajectory": "layout_03_shot_07.npz",
+      "inference_p95_ms": 1.3927399966632947
+    },
+    {
+      "layout": 3,
+      "shot": 8,
+      "seed": 44038,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.5337575570418083,
+        -0.21980333042488123
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_03_shot_08.npz",
+      "inference_p95_ms": 1.804480001737828
+    },
+    {
+      "layout": 3,
+      "shot": 9,
+      "seed": 44039,
+      "blocks": [
+        [
+          -0.3453026960743878,
+          -0.06491448630260657
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.8960611073007043,
+        -0.19713049660623666
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 121,
+      "trajectory": "layout_03_shot_09.npz",
+      "inference_p95_ms": 1.8503999745007604
+    },
+    {
+      "layout": 4,
+      "shot": 0,
+      "seed": 44040,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.7192771565840805,
+        0.16999858689493375
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 73,
+      "trajectory": "layout_04_shot_00.npz",
+      "inference_p95_ms": 3.1380800122860735
+    },
+    {
+      "layout": 4,
+      "shot": 1,
+      "seed": 44041,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.6217721021004308,
+        -0.13496665033103702
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_04_shot_01.npz",
+      "inference_p95_ms": 3.2551899814279746
+    },
+    {
+      "layout": 4,
+      "shot": 2,
+      "seed": 44042,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.6561223734624468,
+        -0.02090764431374538
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 41,
+      "trajectory": "layout_04_shot_02.npz",
+      "inference_p95_ms": 4.934199998388067
+    },
+    {
+      "layout": 4,
+      "shot": 3,
+      "seed": 44043,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.7479472530842022,
+        -0.41291736419437014
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 69,
+      "trajectory": "layout_04_shot_03.npz",
+      "inference_p95_ms": 2.2166799928527308
+    },
+    {
+      "layout": 4,
+      "shot": 4,
+      "seed": 44044,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.6094192452299934,
+        0.06029367855828481
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 17,
+      "trajectory": "layout_04_shot_04.npz",
+      "inference_p95_ms": 0.9513199969660489
+    },
+    {
+      "layout": 4,
+      "shot": 5,
+      "seed": 44045,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.6750713241614306,
+        -0.18796622194335944
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_04_shot_05.npz",
+      "inference_p95_ms": 2.097559980757068
+    },
+    {
+      "layout": 4,
+      "shot": 6,
+      "seed": 44046,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.848438996859838,
+        0.17202734257274363
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 13,
+      "trajectory": "layout_04_shot_06.npz",
+      "inference_p95_ms": 0.9759200038388369
+    },
+    {
+      "layout": 4,
+      "shot": 7,
+      "seed": 44047,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.7873127266995654,
+        -0.22516204980913582
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_04_shot_07.npz",
+      "inference_p95_ms": 1.265510001394432
+    },
+    {
+      "layout": 4,
+      "shot": 8,
+      "seed": 44048,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.8660865817774845,
+        -0.04373728450215774
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 17,
+      "trajectory": "layout_04_shot_08.npz",
+      "inference_p95_ms": 1.035660004708916
+    },
+    {
+      "layout": 4,
+      "shot": 9,
+      "seed": 44049,
+      "blocks": [
+        [
+          -0.4810184078638261,
+          -0.15943767390994246
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.7581249910737038,
+        0.000554755808992868
+      ],
+      "hit": false,
+      "obstacle_collision": true,
+      "steps": 38,
+      "trajectory": "layout_04_shot_09.npz",
+      "inference_p95_ms": 1.0049799850094132
+    },
+    {
+      "layout": 5,
+      "shot": 0,
+      "seed": 44050,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.543459996410265,
+        0.3885686671432363
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_05_shot_00.npz",
+      "inference_p95_ms": 1.282010009163059
+    },
+    {
+      "layout": 5,
+      "shot": 1,
+      "seed": 44051,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.5048913631352425,
+        0.145615699136285
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 15,
+      "trajectory": "layout_05_shot_01.npz",
+      "inference_p95_ms": 1.406149985268712
+    },
+    {
+      "layout": 5,
+      "shot": 2,
+      "seed": 44052,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.6993956296337491,
+        0.24020219215578184
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 14,
+      "trajectory": "layout_05_shot_02.npz",
+      "inference_p95_ms": 1.8121950066415593
+    },
+    {
+      "layout": 5,
+      "shot": 3,
+      "seed": 44053,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "goal",
+      "success": true,
+      "initial_velocity": [
+        1.9758498746074504,
+        -0.29713216707355417
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 46,
+      "trajectory": "layout_05_shot_03.npz",
+      "inference_p95_ms": 1.468375019612722
+    },
+    {
+      "layout": 5,
+      "shot": 4,
+      "seed": 44054,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.7225171414152078,
+        0.04709954625084565
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 16,
+      "trajectory": "layout_05_shot_04.npz",
+      "inference_p95_ms": 1.7794749874155968
+    },
+    {
+      "layout": 5,
+      "shot": 5,
+      "seed": 44055,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.6190381516600614,
+        -0.26295595056841703
+      ],
+      "hit": true,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_05_shot_05.npz",
+      "inference_p95_ms": 1.452744999551214
+    },
+    {
+      "layout": 5,
+      "shot": 6,
+      "seed": 44056,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "conceded",
+      "success": false,
+      "initial_velocity": [
+        1.818329247984712,
+        -0.038342532330695143
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 12,
+      "trajectory": "layout_05_shot_06.npz",
+      "inference_p95_ms": 1.3883800042094663
+    },
+    {
+      "layout": 5,
+      "shot": 7,
+      "seed": 44057,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "timeout",
+      "success": false,
+      "initial_velocity": [
+        1.8560045012726096,
+        -0.3093504986799538
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 200,
+      "trajectory": "layout_05_shot_07.npz",
+      "inference_p95_ms": 1.372179998725187
+    },
+    {
+      "layout": 5,
+      "shot": 8,
+      "seed": 44058,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "obstacle_collision",
+      "success": false,
+      "initial_velocity": [
+        1.847568695511879,
+        -0.10343652377336418
+      ],
+      "hit": true,
+      "obstacle_collision": true,
+      "steps": 36,
+      "trajectory": "layout_05_shot_08.npz",
+      "inference_p95_ms": 1.3669750042026863
+    },
+    {
+      "layout": 5,
+      "shot": 9,
+      "seed": 44059,
+      "blocks": [
+        [
+          -0.27965542497270446,
+          0.21518299972340604
+        ]
+      ],
+      "outcome": "goal",
+      "success": true,
+      "initial_velocity": [
+        1.8626725760054381,
+        0.12480665673568701
+      ],
+      "hit": false,
+      "obstacle_collision": false,
+      "steps": 48,
+      "trajectory": "layout_05_shot_09.npz",
+      "inference_p95_ms": 1.3239700070698743
+    }
+  ],
+  "meets_report_target": false
+}

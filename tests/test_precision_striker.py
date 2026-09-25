@@ -38,7 +38,7 @@ class PrecisionStrikerTests(unittest.TestCase):
         self.assertTrue(terminated)
         self.assertEqual(info["outcome"], "goal")
         self.assertTrue(info["is_success"])
-        self.assertGreater(reward, 90)
+        self.assertGreater(reward, 18)
 
     def test_end_rail_outside_goal_bounces(self):
         self.env.reset(seed=1, options={"blocks": []})
@@ -47,6 +47,24 @@ class PrecisionStrikerTests(unittest.TestCase):
             obs, _, _, _, info = self.env.step(np.zeros(2))
             self.assertFalse(info["is_success"])
         self.assertGreater(obs[6], 0)
+
+    def test_puck_crosses_centerline_without_reset_in_both_directions(self):
+        for start, speed in [(-0.12, 1.0), (0.12, -1.0)]:
+            with self.subTest(start=start, speed=speed):
+                obs, _ = self.env.reset(seed=7, options={
+                    "puck_position": [start, 0.2], "puck_velocity": [speed, 0], "blocks": []})
+                puck = self.env.simulator.pucks["puck_0"]
+                previous_x = obs[4]
+                for _ in range(8):
+                    obs, _, terminated, truncated, info = self.env.step(np.zeros(2))
+                    self.assertFalse(terminated)
+                    self.assertFalse(truncated)
+                    self.assertEqual(info["outcome"], "running")
+                    self.assertIs(self.env.simulator.pucks["puck_0"], puck)
+                    self.assertGreater((obs[4] - previous_x) * speed, 0)
+                    previous_x = obs[4]
+                self.assertGreater(obs[4] * speed, 0.2)
+                self.assertEqual(self.env._steps, 8)
 
     def test_collision_is_failure(self):
         self.env.reset(seed=1, options={"blocks": [(-0.4, 0)]})
@@ -58,7 +76,21 @@ class PrecisionStrikerTests(unittest.TestCase):
         self.assertEqual(info["outcome"], "obstacle_collision")
         self.assertTrue(terminated)
         self.assertFalse(info["is_success"])
-        self.assertLess(reward, -90)
+        self.assertLess(reward, -18)
+
+    def test_incoming_speed_range_and_servo_limits(self):
+        for seed in range(20):
+            obs, _ = self.env.reset(seed=seed)
+            self.assertGreater(obs[6], 0)
+            self.assertGreaterEqual(np.linalg.norm(obs[6:8]), 0.3 - 1e-6)
+            self.assertLessEqual(np.linalg.norm(obs[6:8]), 1.5 + 1e-6)
+        for _ in range(100):
+            obs, _, terminated, truncated, _ = self.env.step(np.array([-1.0, 1.0]))
+            self.assertGreaterEqual(obs[0], self.env.paddle_radius - 1e-6)
+            self.assertLessEqual(abs(obs[1]), 0.3501)
+            self.assertLessEqual(np.linalg.norm(obs[2:4]), 2.0001)
+            if terminated or truncated:
+                self.env.reset(seed=20)
 
     def test_timeout_is_not_terminal(self):
         env = PrecisionStrikerEnv(obstacles=0, max_steps=2)

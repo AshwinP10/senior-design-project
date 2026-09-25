@@ -1,0 +1,4032 @@
+{
+  "zero_action": {
+    "episodes": 200,
+    "successes": 13,
+    "collisions": 40,
+    "hits": 84,
+    "outcomes": {
+      "timeout": 121,
+      "obstacle_collision": 40,
+      "conceded": 25,
+      "goal": 13,
+      "escaped": 1
+    },
+    "records": [
+      {
+        "layout": 0,
+        "shot": 0,
+        "seed": 31000,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 1,
+        "seed": 31001,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 131
+      },
+      {
+        "layout": 0,
+        "shot": 2,
+        "seed": 31002,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 3,
+        "seed": 31003,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 4,
+        "seed": 31004,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 86
+      },
+      {
+        "layout": 0,
+        "shot": 5,
+        "seed": 31005,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 176
+      },
+      {
+        "layout": 0,
+        "shot": 6,
+        "seed": 31006,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 7,
+        "seed": 31007,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 148
+      },
+      {
+        "layout": 0,
+        "shot": 8,
+        "seed": 31008,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 9,
+        "seed": 31009,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 10,
+        "seed": 31010,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 89
+      },
+      {
+        "layout": 0,
+        "shot": 11,
+        "seed": 31011,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 12,
+        "seed": 31012,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 13,
+        "seed": 31013,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 35
+      },
+      {
+        "layout": 0,
+        "shot": 14,
+        "seed": 31014,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 156
+      },
+      {
+        "layout": 0,
+        "shot": 15,
+        "seed": 31015,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 50
+      },
+      {
+        "layout": 0,
+        "shot": 16,
+        "seed": 31016,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 70
+      },
+      {
+        "layout": 0,
+        "shot": 17,
+        "seed": 31017,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 162
+      },
+      {
+        "layout": 0,
+        "shot": 18,
+        "seed": 31018,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 19,
+        "seed": 31019,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 0,
+        "seed": 31020,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 107
+      },
+      {
+        "layout": 1,
+        "shot": 1,
+        "seed": 31021,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 2,
+        "seed": 31022,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 3,
+        "seed": 31023,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 4,
+        "seed": 31024,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 41
+      },
+      {
+        "layout": 1,
+        "shot": 5,
+        "seed": 31025,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 102
+      },
+      {
+        "layout": 1,
+        "shot": 6,
+        "seed": 31026,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 67
+      },
+      {
+        "layout": 1,
+        "shot": 7,
+        "seed": 31027,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 55
+      },
+      {
+        "layout": 1,
+        "shot": 8,
+        "seed": 31028,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 134
+      },
+      {
+        "layout": 1,
+        "shot": 9,
+        "seed": 31029,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 10,
+        "seed": 31030,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 11,
+        "seed": 31031,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 12,
+        "seed": 31032,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 13,
+        "seed": 31033,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 25
+      },
+      {
+        "layout": 1,
+        "shot": 14,
+        "seed": 31034,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 15,
+        "seed": 31035,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 16,
+        "seed": 31036,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 17,
+        "seed": 31037,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 18,
+        "seed": 31038,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 123
+      },
+      {
+        "layout": 1,
+        "shot": 19,
+        "seed": 31039,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 36
+      },
+      {
+        "layout": 2,
+        "shot": 0,
+        "seed": 31040,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 95
+      },
+      {
+        "layout": 2,
+        "shot": 1,
+        "seed": 31041,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 2,
+        "seed": 31042,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 3,
+        "seed": 31043,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 4,
+        "seed": 31044,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 5,
+        "seed": 31045,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 6,
+        "seed": 31046,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 7,
+        "seed": 31047,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 8,
+        "seed": 31048,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 9,
+        "seed": 31049,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 10,
+        "seed": 31050,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 58
+      },
+      {
+        "layout": 2,
+        "shot": 11,
+        "seed": 31051,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 66
+      },
+      {
+        "layout": 2,
+        "shot": 12,
+        "seed": 31052,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 13,
+        "seed": 31053,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 14,
+        "seed": 31054,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 15,
+        "seed": 31055,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 28
+      },
+      {
+        "layout": 2,
+        "shot": 16,
+        "seed": 31056,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 16
+      },
+      {
+        "layout": 2,
+        "shot": 17,
+        "seed": 31057,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 47
+      },
+      {
+        "layout": 2,
+        "shot": 18,
+        "seed": 31058,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 17
+      },
+      {
+        "layout": 2,
+        "shot": 19,
+        "seed": 31059,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 0,
+        "seed": 31060,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 1,
+        "seed": 31061,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 133
+      },
+      {
+        "layout": 3,
+        "shot": 2,
+        "seed": 31062,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 189
+      },
+      {
+        "layout": 3,
+        "shot": 3,
+        "seed": 31063,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 4,
+        "seed": 31064,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 20
+      },
+      {
+        "layout": 3,
+        "shot": 5,
+        "seed": 31065,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 6,
+        "seed": 31066,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 7,
+        "seed": 31067,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 8,
+        "seed": 31068,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 9,
+        "seed": 31069,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 10,
+        "seed": 31070,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 50
+      },
+      {
+        "layout": 3,
+        "shot": 11,
+        "seed": 31071,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 12,
+        "seed": 31072,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 13,
+        "seed": 31073,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 14,
+        "seed": 31074,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 79
+      },
+      {
+        "layout": 3,
+        "shot": 15,
+        "seed": 31075,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 149
+      },
+      {
+        "layout": 3,
+        "shot": 16,
+        "seed": 31076,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 17,
+        "seed": 31077,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 18,
+        "seed": 31078,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 56
+      },
+      {
+        "layout": 3,
+        "shot": 19,
+        "seed": 31079,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 39
+      },
+      {
+        "layout": 4,
+        "shot": 0,
+        "seed": 31080,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 1,
+        "seed": 31081,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 2,
+        "seed": 31082,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 3,
+        "seed": 31083,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 4,
+        "seed": 31084,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 5,
+        "seed": 31085,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 76
+      },
+      {
+        "layout": 4,
+        "shot": 6,
+        "seed": 31086,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 7,
+        "seed": 31087,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 8,
+        "seed": 31088,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 9,
+        "seed": 31089,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 10,
+        "seed": 31090,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 11,
+        "seed": 31091,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 76
+      },
+      {
+        "layout": 4,
+        "shot": 12,
+        "seed": 31092,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 13,
+        "seed": 31093,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 19
+      },
+      {
+        "layout": 4,
+        "shot": 14,
+        "seed": 31094,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 96
+      },
+      {
+        "layout": 4,
+        "shot": 15,
+        "seed": 31095,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 16
+      },
+      {
+        "layout": 4,
+        "shot": 16,
+        "seed": 31096,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 111
+      },
+      {
+        "layout": 4,
+        "shot": 17,
+        "seed": 31097,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 18,
+        "seed": 31098,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 19,
+        "seed": 31099,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 0,
+        "seed": 31100,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 1,
+        "seed": 31101,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 2,
+        "seed": 31102,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 3,
+        "seed": 31103,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 4,
+        "seed": 31104,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 183
+      },
+      {
+        "layout": 5,
+        "shot": 5,
+        "seed": 31105,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 143
+      },
+      {
+        "layout": 5,
+        "shot": 6,
+        "seed": 31106,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 7,
+        "seed": 31107,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 8,
+        "seed": 31108,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 101
+      },
+      {
+        "layout": 5,
+        "shot": 9,
+        "seed": 31109,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 125
+      },
+      {
+        "layout": 5,
+        "shot": 10,
+        "seed": 31110,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 11,
+        "seed": 31111,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 12,
+        "seed": 31112,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 13,
+        "seed": 31113,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 80
+      },
+      {
+        "layout": 5,
+        "shot": 14,
+        "seed": 31114,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 180
+      },
+      {
+        "layout": 5,
+        "shot": 15,
+        "seed": 31115,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 16,
+        "seed": 31116,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 17,
+        "seed": 31117,
+        "success": true,
+        "outcome": "goal",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 87
+      },
+      {
+        "layout": 5,
+        "shot": 18,
+        "seed": 31118,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 125
+      },
+      {
+        "layout": 5,
+        "shot": 19,
+        "seed": 31119,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 0,
+        "seed": 31120,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 67
+      },
+      {
+        "layout": 6,
+        "shot": 1,
+        "seed": 31121,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 2,
+        "seed": 31122,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 18
+      },
+      {
+        "layout": 6,
+        "shot": 3,
+        "seed": 31123,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 4,
+        "seed": 31124,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 5,
+        "seed": 31125,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 6,
+        "seed": 31126,
+        "success": false,
+        "outcome": "escaped",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 63
+      },
+      {
+        "layout": 6,
+        "shot": 7,
+        "seed": 31127,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 8,
+        "seed": 31128,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 9,
+        "seed": 31129,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 102
+      },
+      {
+        "layout": 6,
+        "shot": 10,
+        "seed": 31130,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 89
+      },
+      {
+        "layout": 6,
+        "shot": 11,
+        "seed": 31131,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 12,
+        "seed": 31132,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 13,
+        "seed": 31133,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 14,
+        "seed": 31134,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 15,
+        "seed": 31135,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 99
+      },
+      {
+        "layout": 6,
+        "shot": 16,
+        "seed": 31136,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 168
+      },
+      {
+        "layout": 6,
+        "shot": 17,
+        "seed": 31137,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 18,
+        "seed": 31138,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 19,
+        "seed": 31139,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 0,
+        "seed": 31140,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 1,
+        "seed": 31141,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 51
+      },
+      {
+        "layout": 7,
+        "shot": 2,
+        "seed": 31142,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 3,
+        "seed": 31143,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 30
+      },
+      {
+        "layout": 7,
+        "shot": 4,
+        "seed": 31144,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 96
+      },
+      {
+        "layout": 7,
+        "shot": 5,
+        "seed": 31145,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 197
+      },
+      {
+        "layout": 7,
+        "shot": 6,
+        "seed": 31146,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 7,
+        "seed": 31147,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 8,
+        "seed": 31148,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 9,
+        "seed": 31149,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 47
+      },
+      {
+        "layout": 7,
+        "shot": 10,
+        "seed": 31150,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 11,
+        "seed": 31151,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 12,
+        "seed": 31152,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 13,
+        "seed": 31153,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 14,
+        "seed": 31154,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 98
+      },
+      {
+        "layout": 7,
+        "shot": 15,
+        "seed": 31155,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 16,
+        "seed": 31156,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 17,
+        "seed": 31157,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 18
+      },
+      {
+        "layout": 7,
+        "shot": 18,
+        "seed": 31158,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 19,
+        "seed": 31159,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 59
+      },
+      {
+        "layout": 8,
+        "shot": 0,
+        "seed": 31160,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 1,
+        "seed": 31161,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 2,
+        "seed": 31162,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 3,
+        "seed": 31163,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 4,
+        "seed": 31164,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 39
+      },
+      {
+        "layout": 8,
+        "shot": 5,
+        "seed": 31165,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 6,
+        "seed": 31166,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 7,
+        "seed": 31167,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 8,
+        "seed": 31168,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 9,
+        "seed": 31169,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 10,
+        "seed": 31170,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 11,
+        "seed": 31171,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 97
+      },
+      {
+        "layout": 8,
+        "shot": 12,
+        "seed": 31172,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 71
+      },
+      {
+        "layout": 8,
+        "shot": 13,
+        "seed": 31173,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 105
+      },
+      {
+        "layout": 8,
+        "shot": 14,
+        "seed": 31174,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 150
+      },
+      {
+        "layout": 8,
+        "shot": 15,
+        "seed": 31175,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 154
+      },
+      {
+        "layout": 8,
+        "shot": 16,
+        "seed": 31176,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 140
+      },
+      {
+        "layout": 8,
+        "shot": 17,
+        "seed": 31177,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 121
+      },
+      {
+        "layout": 8,
+        "shot": 18,
+        "seed": 31178,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 19,
+        "seed": 31179,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 0,
+        "seed": 31180,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 1,
+        "seed": 31181,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 2,
+        "seed": 31182,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 15
+      },
+      {
+        "layout": 9,
+        "shot": 3,
+        "seed": 31183,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 4,
+        "seed": 31184,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 5,
+        "seed": 31185,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 65
+      },
+      {
+        "layout": 9,
+        "shot": 6,
+        "seed": 31186,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 7,
+        "seed": 31187,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 8,
+        "seed": 31188,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 9,
+        "seed": 31189,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 10,
+        "seed": 31190,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 11,
+        "seed": 31191,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 12,
+        "seed": 31192,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 124
+      },
+      {
+        "layout": 9,
+        "shot": 13,
+        "seed": 31193,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 50
+      },
+      {
+        "layout": 9,
+        "shot": 14,
+        "seed": 31194,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 15,
+        "seed": 31195,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 16,
+        "seed": 31196,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 98
+      },
+      {
+        "layout": 9,
+        "shot": 17,
+        "seed": 31197,
+        "success": true,
+        "outcome": "goal",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 38
+      },
+      {
+        "layout": 9,
+        "shot": 18,
+        "seed": 31198,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 37
+      },
+      {
+        "layout": 9,
+        "shot": 19,
+        "seed": 31199,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 165
+      }
+    ]
+  },
+  "random_action": {
+    "episodes": 200,
+    "successes": 15,
+    "collisions": 51,
+    "hits": 90,
+    "outcomes": {
+      "timeout": 91,
+      "obstacle_collision": 51,
+      "conceded": 40,
+      "goal": 15,
+      "escaped": 3
+    },
+    "records": [
+      {
+        "layout": 0,
+        "shot": 0,
+        "seed": 31000,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 1,
+        "seed": 31001,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 27
+      },
+      {
+        "layout": 0,
+        "shot": 2,
+        "seed": 31002,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 3,
+        "seed": 31003,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 181
+      },
+      {
+        "layout": 0,
+        "shot": 4,
+        "seed": 31004,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 86
+      },
+      {
+        "layout": 0,
+        "shot": 5,
+        "seed": 31005,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 6,
+        "seed": 31006,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 7,
+        "seed": 31007,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 148
+      },
+      {
+        "layout": 0,
+        "shot": 8,
+        "seed": 31008,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 9,
+        "seed": 31009,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 25
+      },
+      {
+        "layout": 0,
+        "shot": 10,
+        "seed": 31010,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 89
+      },
+      {
+        "layout": 0,
+        "shot": 11,
+        "seed": 31011,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 12,
+        "seed": 31012,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 145
+      },
+      {
+        "layout": 0,
+        "shot": 13,
+        "seed": 31013,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 14,
+        "seed": 31014,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 156
+      },
+      {
+        "layout": 0,
+        "shot": 15,
+        "seed": 31015,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 50
+      },
+      {
+        "layout": 0,
+        "shot": 16,
+        "seed": 31016,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 20
+      },
+      {
+        "layout": 0,
+        "shot": 17,
+        "seed": 31017,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 0,
+        "shot": 18,
+        "seed": 31018,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 54
+      },
+      {
+        "layout": 0,
+        "shot": 19,
+        "seed": 31019,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 0,
+        "seed": 31020,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 30
+      },
+      {
+        "layout": 1,
+        "shot": 1,
+        "seed": 31021,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 63
+      },
+      {
+        "layout": 1,
+        "shot": 2,
+        "seed": 31022,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 38
+      },
+      {
+        "layout": 1,
+        "shot": 3,
+        "seed": 31023,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 137
+      },
+      {
+        "layout": 1,
+        "shot": 4,
+        "seed": 31024,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 41
+      },
+      {
+        "layout": 1,
+        "shot": 5,
+        "seed": 31025,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 39
+      },
+      {
+        "layout": 1,
+        "shot": 6,
+        "seed": 31026,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 67
+      },
+      {
+        "layout": 1,
+        "shot": 7,
+        "seed": 31027,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 36
+      },
+      {
+        "layout": 1,
+        "shot": 8,
+        "seed": 31028,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 160
+      },
+      {
+        "layout": 1,
+        "shot": 9,
+        "seed": 31029,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 10,
+        "seed": 31030,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 42
+      },
+      {
+        "layout": 1,
+        "shot": 11,
+        "seed": 31031,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 67
+      },
+      {
+        "layout": 1,
+        "shot": 12,
+        "seed": 31032,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 13,
+        "seed": 31033,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 25
+      },
+      {
+        "layout": 1,
+        "shot": 14,
+        "seed": 31034,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 15,
+        "seed": 31035,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 16,
+        "seed": 31036,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 1,
+        "shot": 17,
+        "seed": 31037,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 41
+      },
+      {
+        "layout": 1,
+        "shot": 18,
+        "seed": 31038,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 69
+      },
+      {
+        "layout": 1,
+        "shot": 19,
+        "seed": 31039,
+        "success": true,
+        "outcome": "goal",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 45
+      },
+      {
+        "layout": 2,
+        "shot": 0,
+        "seed": 31040,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 95
+      },
+      {
+        "layout": 2,
+        "shot": 1,
+        "seed": 31041,
+        "success": false,
+        "outcome": "escaped",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 29
+      },
+      {
+        "layout": 2,
+        "shot": 2,
+        "seed": 31042,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 3,
+        "seed": 31043,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 43
+      },
+      {
+        "layout": 2,
+        "shot": 4,
+        "seed": 31044,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 5,
+        "seed": 31045,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 66
+      },
+      {
+        "layout": 2,
+        "shot": 6,
+        "seed": 31046,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 7,
+        "seed": 31047,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 110
+      },
+      {
+        "layout": 2,
+        "shot": 8,
+        "seed": 31048,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 9,
+        "seed": 31049,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 10,
+        "seed": 31050,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 42
+      },
+      {
+        "layout": 2,
+        "shot": 11,
+        "seed": 31051,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 66
+      },
+      {
+        "layout": 2,
+        "shot": 12,
+        "seed": 31052,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 196
+      },
+      {
+        "layout": 2,
+        "shot": 13,
+        "seed": 31053,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 14,
+        "seed": 31054,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 41
+      },
+      {
+        "layout": 2,
+        "shot": 15,
+        "seed": 31055,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 2,
+        "shot": 16,
+        "seed": 31056,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 16
+      },
+      {
+        "layout": 2,
+        "shot": 17,
+        "seed": 31057,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 87
+      },
+      {
+        "layout": 2,
+        "shot": 18,
+        "seed": 31058,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 17
+      },
+      {
+        "layout": 2,
+        "shot": 19,
+        "seed": 31059,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 182
+      },
+      {
+        "layout": 3,
+        "shot": 0,
+        "seed": 31060,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 29
+      },
+      {
+        "layout": 3,
+        "shot": 1,
+        "seed": 31061,
+        "success": false,
+        "outcome": "escaped",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 45
+      },
+      {
+        "layout": 3,
+        "shot": 2,
+        "seed": 31062,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 189
+      },
+      {
+        "layout": 3,
+        "shot": 3,
+        "seed": 31063,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 4,
+        "seed": 31064,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 84
+      },
+      {
+        "layout": 3,
+        "shot": 5,
+        "seed": 31065,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 6,
+        "seed": 31066,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 7,
+        "seed": 31067,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 8,
+        "seed": 31068,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 9,
+        "seed": 31069,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 10,
+        "seed": 31070,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 50
+      },
+      {
+        "layout": 3,
+        "shot": 11,
+        "seed": 31071,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 12,
+        "seed": 31072,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 28
+      },
+      {
+        "layout": 3,
+        "shot": 13,
+        "seed": 31073,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 14,
+        "seed": 31074,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 79
+      },
+      {
+        "layout": 3,
+        "shot": 15,
+        "seed": 31075,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 149
+      },
+      {
+        "layout": 3,
+        "shot": 16,
+        "seed": 31076,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 63
+      },
+      {
+        "layout": 3,
+        "shot": 17,
+        "seed": 31077,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 18,
+        "seed": 31078,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 3,
+        "shot": 19,
+        "seed": 31079,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 30
+      },
+      {
+        "layout": 4,
+        "shot": 0,
+        "seed": 31080,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 1,
+        "seed": 31081,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 24
+      },
+      {
+        "layout": 4,
+        "shot": 2,
+        "seed": 31082,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 3,
+        "seed": 31083,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 155
+      },
+      {
+        "layout": 4,
+        "shot": 4,
+        "seed": 31084,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 5,
+        "seed": 31085,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 76
+      },
+      {
+        "layout": 4,
+        "shot": 6,
+        "seed": 31086,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 7,
+        "seed": 31087,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 134
+      },
+      {
+        "layout": 4,
+        "shot": 8,
+        "seed": 31088,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 9,
+        "seed": 31089,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 49
+      },
+      {
+        "layout": 4,
+        "shot": 10,
+        "seed": 31090,
+        "success": true,
+        "outcome": "goal",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 167
+      },
+      {
+        "layout": 4,
+        "shot": 11,
+        "seed": 31091,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 12,
+        "seed": 31092,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 4,
+        "shot": 13,
+        "seed": 31093,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 19
+      },
+      {
+        "layout": 4,
+        "shot": 14,
+        "seed": 31094,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 96
+      },
+      {
+        "layout": 4,
+        "shot": 15,
+        "seed": 31095,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 24
+      },
+      {
+        "layout": 4,
+        "shot": 16,
+        "seed": 31096,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 111
+      },
+      {
+        "layout": 4,
+        "shot": 17,
+        "seed": 31097,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 50
+      },
+      {
+        "layout": 4,
+        "shot": 18,
+        "seed": 31098,
+        "success": true,
+        "outcome": "goal",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 31
+      },
+      {
+        "layout": 4,
+        "shot": 19,
+        "seed": 31099,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 0,
+        "seed": 31100,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 183
+      },
+      {
+        "layout": 5,
+        "shot": 1,
+        "seed": 31101,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 29
+      },
+      {
+        "layout": 5,
+        "shot": 2,
+        "seed": 31102,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 48
+      },
+      {
+        "layout": 5,
+        "shot": 3,
+        "seed": 31103,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 4,
+        "seed": 31104,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 183
+      },
+      {
+        "layout": 5,
+        "shot": 5,
+        "seed": 31105,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 143
+      },
+      {
+        "layout": 5,
+        "shot": 6,
+        "seed": 31106,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 7,
+        "seed": 31107,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 8,
+        "seed": 31108,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 99
+      },
+      {
+        "layout": 5,
+        "shot": 9,
+        "seed": 31109,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 125
+      },
+      {
+        "layout": 5,
+        "shot": 10,
+        "seed": 31110,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 101
+      },
+      {
+        "layout": 5,
+        "shot": 11,
+        "seed": 31111,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 133
+      },
+      {
+        "layout": 5,
+        "shot": 12,
+        "seed": 31112,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 13,
+        "seed": 31113,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 80
+      },
+      {
+        "layout": 5,
+        "shot": 14,
+        "seed": 31114,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 180
+      },
+      {
+        "layout": 5,
+        "shot": 15,
+        "seed": 31115,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 16,
+        "seed": 31116,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 17,
+        "seed": 31117,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 43
+      },
+      {
+        "layout": 5,
+        "shot": 18,
+        "seed": 31118,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 5,
+        "shot": 19,
+        "seed": 31119,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 0,
+        "seed": 31120,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 67
+      },
+      {
+        "layout": 6,
+        "shot": 1,
+        "seed": 31121,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 58
+      },
+      {
+        "layout": 6,
+        "shot": 2,
+        "seed": 31122,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 18
+      },
+      {
+        "layout": 6,
+        "shot": 3,
+        "seed": 31123,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 4,
+        "seed": 31124,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 5,
+        "seed": 31125,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 6,
+        "seed": 31126,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 85
+      },
+      {
+        "layout": 6,
+        "shot": 7,
+        "seed": 31127,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 8,
+        "seed": 31128,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 29
+      },
+      {
+        "layout": 6,
+        "shot": 9,
+        "seed": 31129,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 102
+      },
+      {
+        "layout": 6,
+        "shot": 10,
+        "seed": 31130,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 18
+      },
+      {
+        "layout": 6,
+        "shot": 11,
+        "seed": 31131,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 12,
+        "seed": 31132,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 13,
+        "seed": 31133,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 14,
+        "seed": 31134,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 15,
+        "seed": 31135,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 99
+      },
+      {
+        "layout": 6,
+        "shot": 16,
+        "seed": 31136,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 168
+      },
+      {
+        "layout": 6,
+        "shot": 17,
+        "seed": 31137,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 18,
+        "seed": 31138,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 6,
+        "shot": 19,
+        "seed": 31139,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 0,
+        "seed": 31140,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 1,
+        "seed": 31141,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 51
+      },
+      {
+        "layout": 7,
+        "shot": 2,
+        "seed": 31142,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 3,
+        "seed": 31143,
+        "success": false,
+        "outcome": "escaped",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 30
+      },
+      {
+        "layout": 7,
+        "shot": 4,
+        "seed": 31144,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 5,
+        "seed": 31145,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 197
+      },
+      {
+        "layout": 7,
+        "shot": 6,
+        "seed": 31146,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 132
+      },
+      {
+        "layout": 7,
+        "shot": 7,
+        "seed": 31147,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 8,
+        "seed": 31148,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 33
+      },
+      {
+        "layout": 7,
+        "shot": 9,
+        "seed": 31149,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 10,
+        "seed": 31150,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 11,
+        "seed": 31151,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 12,
+        "seed": 31152,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 13,
+        "seed": 31153,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 14,
+        "seed": 31154,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 15,
+        "seed": 31155,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 16,
+        "seed": 31156,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 16
+      },
+      {
+        "layout": 7,
+        "shot": 17,
+        "seed": 31157,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 18,
+        "seed": 31158,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 7,
+        "shot": 19,
+        "seed": 31159,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 59
+      },
+      {
+        "layout": 8,
+        "shot": 0,
+        "seed": 31160,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 1,
+        "seed": 31161,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 2,
+        "seed": 31162,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 3,
+        "seed": 31163,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 4,
+        "seed": 31164,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 39
+      },
+      {
+        "layout": 8,
+        "shot": 5,
+        "seed": 31165,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 6,
+        "seed": 31166,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 69
+      },
+      {
+        "layout": 8,
+        "shot": 7,
+        "seed": 31167,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 44
+      },
+      {
+        "layout": 8,
+        "shot": 8,
+        "seed": 31168,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 17
+      },
+      {
+        "layout": 8,
+        "shot": 9,
+        "seed": 31169,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 73
+      },
+      {
+        "layout": 8,
+        "shot": 10,
+        "seed": 31170,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 11,
+        "seed": 31171,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 97
+      },
+      {
+        "layout": 8,
+        "shot": 12,
+        "seed": 31172,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 8,
+        "shot": 13,
+        "seed": 31173,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 105
+      },
+      {
+        "layout": 8,
+        "shot": 14,
+        "seed": 31174,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 150
+      },
+      {
+        "layout": 8,
+        "shot": 15,
+        "seed": 31175,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": false,
+        "obstacle_collision": true,
+        "steps": 154
+      },
+      {
+        "layout": 8,
+        "shot": 16,
+        "seed": 31176,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 140
+      },
+      {
+        "layout": 8,
+        "shot": 17,
+        "seed": 31177,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 121
+      },
+      {
+        "layout": 8,
+        "shot": 18,
+        "seed": 31178,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 27
+      },
+      {
+        "layout": 8,
+        "shot": 19,
+        "seed": 31179,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 0,
+        "seed": 31180,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 1,
+        "seed": 31181,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 2,
+        "seed": 31182,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 16
+      },
+      {
+        "layout": 9,
+        "shot": 3,
+        "seed": 31183,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 4,
+        "seed": 31184,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 61
+      },
+      {
+        "layout": 9,
+        "shot": 5,
+        "seed": 31185,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 6,
+        "seed": 31186,
+        "success": true,
+        "outcome": "goal",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 51
+      },
+      {
+        "layout": 9,
+        "shot": 7,
+        "seed": 31187,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 8,
+        "seed": 31188,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 9,
+        "seed": 31189,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 10,
+        "seed": 31190,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 11,
+        "seed": 31191,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 12,
+        "seed": 31192,
+        "success": false,
+        "outcome": "obstacle_collision",
+        "hit": true,
+        "obstacle_collision": true,
+        "steps": 82
+      },
+      {
+        "layout": 9,
+        "shot": 13,
+        "seed": 31193,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 14,
+        "seed": 31194,
+        "success": false,
+        "outcome": "timeout",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 15,
+        "seed": 31195,
+        "success": false,
+        "outcome": "conceded",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 77
+      },
+      {
+        "layout": 9,
+        "shot": 16,
+        "seed": 31196,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 16
+      },
+      {
+        "layout": 9,
+        "shot": 17,
+        "seed": 31197,
+        "success": false,
+        "outcome": "timeout",
+        "hit": true,
+        "obstacle_collision": false,
+        "steps": 200
+      },
+      {
+        "layout": 9,
+        "shot": 18,
+        "seed": 31198,
+        "success": false,
+        "outcome": "conceded",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 20
+      },
+      {
+        "layout": 9,
+        "shot": 19,
+        "seed": 31199,
+        "success": true,
+        "outcome": "goal",
+        "hit": false,
+        "obstacle_collision": false,
+        "steps": 165
+      }
+    ]
+  }
+}

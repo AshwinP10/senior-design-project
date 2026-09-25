@@ -26,7 +26,9 @@ def main():
     p.add_argument("--terminal", action="store_true")
     p.add_argument("--render", action="store_true")
     p.add_argument("--puck", type=float, nargs=2, metavar=("X", "Y"))
-    p.add_argument("--velocity", type=float, nargs=2, default=[0, 0])
+    p.add_argument("--velocity", type=float, nargs=2, help="Override randomized incoming velocity")
+    p.add_argument("--speed-min", type=float, default=0.3)
+    p.add_argument("--speed-max", type=float, default=1.5)
     p.add_argument("--blocks", type=str, help='Fixed layout, e.g. "-0.4,0;-0.6,0.2"')
     args = p.parse_args()
     if min(args.layouts, args.shots) < 1:
@@ -36,7 +38,8 @@ def main():
         p.error("Checkpoint task version does not match")
     args.output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
-    env = PrecisionStrikerEnv(seed=args.seed, obstacles=args.obstacles, randomize=False)
+    env = PrecisionStrikerEnv(seed=args.seed, obstacles=args.obstacles, randomize=False,
+                             speed_min=args.speed_min, speed_max=args.speed_max)
     vector = DummyVecEnv([lambda: env])
     normalizer = VecNormalize.load(str(args.run / "vecnormalize.pkl"), vector)
     normalizer.training = False
@@ -57,10 +60,12 @@ def main():
             blocks = env.sample_layout(args.seed + layout) if fixed_blocks is None else fixed_blocks
             for shot in range(args.shots):
                 seed = args.seed + 1000 + layout * args.shots + shot
-                options = {"blocks": blocks, "puck_velocity": args.velocity}
+                options = {"blocks": blocks}
+                if args.velocity is not None:
+                    options["puck_velocity"] = args.velocity
                 if args.puck is not None:
                     options["puck_position"] = args.puck
-                obs, _ = env.reset(seed=seed, options=options)
+                obs, reset_info = env.reset(seed=seed, options=options)
                 observations, actions, rewards, latencies = [obs.copy()], [], [], []
                 done = False
                 info = {}
@@ -90,6 +95,7 @@ def main():
                                     actions=actions, rewards=rewards, inference_ms=latencies)
                 record = {"layout": layout, "shot": shot, "seed": seed, "blocks": blocks,
                           "outcome": info["outcome"], "success": info["is_success"],
+                          "initial_velocity": reset_info["initial_velocity"], "hit": info["hit"],
                           "obstacle_collision": info["obstacle_collision"], "steps": len(actions),
                           "trajectory": trajectory, "inference_p95_ms": float(np.percentile(latencies, 95))}
                 records.append(record)
@@ -115,7 +121,7 @@ def main():
                "outcomes": dict(Counter(r["outcome"] for r in records)),
                "completed": total == args.layouts * args.shots,
                "report_protocol": args.layouts == 10 and args.shots == 20 and args.puck is None
-                                  and fixed_blocks is None and args.obstacles > 0 and args.velocity == [0, 0],
+                                  and fixed_blocks is None and args.obstacles > 0 and args.velocity is None,
                "records": records}
     summary["meets_report_target"] = bool(summary["report_protocol"] and total == 200
                                            and rate >= 0.8 and collisions == 0)

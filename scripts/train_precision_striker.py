@@ -24,6 +24,8 @@ def main():
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--envs", type=int, default=8)
     p.add_argument("--obstacles", type=int, choices=range(4), default=1)
+    p.add_argument("--speed-min", type=float, default=0.3)
+    p.add_argument("--speed-max", type=float, default=1.5)
     p.add_argument("--device", choices=["cpu", "cuda", "auto"], default="cpu")
     p.add_argument("--vector", choices=["dummy", "subproc"], default="subproc")
     p.add_argument("--rollout", type=int, default=512)
@@ -40,9 +42,10 @@ def main():
 
     def factory(rank):
         def build():
-            return Monitor(PrecisionStrikerEnv(seed=args.seed + rank, obstacles=args.obstacles),
+            return Monitor(PrecisionStrikerEnv(seed=args.seed + rank, obstacles=args.obstacles,
+                                              speed_min=args.speed_min, speed_max=args.speed_max),
                            str(args.output / f"worker_{rank}"),
-                           info_keywords=("is_success", "obstacle_collision", "outcome"))
+                           info_keywords=("is_success", "obstacle_collision", "outcome", "hit"))
         return build
 
     vector_type = SubprocVecEnv if args.vector == "subproc" else DummyVecEnv
@@ -61,6 +64,10 @@ def main():
             batch -= 1
         model = PPO("MlpPolicy", venv, n_steps=args.rollout, batch_size=batch,
                     learning_rate=3e-4, gamma=0.99, device=args.device, seed=args.seed,
+                    ent_coef=0.01, n_epochs=10, gae_lambda=0.95, clip_range=0.2,
+                    vf_coef=0.5, max_grad_norm=0.5,
+                    policy_kwargs=dict(net_arch=dict(pi=[128, 128], vf=[128, 128]),
+                                       activation_fn=torch.nn.Tanh, log_std_init=-0.7),
                     verbose=1, tensorboard_log=str(args.output / "tensorboard"))
     try:
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
@@ -77,6 +84,10 @@ def main():
                      "airhockey/sims/airhockey_box2d.py", "configs/flat_table_play.yaml"]}
     manifest["actual_rollout"] = model.n_steps
     manifest["actual_batch_size"] = model.batch_size
+    manifest["policy_architecture"] = str(model.policy)
+    manifest["ppo"] = {"learning_rate": 3e-4, "gamma": model.gamma, "gae_lambda": model.gae_lambda,
+                       "n_epochs": model.n_epochs, "ent_coef": model.ent_coef,
+                       "vf_coef": model.vf_coef, "max_grad_norm": model.max_grad_norm}
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2))
     callback = CheckpointCallback(save_freq=max(args.checkpoint_every // args.envs, 1),
                                   save_path=str(args.output / "checkpoints"),
