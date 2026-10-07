@@ -1,0 +1,4394 @@
+[
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 200,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 200
+    },
+    "accuracy": 1.0
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 200,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 200
+    },
+    "accuracy": 1.0
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 200,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 200
+    },
+    "accuracy": 1.0
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 200,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 200
+    },
+    "accuracy": 1.0
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 200,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 200
+    },
+    "accuracy": 1.0
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 200,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 200
+    },
+    "accuracy": 1.0
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "conceded": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 199,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 199,
+      "timeout": 1
+    },
+    "accuracy": 0.995
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 198,
+      "timeout": 2
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 198,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 2,
+      "goal": 198
+    },
+    "accuracy": 0.99
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 2,
+      "conceded": 1
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 197,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 197,
+      "timeout": 3
+    },
+    "accuracy": 0.985
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "conceded": 1,
+      "timeout": 3
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "conceded": 1,
+      "timeout": 3
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "conceded": 1,
+      "timeout": 3
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 3,
+      "conceded": 1
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 4,
+      "goal": 196
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 4,
+      "goal": 196
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 196,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 196,
+      "timeout": 4
+    },
+    "accuracy": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "conceded": 1,
+      "timeout": 4
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "conceded": 1,
+      "timeout": 4
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "conceded": 1,
+      "timeout": 4
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 195,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 195,
+      "timeout": 5
+    },
+    "accuracy": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 5,
+      "conceded": 1
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 4,
+      "conceded": 2
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "conceded": 1,
+      "timeout": 5
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 5,
+      "conceded": 1
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 5,
+      "conceded": 1
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 5,
+      "conceded": 1
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "conceded": 3,
+      "timeout": 3
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "conceded": 3,
+      "timeout": 3
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 6,
+      "conceded": 1
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 6,
+      "conceded": 1
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "conceded": 1,
+      "timeout": 6
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 6,
+      "conceded": 1
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "conceded": 2,
+      "timeout": 5
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 7,
+      "goal": 193
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 6,
+      "goal": 193,
+      "conceded": 1
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "conceded": 1,
+      "timeout": 6
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "conceded": 3,
+      "timeout": 4
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "conceded": 1,
+      "timeout": 6
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "conceded": 1,
+      "timeout": 6
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "conceded": 1,
+      "timeout": 6
+    },
+    "accuracy": 0.965
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 8,
+      "goal": 192
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 7,
+      "conceded": 1
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "conceded": 2,
+      "timeout": 6
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "conceded": 2,
+      "timeout": 6
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 7,
+      "conceded": 1
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "conceded": 2,
+      "timeout": 6
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 7,
+      "conceded": 1
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 7,
+      "goal": 192,
+      "conceded": 1
+    },
+    "accuracy": 0.96
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "conceded": 2,
+      "timeout": 7
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "timeout": 9
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "timeout": 9
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "timeout": 9
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "timeout": 9
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "timeout": 9
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "conceded": 1,
+      "timeout": 8
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "conceded": 3,
+      "timeout": 6
+    },
+    "accuracy": 0.955
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 10,
+      "goal": 190
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 8,
+      "conceded": 2
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 8,
+      "conceded": 2
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 8,
+      "conceded": 2
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 9,
+      "conceded": 1
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 10,
+      "goal": 190
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 9,
+      "conceded": 1
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "conceded": 3,
+      "timeout": 7
+    },
+    "accuracy": 0.95
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 10,
+      "conceded": 1
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 10,
+      "goal": 189,
+      "conceded": 1
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 9,
+      "goal": 189,
+      "conceded": 2
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 10,
+      "conceded": 1
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 11
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 11
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 9,
+      "conceded": 2
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 11
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 11
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 11
+    },
+    "accuracy": 0.945
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 12
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 12
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 11,
+      "conceded": 1
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 11,
+      "conceded": 1
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 12
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 12
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 12
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 11,
+      "conceded": 1
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 11,
+      "conceded": 1
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "conceded": 3,
+      "timeout": 9
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 188,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 188,
+      "timeout": 10,
+      "conceded": 2
+    },
+    "accuracy": 0.94
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 187,
+      "timeout": 13
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 187,
+      "conceded": 2,
+      "timeout": 11
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 187,
+      "timeout": 12,
+      "conceded": 1
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 187,
+      "timeout": 13
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 187,
+      "timeout": 13
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 13,
+      "goal": 187
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 187,
+      "timeout": 12,
+      "conceded": 1
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 187,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 187,
+      "timeout": 12,
+      "conceded": 1
+    },
+    "accuracy": 0.935
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 186,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 186,
+      "timeout": 13,
+      "conceded": 1
+    },
+    "accuracy": 0.93
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 186,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 186,
+      "timeout": 13,
+      "conceded": 1
+    },
+    "accuracy": 0.93
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 186,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 186,
+      "timeout": 14
+    },
+    "accuracy": 0.93
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 186,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 186,
+      "timeout": 13,
+      "conceded": 1
+    },
+    "accuracy": 0.93
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 186,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 186,
+      "timeout": 13,
+      "conceded": 1
+    },
+    "accuracy": 0.93
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 186,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 186,
+      "timeout": 14
+    },
+    "accuracy": 0.93
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 185,
+      "conceded": 2,
+      "timeout": 13
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 185,
+      "timeout": 15
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 15,
+      "goal": 185
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 15,
+      "goal": 185
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 185,
+      "timeout": 15
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 185,
+      "timeout": 15
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 185,
+      "timeout": 15
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 185,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 185,
+      "timeout": 14,
+      "conceded": 1
+    },
+    "accuracy": 0.925
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 184,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 184,
+      "conceded": 2,
+      "timeout": 14
+    },
+    "accuracy": 0.92
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 184,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 184,
+      "timeout": 16
+    },
+    "accuracy": 0.92
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 184,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 16,
+      "goal": 184
+    },
+    "accuracy": 0.92
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 184,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 184,
+      "timeout": 16
+    },
+    "accuracy": 0.92
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 184,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 184,
+      "timeout": 16
+    },
+    "accuracy": 0.92
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 184,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 184,
+      "timeout": 16
+    },
+    "accuracy": 0.92
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 183,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 183,
+      "timeout": 17
+    },
+    "accuracy": 0.915
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 183,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 17,
+      "goal": 183
+    },
+    "accuracy": 0.915
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 183,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 183,
+      "timeout": 17
+    },
+    "accuracy": 0.915
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 182,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 182,
+      "timeout": 18
+    },
+    "accuracy": 0.91
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 182,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 18,
+      "goal": 182
+    },
+    "accuracy": 0.91
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 182,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 17,
+      "goal": 182,
+      "conceded": 1
+    },
+    "accuracy": 0.91
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 182,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 182,
+      "timeout": 17,
+      "conceded": 1
+    },
+    "accuracy": 0.91
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 182,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 182,
+      "timeout": 17,
+      "conceded": 1
+    },
+    "accuracy": 0.91
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 181,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 181,
+      "timeout": 18,
+      "conceded": 1
+    },
+    "accuracy": 0.905
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 181,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 181,
+      "timeout": 19
+    },
+    "accuracy": 0.905
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 181,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 181,
+      "timeout": 19
+    },
+    "accuracy": 0.905
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 181,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 181,
+      "timeout": 19
+    },
+    "accuracy": 0.905
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 180,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 19,
+      "goal": 180,
+      "conceded": 1
+    },
+    "accuracy": 0.9
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 180,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 180,
+      "timeout": 19,
+      "conceded": 1
+    },
+    "accuracy": 0.9
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 180,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 180,
+      "timeout": 19,
+      "conceded": 1
+    },
+    "accuracy": 0.9
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 179,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 179,
+      "timeout": 20,
+      "conceded": 1
+    },
+    "accuracy": 0.895
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 178,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 22,
+      "goal": 178
+    },
+    "accuracy": 0.89
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 178,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 178,
+      "timeout": 22
+    },
+    "accuracy": 0.89
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 174,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 174,
+      "timeout": 26
+    },
+    "accuracy": 0.87
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 174,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 174,
+      "timeout": 25,
+      "conceded": 1
+    },
+    "accuracy": 0.87
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 174,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 174,
+      "timeout": 25,
+      "conceded": 1
+    },
+    "accuracy": 0.87
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.0,
+      "kp_track": 8.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 173,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 173,
+      "timeout": 26,
+      "conceded": 1
+    },
+    "accuracy": 0.865
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 173,
+    "episodes": 200,
+    "outcomes": {
+      "timeout": 27,
+      "goal": 173
+    },
+    "accuracy": 0.865
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 4.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 172,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 172,
+      "timeout": 26,
+      "conceded": 2
+    },
+    "accuracy": 0.86
+  },
+  {
+    "planner": {
+      "kp_lat": 4.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.05
+    },
+    "goals_after_hit": 168,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 168,
+      "timeout": 31,
+      "conceded": 1
+    },
+    "accuracy": 0.84
+  }
+]

@@ -448,6 +448,18 @@ class AirHockeyBox2D:
             ((self.table_x_min, self.table_y_min), (self.table_x_max, self.table_y_min), self.end_wall_restitution),
             ((self.table_x_min, self.table_y_max), (self.table_x_max, self.table_y_max), self.end_wall_restitution),
         ]
+        # Opt-in goal mouths; legacy tasks retain their closed end rails.
+        self.goal_width = float(kwargs.get('goal_width', 0.0))
+        if not 0.0 <= self.goal_width < self.width:
+            raise ValueError('goal_width must be nonnegative and smaller than table width')
+        if self.goal_width:
+            half_goal = self.goal_width / 2
+            wall_segments = wall_segments[:2]
+            for end_y in (self.table_y_min, self.table_y_max):
+                wall_segments.extend([
+                    ((self.table_x_min, end_y), (-half_goal, end_y), self.end_wall_restitution),
+                    ((half_goal, end_y), (self.table_x_max, end_y), self.end_wall_restitution),
+                ])
         for p1, p2, restitution in wall_segments:
             self.ground_body.CreateFixture(
                 b2FixtureDef(
@@ -785,6 +797,7 @@ class AirHockeyBox2D:
                     filter=b2Filter(maskBits=1, categoryBits=1)),
                 position=pos
             )
+        block.userData = name  # Identify obstacle contacts in the collision listener.
         self.blocks[name] = block
         self.block_initial_positions[name] = pos
         self.object_dict[name] = block

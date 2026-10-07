@@ -1,0 +1,176 @@
+{
+  "task_version": "precision-striker-v5-bounce-extra-obs",
+  "task_options": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": true,
+    "extra_obs": true,
+    "goal_shaping": true
+  },
+  "algo": "ppo",
+  "hybrid": "none",
+  "completed_timesteps": 0,
+  "bc": true,
+  "demo_steps": 600317,
+  "demo_planner_success": 0.9690320686871652,
+  "planner": {
+    "kp_lat": 16.0,
+    "min_slack": 0.15
+  },
+  "net": 256,
+  "history": [
+    {
+      "epoch": 0,
+      "action_mse": 0.02341597814297771,
+      "value_mse": 85.63274503061729
+    },
+    {
+      "epoch": 1,
+      "action_mse": 0.014767950102555697,
+      "value_mse": 36.91934386687451
+    },
+    {
+      "epoch": 2,
+      "action_mse": 0.012566770804812166,
+      "value_mse": 33.09017212377075
+    },
+    {
+      "epoch": 3,
+      "action_mse": 0.0111497605594633,
+      "value_mse": 30.59081665703308
+    },
+    {
+      "epoch": 4,
+      "action_mse": 0.0101210051637642,
+      "value_mse": 27.955121879205965
+    },
+    {
+      "epoch": 5,
+      "action_mse": 0.00938093780253763,
+      "value_mse": 25.4176514196049
+    },
+    {
+      "epoch": 6,
+      "action_mse": 0.008814031994517246,
+      "value_mse": 23.567994135600824
+    },
+    {
+      "epoch": 7,
+      "action_mse": 0.008414104469278805,
+      "value_mse": 22.402686211729375
+    },
+    {
+      "epoch": 8,
+      "action_mse": 0.008067120642325166,
+      "value_mse": 21.63074076658451
+    },
+    {
+      "epoch": 9,
+      "action_mse": 0.007775871995202507,
+      "value_mse": 21.055702764395942
+    },
+    {
+      "epoch": 10,
+      "action_mse": 0.007561769262372544,
+      "value_mse": 20.597900630947933
+    },
+    {
+      "epoch": 11,
+      "action_mse": 0.007337029478909774,
+      "value_mse": 20.219651752145857
+    },
+    {
+      "epoch": 12,
+      "action_mse": 0.007190327014490106,
+      "value_mse": 19.86344090714485
+    },
+    {
+      "epoch": 13,
+      "action_mse": 0.007049739612456326,
+      "value_mse": 19.56857841518299
+    },
+    {
+      "epoch": 14,
+      "action_mse": 0.006923291579113416,
+      "value_mse": 19.303545834493647
+    },
+    {
+      "epoch": 15,
+      "action_mse": 0.006788319225967359,
+      "value_mse": 19.042023106655307
+    },
+    {
+      "epoch": 16,
+      "action_mse": 0.0067053815659116585,
+      "value_mse": 18.807155299512413
+    },
+    {
+      "epoch": 17,
+      "action_mse": 0.006610456607806394,
+      "value_mse": 18.580844044941728
+    },
+    {
+      "epoch": 18,
+      "action_mse": 0.006529157404278555,
+      "value_mse": 18.364577988535462
+    },
+    {
+      "epoch": 19,
+      "action_mse": 0.006459730597526697,
+      "value_mse": 18.15663673801236
+    },
+    {
+      "epoch": 20,
+      "action_mse": 0.006389034654859797,
+      "value_mse": 17.973773271270915
+    },
+    {
+      "epoch": 21,
+      "action_mse": 0.006320367918905184,
+      "value_mse": 17.780141611167412
+    },
+    {
+      "epoch": 22,
+      "action_mse": 0.006284090994412533,
+      "value_mse": 17.595379994745322
+    },
+    {
+      "epoch": 23,
+      "action_mse": 0.006199338598840864,
+      "value_mse": 17.42123593101125
+    },
+    {
+      "epoch": 24,
+      "action_mse": 0.0061669117415144034,
+      "value_mse": 17.268028352691253
+    },
+    {
+      "epoch": 25,
+      "action_mse": 0.006086215071491025,
+      "value_mse": 17.10955136873449
+    },
+    {
+      "epoch": 26,
+      "action_mse": 0.006037651670202455,
+      "value_mse": 16.96410896317181
+    },
+    {
+      "epoch": 27,
+      "action_mse": 0.006001116038517171,
+      "value_mse": 16.80158468740231
+    },
+    {
+      "epoch": 28,
+      "action_mse": 0.005939650390140565,
+      "value_mse": 16.646273786856653
+    },
+    {
+      "epoch": 29,
+      "action_mse": 0.005897919677092992,
+      "value_mse": 16.513305559680774
+    }
+  ],
+  "speed_min": 0.3,
+  "speed_max": 1.5,
+  "obstacles": 1
+}

@@ -1,9 +1,42 @@
 # Air Hockey Reinforcement Learning Environment
 
+## Precision striker and headless TACC training
+
+See [the implementation plan and runbook](docs/PRECISION_STRIKER_PLAN.md) for the
+senior-design scoring task, access status, GPU batch jobs and acceptance criteria.
+The new `scripts.train_precision_striker` and `scripts.eval_precision_striker` entry
+points support headless training and terminal playback. Existing tasks remain available.
+Training checkpoints alone do not establish the report's 80% scoring target.
+
+The v2 task trains **moving-puck interception and scoring around static obstacles**.
+Read the [detailed model and results report](docs/TECHNICAL_REPORT.md),
+the [PDF report](output/pdf/precision_striker_technical_report.pdf), and the
+[model card](models/precision-striker-v2/README.md).
+The bundled experimental PPO model completed 1,048,576 transitions on local CPU;
+the report gives its measured performance and remaining failures. Remote TACC GPU
+execution has not been verified.
+
+To watch the actual learned model on Windows, double-click `watch_rl_policy.bat`
+in an environment with the dependencies installed. It uses the local final run
+when present and otherwise the bundled model. On other systems:
+
+```sh
+python -m scripts.watch_precision_striker --run models/precision-striker-v2
+```
+
+For a fresh graphical environment, install PyTorch and `requirements-viewer.in`.
+Use `requirements-headless.in` on compute nodes. Do not install both graphical
+and headless OpenCV packages in the same environment.
+
 This contains an air hockey simulation environment powered by Box2D. It is fast (C++ back-end), capable of self-play, 1v1 play, and easy goal-conditioned reinforcement learning, resulting in a rich testbed for various algorithms.
 
 
-Policy Trained for Upward Puck Velocity |  Goal-Conditioned RL
+The GIFs below and `results/sac/puck_touch/eval_*.gif` are **legacy task examples**,
+not recordings of the new incoming-puck PPO checkpoint. Their episode boundaries
+and objectives differ. Use `watch_rl_policy.bat` for the current experiment;
+it holds the final state and outcome until N is pressed (A enables automatic next).
+
+Legacy Upward Puck Velocity | Legacy Goal-Conditioned RL
 :-------------------------:|:-------------------------:
 ![](assets/puck_vel.gif)  |  ![](assets/puck_goal_pos.gif)
 
@@ -73,4 +106,4 @@ Legacy:
 - run desired script in scripts/real
     - ex: python scripts/real/teleoperate.py --cfg configs/baseline_configs/puck_vel_real.yaml
 - When prompted in the terminal, run the program using the play button in the bottom middle of the touchpad
-- follow prompts on the terminal. Hold 'q' to end trajectories 
+- follow prompts on the terminal. Hold 'q' to end trajectories

@@ -1,0 +1,39 @@
+{
+  "steps": 262144,
+  "seed": 0,
+  "envs": 4,
+  "obstacles": 1,
+  "speed_min": 0.3,
+  "speed_max": 1.5,
+  "device": "cpu",
+  "vector": "dummy",
+  "rollout": 512,
+  "checkpoint_every": 50000,
+  "output": "runs\\incoming-v2",
+  "resume": null,
+  "task_version": "precision-striker-v2-incoming",
+  "git_commit": "883f4f2a16d6ccc12181e2bf25f9015c7518416e",
+  "torch": "2.11.0+cpu",
+  "sb3": "2.2.1",
+  "python": "3.11.5",
+  "actual_device": "cpu",
+  "source_sha256": {
+    "scripts/precision_striker_env.py": "b9806ba1b0f99758600cd3b8bb5029a7c73103525faf02c9351ee03ed2686717",
+    "scripts/train_precision_striker.py": "43e239c7ae0816b14b0fa5877b5e63a9e2f93e13fde95380417f4f1c9785a5cd",
+    "airhockey/sims/airhockey_box2d.py": "b590437c67733be5a8c893bed018782fc20a5dcd5d18021405b4103404d2ec45",
+    "configs/flat_table_play.yaml": "bbcdac00d60b0550607f4ae09a02b7d297fd50d4852bbffcda2db92f97f9766d"
+  },
+  "actual_rollout": 512,
+  "actual_batch_size": 256,
+  "policy_architecture": "ActorCriticPolicy(\n  (features_extractor): FlattenExtractor(\n    (flatten): Flatten(start_dim=1, end_dim=-1)\n  )\n  (pi_features_extractor): FlattenExtractor(\n    (flatten): Flatten(start_dim=1, end_dim=-1)\n  )\n  (vf_features_extractor): FlattenExtractor(\n    (flatten): Flatten(start_dim=1, end_dim=-1)\n  )\n  (mlp_extractor): MlpExtractor(\n    (policy_net): Sequential(\n      (0): Linear(in_features=20, out_features=128, bias=True)\n      (1): Tanh()\n      (2): Linear(in_features=128, out_features=128, bias=True)\n      (3): Tanh()\n    )\n    (value_net): Sequential(\n      (0): Linear(in_features=20, out_features=128, bias=True)\n      (1): Tanh()\n      (2): Linear(in_features=128, out_features=128, bias=True)\n      (3): Tanh()\n    )\n  )\n  (action_net): Linear(in_features=128, out_features=2, bias=True)\n  (value_net): Linear(in_features=128, out_features=1, bias=True)\n)",
+  "ppo": {
+    "learning_rate": 0.0003,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "n_epochs": 10,
+    "ent_coef": 0.01,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5
+  },
+  "completed_timesteps": 262144
+}

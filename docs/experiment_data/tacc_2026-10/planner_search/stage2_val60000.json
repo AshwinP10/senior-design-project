@@ -1,0 +1,183 @@
+[
+  {
+    "planner": {
+      "kp_lat": 16.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965,
+    "val1_accuracy": 1.0,
+    "combined_val": 0.9824999999999999
+  },
+  {
+    "planner": {
+      "kp_lat": 8.0,
+      "min_slack": 0.1,
+      "out_speed": 2.0,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 194,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 194,
+      "timeout": 6
+    },
+    "accuracy": 0.97,
+    "val1_accuracy": 0.995,
+    "combined_val": 0.9824999999999999
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.8,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 193,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 193,
+      "timeout": 7
+    },
+    "accuracy": 0.965,
+    "val1_accuracy": 0.995,
+    "combined_val": 0.98
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 191,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 191,
+      "timeout": 9
+    },
+    "accuracy": 0.955,
+    "val1_accuracy": 1.0,
+    "combined_val": 0.9775
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 192,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 192,
+      "timeout": 8
+    },
+    "accuracy": 0.96,
+    "val1_accuracy": 0.995,
+    "combined_val": 0.9775
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.0,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95,
+    "val1_accuracy": 1.0,
+    "combined_val": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95,
+    "val1_accuracy": 1.0,
+    "combined_val": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 10
+    },
+    "accuracy": 0.95,
+    "val1_accuracy": 1.0,
+    "combined_val": 0.975
+  },
+  {
+    "planner": {
+      "kp_lat": 24.0,
+      "min_slack": 0.2,
+      "out_speed": 2.4,
+      "kp_track": 4.0,
+      "tau": 0.12
+    },
+    "goals_after_hit": 189,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 189,
+      "timeout": 11
+    },
+    "accuracy": 0.945,
+    "val1_accuracy": 1.0,
+    "combined_val": 0.9724999999999999
+  },
+  {
+    "planner": {
+      "kp_lat": 12.0,
+      "min_slack": 0.1,
+      "out_speed": 2.4,
+      "kp_track": 8.0,
+      "tau": 0.08
+    },
+    "goals_after_hit": 190,
+    "episodes": 200,
+    "outcomes": {
+      "goal": 190,
+      "timeout": 9,
+      "conceded": 1
+    },
+    "accuracy": 0.95,
+    "val1_accuracy": 0.995,
+    "combined_val": 0.9724999999999999
+  }
+]

@@ -1,0 +1,86 @@
+[
+ {
+  "label": "Original model (Sep 24)",
+  "runs": [
+   10
+  ],
+  "group": "rl"
+ },
+ {
+  "label": "A: first reward, 5M steps",
+  "runs": [
+   16,
+   15,
+   11
+  ],
+  "group": "rl"
+ },
+ {
+  "label": "B: goal needs a hit",
+  "runs": [
+   23,
+   29,
+   32
+  ],
+  "group": "rl"
+ },
+ {
+  "label": "C: B + easy stage first",
+  "runs": [
+   66,
+   80,
+   25
+  ],
+  "group": "rl"
+ },
+ {
+  "label": "Imitation only (network copies controller)",
+  "runs": [
+   64,
+   64,
+   62
+  ],
+  "group": "rl"
+ },
+ {
+  "label": "Imitation, then PPO fine-tuning",
+  "runs": [
+   121,
+   140,
+   132
+  ],
+  "group": "rl"
+ },
+ {
+  "label": "Shot choice with PPO",
+  "runs": [
+   127,
+   124,
+   129
+  ],
+  "group": "hybrid"
+ },
+ {
+  "label": "Shot choice with SAC",
+  "runs": [
+   131,
+   131,
+   128
+  ],
+  "group": "hybrid"
+ },
+ {
+  "label": "Strike controller, default settings",
+  "runs": [
+   173
+  ],
+  "group": "controller"
+ },
+ {
+  "label": "Strike controller, tuned settings",
+  "runs": [
+   192
+  ],
+  "group": "controller"
+ }
+]
