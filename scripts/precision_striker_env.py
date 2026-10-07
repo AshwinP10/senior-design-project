@@ -13,17 +13,48 @@ import yaml
 from gymnasium.spaces import Box
 
 from airhockey.airhockey_simple_tasks import AirHockeyFlatTableEnv
+from scripts import scoring_geometry as sg
+from scripts.scoring_geometry import scorable
 
 ROOT = Path(__file__).resolve().parents[1]
 TASK_VERSION = "precision-striker-v2-incoming"
+# v3 changes only the reward/success rule (goal requires a paddle hit, configurable timeout cost).
+# Observations, actions and physics are identical to v2.
+TASK_VERSION_V3 = "precision-striker-v3-hit-required"
+# v4: obstacles act as walls. A puck-obstacle contact neither ends the episode nor is penalized;
+# success is a goal (after a paddle hit when require_hit). Same observations/actions/physics.
+TASK_VERSION_V4 = "precision-striker-v4-obstacle-bounce"
+# v5: v4 plus two observation features the reward depends on: [paddle has hit, fraction of time used].
+# Observation length 22 instead of 20, so v5 checkpoints are not interchangeable with v2-v4.
+TASK_VERSION_V5 = "precision-striker-v5-bounce-extra-obs"
 MAX_OBSTACLES = 3
+
+
+def task_version(require_hit=False, timeout_penalty=2.0, obstacle_bounce=False,
+                 extra_obs=False, goal_shaping=False):
+    if extra_obs:
+        return TASK_VERSION_V5
+    if obstacle_bounce:
+        return TASK_VERSION_V4
+    return TASK_VERSION if not require_hit and timeout_penalty == 2.0 and not goal_shaping else TASK_VERSION_V3
 
 
 class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
     def __init__(self, seed=0, obstacles=1, max_steps=200, randomize=True,
-                 speed_min=0.3, speed_max=1.5):
+                 speed_min=0.3, speed_max=1.5, require_hit=False, timeout_penalty=2.0,
+                 obstacle_bounce=False, extra_obs=False, goal_shaping=False):
         if not 0 <= obstacles <= MAX_OBSTACLES or max_steps < 1:
             raise ValueError("Require 0..3 obstacles and positive max_steps")
+        if timeout_penalty < 0:
+            raise ValueError("timeout_penalty is a cost and must be >= 0")
+        self.require_hit = bool(require_hit)
+        self.timeout_penalty = float(timeout_penalty)
+        self.obstacle_bounce = bool(obstacle_bounce)
+        self.extra_obs = bool(extra_obs)
+        # After the hit, reward progress toward the goal mouth instead of plain -x progress.
+        self.goal_shaping = bool(goal_shaping)
+        self.task_version = task_version(self.require_hit, self.timeout_penalty, self.obstacle_bounce,
+                                         self.extra_obs, self.goal_shaping)
         self.obstacle_count = int(obstacles)
         if not 0 < speed_min <= speed_max <= 2.0:
             raise ValueError("Require 0 < speed_min <= speed_max <= 2 m/s")
@@ -44,6 +75,9 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
                       paddle_bounds=[0.0508, 0.88, -0.35, 0.35])
         params["simulator_params"].update(goal_width=0.24, gravity=0, max_paddle_vel=2.0)
         super().__init__(**params)
+        geometry = (self.length, self.width, self.simulator.goal_width, self.puck_radius, self.block_width)
+        if not np.allclose(geometry, (sg.LENGTH, sg.WIDTH, sg.GOAL_WIDTH, sg.PUCK_R, sg.BLOCK_W)):
+            raise ValueError("scripts/scoring_geometry.py constants do not match the simulated table")
 
     def initialize_spaces(self, obs_type):
         super().initialize_spaces(obs_type)
@@ -52,6 +86,8 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         high = list(self.observation_space.high) + [1, 0.5, 0.2, 1] * MAX_OBSTACLES
         # Terminal puck positions may be just outside the table.
         low[4:6], high[4:6] = [-2, -1], [2, 1]
+        if self.extra_obs:
+            low, high = low + [0, 0], high + [1, 1]
         self.observation_space = self.single_observation_space = Box(
             np.array(low, dtype=np.float32), np.array(high, dtype=np.float32))
 
@@ -60,7 +96,11 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         slots = np.zeros((MAX_OBSTACLES, 4), dtype=np.float32)
         for i, pos in enumerate(self.user_block_positions):
             slots[i] = (*pos, self.block_width, 1)
-        return np.concatenate([state, slots.ravel()]).astype(np.float32)
+        parts = [state, slots.ravel()]
+        if self.extra_obs:
+            elapsed = min(1.0, getattr(self, "_steps", 0) / self.max_timesteps)
+            parts.append(np.array([float(getattr(self, "_hit", False)), elapsed], dtype=np.float32))
+        return np.concatenate(parts).astype(np.float32)
 
     def get_puck_configuration(self, bad_regions=None):
         return self._spawn_puck, self._spawn_velocity
@@ -88,8 +128,8 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         self._steps = 0
         obs, info = super().reset(seed=seed, **kwargs)
         self._previous_distance = self._intercept_distance(obs)
-        info.update(task_version=TASK_VERSION, blocks=list(self.user_block_positions),
-                    initial_velocity=list(self._spawn_velocity))
+        info.update(task_version=self.task_version, blocks=list(self.user_block_positions),
+                    initial_velocity=list(self._spawn_velocity), scorable=self._scorable)
         return obs, info
 
     def create_world_objects(self):
@@ -109,6 +149,15 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         blocks = opts.get("blocks")
         if blocks is None:
             blocks = self.sample_layout(int(self.rng.randint(0, 2**31 - 1)))
+            # Guarantee a geometrically scorable shot. An audit of 12,000 random episodes (1-3
+            # obstacles) found none unscorable, so this redraw is a safeguard that normally never runs.
+            for _ in range(50):
+                if scorable(puck, velocity, blocks):
+                    break
+                blocks = self.sample_layout(int(self.rng.randint(0, 2**31 - 1)))
+            else:
+                raise RuntimeError("Could not sample a scorable obstacle layout")
+        self._scorable = bool(scorable(puck, velocity, blocks))
         if len(blocks) > MAX_OBSTACLES:
             raise ValueError("At most 3 obstacles supported")
         checked = []
@@ -125,6 +174,14 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         super().create_world_objects()
         # Continuous collision detection for fast shots against narrow obstacles.
         self.simulator.pucks["puck_0"].bullet = True
+
+    def _crossed_mouth(self, p0, p1, line):
+        """True if the puck centre crossed x = line between samples within the goal opening."""
+        d0, d1 = float(p0[0]) - line, float(p1[0]) - line
+        if d0 == d1 or d0 * d1 > 0:
+            return False
+        y = float(p0[1]) + d0 / (d0 - d1) * (float(p1[1]) - float(p0[1]))
+        return abs(y) <= self.simulator.goal_width / 2
 
     def _intercept_distance(self, obs):
         # Dense training feedback only: this target is never fed to the action controller.
@@ -186,22 +243,39 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         if not self._hit:
             reward += 2.0 * (self._previous_distance - distance)
         if self._hit or hit:
-            reward += 2.0 * float(previous[4] - obs[4])
+            if self.goal_shaping:
+                goal = np.array([self.table_x_top, 0.0])
+                reward += 2.0 * float(np.linalg.norm(previous[4:6] - goal) - np.linalg.norm(obs[4:6] - goal))
+            else:
+                reward += 2.0 * float(previous[4] - obs[4])
         self._previous_distance = distance
         reward -= 0.05 * workspace_clip
         self._hit |= hit
         self._collision |= collision
+        if self.extra_obs:  # refresh after this step's contact and clock updates
+            obs = obs.copy()
+            obs[-2:] = (float(self._hit), min(1.0, self._steps / self.max_timesteps))
         x, y = obs[4:6]
         in_goal_lane = abs(float(y)) + self.puck_radius <= self.simulator.goal_width / 2
         score = bool(x < self.table_x_top - self.puck_radius and in_goal_lane)
         conceded = bool(x > self.table_x_bot + self.puck_radius and in_goal_lane)
+        if self.obstacle_bounce:
+            # v4+: judge the goal where the puck crossed the end line. A fast diagonal puck can cross
+            # inside the mouth and drift sideways behind the line before the next 20 Hz sample.
+            score = score or self._crossed_mouth(previous[4:6], obs[4:6], self.table_x_top)
+            conceded = conceded or self._crossed_mouth(previous[4:6], obs[4:6], self.table_x_bot)
         workspace = bool(obs[0] < self.paddle_radius - 1e-4 or obs[0] > 0.8801 or abs(obs[1]) > 0.3501)
         escaped = bool(abs(x) > self.length / 2 + 0.2 or abs(y) > self.width / 2 + 0.1)
-        terminated = bool(score or conceded or collision or workspace or escaped)
+        # v4: the obstacle is just another wall for the puck.
+        ends_on_collision = collision and not self.obstacle_bounce
+        terminated = bool(score or conceded or ends_on_collision or workspace or escaped)
         truncated = bool(self._steps >= self.max_timesteps and not terminated)
-        reward += 20 * score - 20 * collision - 10 * conceded - 10 * workspace - 2 * truncated
-        success = score and not self._collision and not workspace
-        outcome = ("obstacle_collision" if collision else "workspace_violation" if workspace else
+        # v3: a goal without any paddle contact ends the episode but earns nothing.
+        credited = score and (self._hit or not self.require_hit)
+        reward += (20 * credited - 20 * ends_on_collision - 10 * conceded - 10 * workspace
+                   - self.timeout_penalty * truncated)
+        success = credited and (self.obstacle_bounce or not self._collision) and not workspace
+        outcome = ("obstacle_collision" if ends_on_collision else "workspace_violation" if workspace else
                    "goal" if score else "conceded" if conceded else "escaped" if escaped else
                    "timeout" if truncated else "running")
         info.update(is_success=bool(success), success=bool(success), outcome=outcome,

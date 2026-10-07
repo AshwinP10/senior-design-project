@@ -13,7 +13,7 @@ import torch
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
-from scripts.precision_striker_env import PrecisionStrikerEnv, TASK_VERSION
+from scripts.precision_striker_env import PrecisionStrikerEnv, TASK_VERSION, TASK_VERSION_V3, TASK_VERSION_V4
 
 WINDOW = "RL Air Hockey | Incoming puck + obstacle scoring"
 
@@ -105,8 +105,9 @@ def main():
     if args.no_window and args.episodes < 1:
         p.error("--no-window requires a positive --episodes count")
     manifest = json.loads((args.run / "manifest.json").read_text())
-    if manifest["task_version"] != TASK_VERSION:
-        p.error("Use a v2 incoming-puck checkpoint, not the superseded stationary-puck model")
+    options = manifest.get("task_options", {"require_hit": False, "timeout_penalty": 2.0})
+    if manifest["task_version"] not in (TASK_VERSION, TASK_VERSION_V3, TASK_VERSION_V4):
+        p.error("Use a v2/v3 incoming-puck checkpoint, not the superseded stationary-puck model")
     model_path, norm_path = args.run / "policy.zip", args.run / "vecnormalize.pkl"
     trained_steps = manifest.get("completed_timesteps", 0)
     if args.checkpoint_steps:
@@ -115,7 +116,8 @@ def main():
         norm_path = args.run / "checkpoints" / f"policy_vecnormalize_{trained_steps}_steps.pkl"
     torch.set_num_threads(1)
     env = PrecisionStrikerEnv(seed=args.seed, obstacles=args.obstacles, randomize=False,
-                             speed_min=manifest.get("speed_min", 0.3), speed_max=manifest.get("speed_max", 1.5))
+                             speed_min=manifest.get("speed_min", 0.3), speed_max=manifest.get("speed_max", 1.5),
+                             **options)
     normalizer = VecNormalize.load(str(norm_path), DummyVecEnv([lambda: env]))
     normalizer.training = False
     normalizer.norm_reward = False

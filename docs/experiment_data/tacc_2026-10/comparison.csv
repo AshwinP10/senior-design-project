@@ -1,0 +1,11 @@
+approach,group,mean_pct,min_pct,max_pct,runs_goals
+"Original model (Sep 24)",rl,5.0,5.0,5.0,"10"
+"A: first reward, 5M steps",rl,7.0,5.5,8.0,"16 15 11"
+"B: goal needs a hit",rl,14.0,11.5,16.0,"23 29 32"
+"C: B + easy stage first",rl,28.5,12.5,40.0,"66 80 25"
+"Imitation only (network copies controller)",rl,31.7,31.0,32.0,"64 64 62"
+"Shot choice with PPO",hybrid,63.3,62.0,64.5,"127 124 129"
+"Shot choice with SAC",hybrid,65.0,64.0,65.5,"131 131 128"
+"Imitation, then PPO fine-tuning",rl,65.5,60.5,70.0,"121 140 132"
+"Strike controller, default settings",controller,86.5,86.5,86.5,"173"
+"Strike controller, tuned settings",controller,96.0,96.0,96.0,"192"

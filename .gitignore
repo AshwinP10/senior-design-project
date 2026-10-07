@@ -229,3 +229,6 @@ tensorboard_logs/
 tmp/
 !models/precision-striker-v2/policy.zip
 !models/precision-striker-v2/vecnormalize.pkl
+
+# Presentation export scratch folders
+.chart-data-*/
