@@ -41,6 +41,13 @@ def evaluate(job):
     shutil.copy(pkl_path, work / "vecnormalize.pkl")
     shutil.copy(manifest, work / "manifest.json")
     out = work / ("eval-bounce" if bounce else "eval")
+    if (out / "evaluation.json").exists():          # resumable: reuse finished evaluations
+        s = json.loads((out / "evaluation.json").read_text())
+        return {k: s[k] for k in ("raw_goals", "goals_after_hit", "collision_episodes", "outcomes", "episodes")}
+    attempt = 1
+    while out.exists():                             # a crashed earlier attempt left a partial folder
+        out = work / f"{'eval-bounce' if bounce else 'eval'}-retry{attempt}"
+        attempt += 1
     cmd = [sys.executable, "-m", "scripts.eval_precision_striker", "--run", str(work), "--output", str(out),
            "--seed", str(seed), "--layouts", "10", "--shots", "20", "--obstacles", "1"]
     if bounce:
@@ -64,7 +71,7 @@ def main():
     tag = ("" if args.seed == 30000 else f"-seed{args.seed}") + (f"-{args.tag}" if args.tag else "")
     out_root = args.sweep / f"curves{tag}"
     out_root.mkdir(exist_ok=True)
-    jobs, meta = [], []
+    jobs, meta, seen = [], [], set()
     for run in sorted(d for d in args.sweep.iterdir() if re.fullmatch(r"[A-Z]-seed\d+", d.name)):
         if args.variants and run.name[0] not in args.variants:
             continue
@@ -76,6 +83,9 @@ def main():
             if not eligible:
                 continue
             steps, z, pkl, manifest = eligible[-1]
+            if (run.name, steps) in seen:      # several targets can map to the same checkpoint
+                continue
+            seen.add((run.name, steps))
             for bounce in ([False, True] if args.bounce else [False]):
                 work = out_root / run.name / str(steps) / ("bounce" if bounce else "trained")
                 jobs.append((work, z, pkl, manifest, bounce, args.seed))

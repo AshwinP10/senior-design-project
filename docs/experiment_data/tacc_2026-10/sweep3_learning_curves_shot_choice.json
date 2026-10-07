@@ -1,0 +1,536 @@
+[
+  {
+    "run": "J-seed1",
+    "variant": "J",
+    "seed": 1,
+    "steps": 49984,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 136,
+    "goals_after_hit": 136,
+    "collision_episodes": 96,
+    "outcomes": {
+      "goal": 136,
+      "timeout": 64
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed1",
+    "variant": "J",
+    "seed": 1,
+    "steps": 99968,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 124,
+    "goals_after_hit": 124,
+    "collision_episodes": 116,
+    "outcomes": {
+      "goal": 124,
+      "timeout": 74,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed1",
+    "variant": "J",
+    "seed": 1,
+    "steps": 149952,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 125,
+    "goals_after_hit": 125,
+    "collision_episodes": 124,
+    "outcomes": {
+      "goal": 125,
+      "timeout": 73,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed1",
+    "variant": "J",
+    "seed": 1,
+    "steps": 199936,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 144,
+    "goals_after_hit": 144,
+    "collision_episodes": 120,
+    "outcomes": {
+      "timeout": 56,
+      "goal": 144
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed1",
+    "variant": "J",
+    "seed": 1,
+    "steps": 249920,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 134,
+    "goals_after_hit": 134,
+    "collision_episodes": 129,
+    "outcomes": {
+      "goal": 134,
+      "timeout": 63,
+      "conceded": 3
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed1",
+    "variant": "J",
+    "seed": 1,
+    "steps": 299904,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 133,
+    "goals_after_hit": 133,
+    "collision_episodes": 128,
+    "outcomes": {
+      "goal": 133,
+      "timeout": 66,
+      "conceded": 1
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed1",
+    "variant": "J",
+    "seed": 1,
+    "steps": 301056,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 127,
+    "goals_after_hit": 127,
+    "collision_episodes": 131,
+    "outcomes": {
+      "goal": 127,
+      "timeout": 71,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed2",
+    "variant": "J",
+    "seed": 2,
+    "steps": 49984,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 128,
+    "goals_after_hit": 128,
+    "collision_episodes": 123,
+    "outcomes": {
+      "goal": 128,
+      "timeout": 71,
+      "conceded": 1
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed2",
+    "variant": "J",
+    "seed": 2,
+    "steps": 99968,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 135,
+    "goals_after_hit": 135,
+    "collision_episodes": 119,
+    "outcomes": {
+      "timeout": 63,
+      "goal": 135,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed2",
+    "variant": "J",
+    "seed": 2,
+    "steps": 149952,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 114,
+    "goals_after_hit": 114,
+    "collision_episodes": 110,
+    "outcomes": {
+      "goal": 114,
+      "timeout": 82,
+      "conceded": 4
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed2",
+    "variant": "J",
+    "seed": 2,
+    "steps": 199936,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 132,
+    "goals_after_hit": 132,
+    "collision_episodes": 111,
+    "outcomes": {
+      "goal": 132,
+      "timeout": 61,
+      "conceded": 7
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed2",
+    "variant": "J",
+    "seed": 2,
+    "steps": 249920,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 121,
+    "goals_after_hit": 121,
+    "collision_episodes": 119,
+    "outcomes": {
+      "timeout": 76,
+      "goal": 121,
+      "conceded": 3
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed2",
+    "variant": "J",
+    "seed": 2,
+    "steps": 299904,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 123,
+    "goals_after_hit": 123,
+    "collision_episodes": 115,
+    "outcomes": {
+      "timeout": 75,
+      "goal": 123,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed2",
+    "variant": "J",
+    "seed": 2,
+    "steps": 301056,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 124,
+    "goals_after_hit": 124,
+    "collision_episodes": 116,
+    "outcomes": {
+      "timeout": 72,
+      "goal": 124,
+      "conceded": 4
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed3",
+    "variant": "J",
+    "seed": 3,
+    "steps": 49984,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 121,
+    "goals_after_hit": 121,
+    "collision_episodes": 99,
+    "outcomes": {
+      "goal": 121,
+      "timeout": 78,
+      "conceded": 1
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed3",
+    "variant": "J",
+    "seed": 3,
+    "steps": 99968,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 121,
+    "goals_after_hit": 121,
+    "collision_episodes": 117,
+    "outcomes": {
+      "goal": 121,
+      "timeout": 78,
+      "conceded": 1
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed3",
+    "variant": "J",
+    "seed": 3,
+    "steps": 149952,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 131,
+    "goals_after_hit": 131,
+    "collision_episodes": 116,
+    "outcomes": {
+      "timeout": 67,
+      "goal": 131,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed3",
+    "variant": "J",
+    "seed": 3,
+    "steps": 199936,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 111,
+    "goals_after_hit": 111,
+    "collision_episodes": 126,
+    "outcomes": {
+      "timeout": 85,
+      "goal": 111,
+      "conceded": 4
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed3",
+    "variant": "J",
+    "seed": 3,
+    "steps": 249920,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 124,
+    "goals_after_hit": 124,
+    "collision_episodes": 106,
+    "outcomes": {
+      "goal": 124,
+      "timeout": 74,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed3",
+    "variant": "J",
+    "seed": 3,
+    "steps": 299904,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 127,
+    "goals_after_hit": 127,
+    "collision_episodes": 117,
+    "outcomes": {
+      "timeout": 71,
+      "goal": 127,
+      "conceded": 2
+    },
+    "episodes": 200
+  },
+  {
+    "run": "J-seed3",
+    "variant": "J",
+    "seed": 3,
+    "steps": 301056,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 129,
+    "goals_after_hit": 129,
+    "collision_episodes": 115,
+    "outcomes": {
+      "timeout": 68,
+      "goal": 129,
+      "conceded": 3
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed1",
+    "variant": "K",
+    "seed": 1,
+    "steps": 50000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 125,
+    "goals_after_hit": 125,
+    "collision_episodes": 124,
+    "outcomes": {
+      "timeout": 71,
+      "goal": 125,
+      "conceded": 4
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed1",
+    "variant": "K",
+    "seed": 1,
+    "steps": 100000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 127,
+    "goals_after_hit": 127,
+    "collision_episodes": 125,
+    "outcomes": {
+      "goal": 127,
+      "timeout": 72,
+      "conceded": 1
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed1",
+    "variant": "K",
+    "seed": 1,
+    "steps": 150000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 131,
+    "goals_after_hit": 131,
+    "collision_episodes": 125,
+    "outcomes": {
+      "timeout": 69,
+      "goal": 131
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed2",
+    "variant": "K",
+    "seed": 2,
+    "steps": 50000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 118,
+    "goals_after_hit": 118,
+    "collision_episodes": 131,
+    "outcomes": {
+      "timeout": 78,
+      "goal": 118,
+      "conceded": 4
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed2",
+    "variant": "K",
+    "seed": 2,
+    "steps": 100000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 135,
+    "goals_after_hit": 135,
+    "collision_episodes": 126,
+    "outcomes": {
+      "timeout": 61,
+      "goal": 135,
+      "conceded": 4
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed2",
+    "variant": "K",
+    "seed": 2,
+    "steps": 150000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 131,
+    "goals_after_hit": 131,
+    "collision_episodes": 105,
+    "outcomes": {
+      "goal": 131,
+      "timeout": 69
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed3",
+    "variant": "K",
+    "seed": 3,
+    "steps": 50000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 126,
+    "goals_after_hit": 126,
+    "collision_episodes": 136,
+    "outcomes": {
+      "timeout": 74,
+      "goal": 126
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed3",
+    "variant": "K",
+    "seed": 3,
+    "steps": 100000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 133,
+    "goals_after_hit": 133,
+    "collision_episodes": 121,
+    "outcomes": {
+      "timeout": 67,
+      "goal": 133
+    },
+    "episodes": 200
+  },
+  {
+    "run": "K-seed3",
+    "variant": "K",
+    "seed": 3,
+    "steps": 150000,
+    "rules": "trained",
+    "eval_seed": 30000,
+    "easy_stage": false,
+    "raw_goals": 128,
+    "goals_after_hit": 128,
+    "collision_episodes": 127,
+    "outcomes": {
+      "goal": 128,
+      "timeout": 70,
+      "conceded": 2
+    },
+    "episodes": 200
+  }
+]

@@ -49,10 +49,10 @@ def main():
     fig, ax = plt.subplots(figsize=(10, 6.2), dpi=200)
     ax.axhline(80, color=INK, lw=1.2, ls=(0, (5, 4)))
     ax.text(0.995, 77, "Target 80%", color=INK, fontsize=11, ha="right", va="top", transform=ax.get_yaxis_transform())
-    for label, value in refs:
-        ax.axhline(100 * value, color=MUTED, lw=1.2, ls=(0, (1, 2)))
-        ax.text(0.995, 100 * value + 1.2, f"{label} {100 * value:.0f}%", color=MUTED, fontsize=10,
-                ha="right", va="bottom", transform=ax.get_yaxis_transform())
+    ref_styles = [(0, (1, 2)), (0, (4, 2, 1, 2))]
+    for i, (label, value) in enumerate(refs):    # labelled in the legend so it cannot collide with a curve
+        ax.axhline(100 * value, color=MUTED, lw=1.2, ls=ref_styles[i % len(ref_styles)],
+                   label=f"{label} ({100 * value:.1f}%)")
     table = []
     for v in sorted(by, key=lambda k: list(COLORS).index(k)):
         xs = sorted(by[v])
@@ -78,7 +78,9 @@ def main():
     for side in ("left", "bottom"):
         ax.spines[side].set_color(GRID)
     ax.tick_params(colors=MUTED, labelsize=10)
-    rule_text = ("collisions end the shot" if rules == "trained" else "puck bounces off obstacles")
+    # Variants E onward were trained with the bounce rule, so "trained" rules mean bounce for them.
+    bounce = rules == "bounce" or all(v >= "E" for v in by)
+    rule_text = "puck bounces off obstacles" if bounce else "collisions end the shot"
     ax.set_title(f"Test accuracy during training ({rule_text})", loc="left", fontsize=14, color=INK, pad=12)
     # Legend below the plot: the area near the target line is where good results land.
     ax.legend(frameon=False, fontsize=10, loc="upper left", bbox_to_anchor=(0, -0.13), ncol=3, labelcolor=INK)
