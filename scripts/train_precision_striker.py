@@ -43,6 +43,16 @@ def main():
                    help="Allow --resume from a run trained on different task options (fine-tuning)")
     p.add_argument("--extra-obs", action="store_true",
                    help="v5 task: also observe [paddle has hit, fraction of time used] (22 inputs)")
+    p.add_argument("--wide-obstacles", action="store_true",
+                   help="Random obstacles anywhere a user may place one (x -0.80..-0.22, |y| <= 0.32)")
+    p.add_argument("--obstacles-max", type=int, help="Random obstacle count per episode: --obstacles..this")
+    p.add_argument("--paddle-restitution", type=float, help="Paddle-puck restitution (original: 1.0)")
+    p.add_argument("--single-hit", action="store_true",
+                   help="One paddle contact per shot: a second touch or the puck coming back ends it")
+    p.add_argument("--block-line-prob", type=float, default=0.0,
+                   help="Share of episodes with an obstacle on the straight line to the goal")
+    p.add_argument("--layout-check", choices=["geometry", "trajectory"], default="geometry",
+                   help="trajectory: random layouts verified as makeable with the trajectory calculator")
     p.add_argument("--goal-shaping", action="store_true",
                    help="After the hit, reward progress toward the goal mouth instead of -x progress")
     # PPO optimization settings (defaults reproduce the earlier experiments).
@@ -50,6 +60,8 @@ def main():
     p.add_argument("--lr-schedule", choices=["constant", "linear"], default="constant",
                    help="linear: decay the learning rate to 0 over this run's --steps")
     p.add_argument("--ent-coef", type=float, default=0.01)
+    p.add_argument("--resume-ent-coef", type=float,
+                   help="With --resume: replace the saved model's entropy bonus (DAgger models save 0.0)")
     p.add_argument("--gamma", type=float, default=0.99)
     p.add_argument("--n-epochs", type=int, default=10)
     p.add_argument("--batch-size", type=int, default=256)
@@ -65,6 +77,13 @@ def main():
     task_options = {"require_hit": args.require_hit, "timeout_penalty": args.timeout_penalty,
                     "obstacle_bounce": args.obstacle_bounce, "extra_obs": args.extra_obs,
                     "goal_shaping": args.goal_shaping}
+    # Newer options are recorded only when used, so earlier manifests keep matching on --resume.
+    for key, value in (("wide_obstacles", args.wide_obstacles), ("obstacles_max", args.obstacles_max),
+                       ("paddle_restitution", args.paddle_restitution), ("single_hit", args.single_hit),
+                       ("block_line_prob", args.block_line_prob or None),
+                       ("layout_check", None if args.layout_check == "geometry" else args.layout_check)):
+        if value not in (False, None):
+            task_options[key] = value
     TASK_VERSION = task_version(**task_options)
     if min(args.steps, args.envs, args.rollout, args.checkpoint_every) < 1 or args.rollout * args.envs < 2:
         p.error("steps, envs, rollout and checkpoint-every must be positive; rollout batch >= 2")
@@ -91,6 +110,8 @@ def main():
         previous = json.loads((args.resume / "manifest.json").read_text())
         previous_options = {"require_hit": False, "timeout_penalty": 2.0, "obstacle_bounce": False,
                             "extra_obs": False, "goal_shaping": False, **previous.get("task_options", {})}
+        previous_options = {k: v for k, v in previous_options.items() if v not in (False, None) or k in
+                            ("require_hit", "obstacle_bounce", "extra_obs", "goal_shaping")}
         if previous_options["extra_obs"] != args.extra_obs:
             raise ValueError("Cannot resume across observation sizes (--extra-obs must match)")
         if not args.resume_new_task and (previous["task_version"] != TASK_VERSION
@@ -101,6 +122,11 @@ def main():
         venv.training = True
         Algo = SAC if previous.get("algo", "ppo") == "sac" else PPO
         model = Algo.load(str(args.resume / "policy.zip"), env=venv, device=args.device)
+        # load() re-seeds everything with the saved model's seed; use this run's --seed so that
+        # several runs resumed from the same model really differ.
+        model.set_random_seed(args.seed)
+        if args.resume_ent_coef is not None:
+            model.ent_coef = args.resume_ent_coef
     else:
         venv = VecNormalize(venv, norm_obs=True, norm_reward=False)
         batch = min(args.batch_size, args.rollout * args.envs)

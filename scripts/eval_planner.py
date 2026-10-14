@@ -14,10 +14,14 @@ from scripts.strike_planner import StrikePlanner
 
 
 def run(layouts=10, shots=20, seed=30000, bounce=True, obstacles=1, planner_kwargs=None, verbose=False,
-        speed_min=0.3, speed_max=1.5):
+        speed_min=0.3, speed_max=1.5, paddle_restitution=None):
     env = PrecisionStrikerEnv(seed=seed, obstacles=obstacles, randomize=False, require_hit=True,
-                              timeout_penalty=10, obstacle_bounce=bounce, speed_min=speed_min, speed_max=speed_max)
-    planner = StrikePlanner(**(planner_kwargs or {}))
+                              timeout_penalty=10, obstacle_bounce=bounce, speed_min=speed_min, speed_max=speed_max,
+                              paddle_restitution=paddle_restitution)
+    kwargs = dict(planner_kwargs or {})
+    if paddle_restitution is not None:
+        kwargs.setdefault("restitution", paddle_restitution)   # the controller knows the table's physics
+    planner = StrikePlanner(**kwargs)
     records = []
     try:
         for layout in range(layouts):
@@ -55,6 +59,7 @@ def main():
     p.add_argument("--no-bounce", action="store_true", help="Collisions end the shot (v3 rules)")
     p.add_argument("--set", nargs="*", default=[], help="Planner overrides, e.g. out_speed=2.5 tau=0.2")
     p.add_argument("--tuned", action="store_true", help="Start from strike_planner.TUNED settings")
+    p.add_argument("--paddle-restitution", type=float, help="Paddle-puck restitution (original simulator: 1.0)")
     p.add_argument("--output", type=Path)
     p.add_argument("--verbose", action="store_true")
     args = p.parse_args()
@@ -66,7 +71,7 @@ def main():
         kwargs["x_window"] = tuple(float(x) for x in str(kwargs["x_window"]).split(","))
     started = time.perf_counter()
     summary, records = run(args.layouts, args.shots, args.seed, not args.no_bounce, args.obstacles,
-                           kwargs, args.verbose)
+                           kwargs, args.verbose, paddle_restitution=args.paddle_restitution)
     summary.update(planner=kwargs, seconds=round(time.perf_counter() - started, 1))
     print(json.dumps(summary, indent=2))
     if args.output:
