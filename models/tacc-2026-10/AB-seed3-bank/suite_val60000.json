@@ -1,0 +1,49 @@
+{
+  "run": "runs\\aim-long\\AB-seed3",
+  "controller": false,
+  "overrides": {},
+  "seed": 60000,
+  "random_1": {
+    "goals": 134,
+    "shots": 200,
+    "accuracy": 0.67,
+    "outcomes": {
+      "goal": 134,
+      "missed": 60,
+      "double_hit": 6
+    }
+  },
+  "blocked_1": {
+    "goals": 159,
+    "shots": 200,
+    "accuracy": 0.795,
+    "outcomes": {
+      "goal": 159,
+      "missed": 38,
+      "double_hit": 3
+    }
+  },
+  "random_1to3": {
+    "goals": 102,
+    "shots": 200,
+    "accuracy": 0.51,
+    "outcomes": {
+      "missed": 93,
+      "goal": 102,
+      "double_hit": 3,
+      "timeout": 2
+    }
+  },
+  "blocked_1to3": {
+    "goals": 130,
+    "shots": 200,
+    "accuracy": 0.65,
+    "outcomes": {
+      "missed": 60,
+      "goal": 130,
+      "timeout": 6,
+      "double_hit": 4
+    }
+  },
+  "mean_accuracy": 0.65625
+}

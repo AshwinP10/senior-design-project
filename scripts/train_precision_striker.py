@@ -51,6 +51,8 @@ def main():
                    help="One paddle contact per shot: a second touch or the puck coming back ends it")
     p.add_argument("--block-line-prob", type=float, default=0.0,
                    help="Share of episodes with an obstacle on the straight line to the goal")
+    p.add_argument("--aim-shaping", type=float, default=0.0,
+                   help="Reward (up to this) for the puck leaving the paddle along a clear shot line")
     p.add_argument("--layout-check", choices=["geometry", "trajectory"], default="geometry",
                    help="trajectory: random layouts verified as makeable with the trajectory calculator")
     p.add_argument("--goal-shaping", action="store_true",
@@ -81,7 +83,8 @@ def main():
     for key, value in (("wide_obstacles", args.wide_obstacles), ("obstacles_max", args.obstacles_max),
                        ("paddle_restitution", args.paddle_restitution), ("single_hit", args.single_hit),
                        ("block_line_prob", args.block_line_prob or None),
-                       ("layout_check", None if args.layout_check == "geometry" else args.layout_check)):
+                       ("layout_check", None if args.layout_check == "geometry" else args.layout_check),
+                       ("aim_shaping", args.aim_shaping or None)):
         if value not in (False, None):
             task_options[key] = value
     TASK_VERSION = task_version(**task_options)

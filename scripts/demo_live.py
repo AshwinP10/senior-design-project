@@ -2,12 +2,16 @@
 
     python -m scripts.demo_live                 # strike controller (96% on the test shots)
     python -m scripts.demo_live --selftest      # run 6 shots without a window, then exit
+    python -m scripts.demo_live --rl-run ... --start-rl --showcase 40
+                                                # N cycles through 40 pre-checked shots the RL policy scores
 
 Keys:  N / Space  next shot          R  replay this shot          A  auto-play on/off
        1 2 3      number of obstacles F  fast pucks (1.5-2.0 m/s)  T  puck trail on/off
        O          planning overlay (predicted path, hit point, aim); off by default
        M          switch: strike controller / original RL model    P  pause
        S          slow motion on/off  C  clear tally               Q / Esc  quit
+       X          strict rules on/off: one paddle contact, paddle restitution 0.8 (no speed-up),
+                  random layouts verified scorable (on by default for models trained that way)
 Mouse: left-click the far half to place an obstacle there (up to 3); right-click to go back to random.
 """
 from __future__ import annotations
@@ -85,7 +89,7 @@ class FastCanvas:
                           BGR["good"] if good else BGR["bad"], -1)
             cv2.putText(im, text, (cx - tw // 2, top + th + 12), font, 1.2, (255, 255, 255), 3, cv2.LINE_AA)
         return im
-HELP = "N next   R replay   1/2/3 obstacles   F fast   T trail   M switch   A auto   S slow   P pause   Q quit   click: place obstacle"
+HELP = "N next   R replay   1/2/3 obstacles   F fast   T trail   M switch   X strict rules   A auto   S slow   P pause   Q quit   click: place obstacle"
 
 
 class Demo:
@@ -110,6 +114,8 @@ class Demo:
             self.rl_obs["wide_obstacles"] = True
         self.trained_wide = bool(opts.get("wide_obstacles"))
         self.trained_max = int(opts.get("obstacles_max") or 1)
+        # Strict rules follow the model's training task; X toggles them.
+        self.strict = bool(opts.get("single_hit"))
         # Imitation-based networks use the extra observations; the original September model does not.
         learned_from_controller = bool(manifest.get("bc") or manifest.get("dagger") or self.rl_obs["extra_obs"])
         via_dagger = bool(manifest.get("dagger")) or "dagger" in str(manifest.get("resume", ""))
@@ -117,6 +123,7 @@ class Demo:
                                      "RL policy (imitation + PPO)" if learned_from_controller else "Original RL model")
         if start_rl:
             self.mode = "rl"
+        self.showcase, self.showcase_i = [], 0     # pre-checked (obstacle count, seed) shots, see find_showcase
         self._rl = None
         self.env = None
         self.message, self.message_until = "", 0.0
@@ -131,8 +138,12 @@ class Demo:
         speed = dict(speed_min=1.5, speed_max=2.0) if self.fast else {}
         if self.env is not None:
             self.env.close()
+        # Strict random layouts match that training task: half of them block the straight shot.
+        rules = (dict(single_hit=True, paddle_restitution=0.8, layout_check="trajectory",
+                      obstacles_max=None, block_line_prob=0.5) if self.strict else {})
+        self.planner.restitution = 0.8 if self.strict else 1.0
         self.env = PrecisionStrikerEnv(seed=0, obstacles=self.obstacles, randomize=False, require_hit=True,
-                                       timeout_penalty=10, obstacle_bounce=True, **speed, **self.rl_obs)
+                                       timeout_penalty=10, obstacle_bounce=True, **speed, **self.rl_obs, **rules)
 
     def _rl_policy(self):
         if self._rl is None:
@@ -148,7 +159,10 @@ class Demo:
         return self._rl
 
     def new_shot(self, replay=False):
-        if not replay:
+        if not replay and self.showcase and not self.custom_blocks:
+            self.obstacles, self.seed = self.showcase[self.showcase_i % len(self.showcase)]
+            self.showcase_i += 1
+        elif not replay:
             self.seed = int(self.rng.integers(0, 2**31 - 1))
         self._make_env()
         options = {"blocks": self.custom_blocks} if self.custom_blocks else None
@@ -157,6 +171,27 @@ class Demo:
         self.trail, self.t, self.done, self.info, self.done_at = [], 0, False, {"hit": False}, None
         if not info.get("scorable", True):
             self.flash("This obstacle layout has no clear path to the goal")
+
+    def find_showcase(self, count, obstacle_counts=(1, 1, 2), tries=2000):
+        """Search random shots headlessly and keep those the RL policy scores (the sim is deterministic
+        for a given seed, so each one replays exactly). Clicked obstacles still show unselected shots."""
+        policy, found = self._rl_policy(), []
+        for i in range(tries):
+            if len(found) >= count:
+                break
+            self.obstacles = obstacle_counts[i % len(obstacle_counts)]
+            seed = int(self.rng.integers(0, 2**31 - 1))
+            self._make_env()
+            obs, _ = self.env.reset(seed=seed)
+            done = False
+            while not done:
+                obs, _, terminated, truncated, info = self.env.step(policy(obs))
+                done = terminated or truncated
+            if info["outcome"] == "goal" and info["hit"]:
+                found.append((self.obstacles, seed))
+        print(f"showcase: {len(found)} scoring shots found in {i + 1} tries")
+        self.showcase, self.showcase_i = found, 0
+        return found
 
     def flash(self, text, seconds=2.5):
         self.message, self.message_until = text, time.time() + seconds
@@ -204,7 +239,9 @@ class Demo:
         goals, shots = self.tally[self.mode]
         rate = f"{100 * goals / shots:.0f}%" if shots else "-"
         cv2.putText(bar, f"Scored {goals} / {shots}  ({rate})", (26, 32), f, 0.85, (255, 255, 255), 2, cv2.LINE_AA)
-        flags = [("AUTO", self.auto), ("SLOW", self.slow), ("PAUSED", self.paused), ("OVERLAY", self.overlay)]
+        flags = [("SELECTED SHOTS", bool(self.showcase) and not self.custom_blocks),
+                 ("ONE-CONTACT RULES", self.strict), ("AUTO", self.auto), ("SLOW", self.slow),
+                 ("PAUSED", self.paused), ("OVERLAY", self.overlay)]
         cv2.putText(bar, "   ".join(n for n, on in flags if on), (360, 31), f, 0.6, (90, 200, 250), 1, cv2.LINE_AA)
         cv2.putText(bar, HELP, (26, 62), f, 0.45, (215, 190, 170), 1, cv2.LINE_AA)
         if self.message and time.time() < self.message_until:
@@ -262,6 +299,10 @@ class Demo:
             self.overlay = not self.overlay
         elif k == ord("t"):
             self.show_trail = not self.show_trail
+        elif k == ord("x"):
+            self.strict = not self.strict
+            self.flash("Strict rules: one contact, no speed-up" if self.strict else "Original rules")
+            self.new_shot(replay=True)
         elif k == ord("m"):
             self.mode = "rl" if self.mode == "controller" else "controller"
             self.new_shot(replay=True)
@@ -319,8 +360,13 @@ def main():
     p.add_argument("--rl-label", help="Name shown for the RL model (default: from its manifest)")
     p.add_argument("--start-rl", action="store_true", help="Start in RL mode instead of the strike controller")
     p.add_argument("--selftest", action="store_true")
+    p.add_argument("--showcase", type=int, default=0,
+                   help="Pre-select this many shots (1-2 random obstacles) that the RL policy scores")
     args = p.parse_args()
     demo = Demo(args.width, args.rl_run, args.seed, args.rl_label, args.start_rl)
+    if args.showcase:
+        demo.find_showcase(args.showcase)
+        demo.new_shot()
     selftest(demo) if args.selftest else run_window(demo)
 
 

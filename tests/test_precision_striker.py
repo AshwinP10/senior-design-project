@@ -260,6 +260,23 @@ class PrecisionStrikerTests(unittest.TestCase):
             env.close()
         self.assertFalse(verified((0.0, 0.0), (1.0, 0.0), [(-0.5, y) for y in np.arange(-0.32, 0.33, 0.09)]))
 
+    def test_aim_shaping_rewards_clear_shot_lines(self):
+        env = PrecisionStrikerEnv(obstacles=1, randomize=False, require_hit=True, obstacle_bounce=True,
+                                  aim_shaping=5.0)
+        try:
+            self.assertTrue(env.task_version.endswith("-aim5"))
+            env.reset(seed=1, options={"blocks": [(-0.5, 0.0)]})
+            self.assertLess(env._aim_error((0.4, 0.0), (-2.0, 0.0)), 180)
+            straight = env._aim_error((0.4, 0.0), (-2.0, 0.0))      # aimed through the block
+            from scripts import scoring_geometry as sg
+            shots = [s for s in sg._candidate_shots(np.array([0.4, 0.0]), [(-0.5, 0.0)]) if s["kind"] == "bank"]
+            bank = env._aim_error((0.4, 0.0), 2.0 * shots[0]["direction"])
+            self.assertGreater(straight, 2.0)
+            self.assertLess(bank, 0.5)
+            self.assertEqual(env._aim_error((0.4, 0.0), (1.0, 0.0)), 180.0)
+        finally:
+            env.close()
+
     def test_reject_unreachable_or_overlapping_setup(self):
         with self.assertRaises(ValueError):
             self.env.reset(options={"puck_position": [-0.5, 0]})

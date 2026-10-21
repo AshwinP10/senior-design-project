@@ -1,0 +1,50 @@
+{
+  "run": "/work/11815/ap63726/ls6/airhockey-runs/aim-long/AB-seed3",
+  "controller": false,
+  "overrides": {},
+  "seed": 50000,
+  "random_1": {
+    "goals": 125,
+    "shots": 200,
+    "accuracy": 0.625,
+    "outcomes": {
+      "missed": 70,
+      "double_hit": 4,
+      "goal": 125,
+      "timeout": 1
+    }
+  },
+  "blocked_1": {
+    "goals": 171,
+    "shots": 200,
+    "accuracy": 0.855,
+    "outcomes": {
+      "missed": 28,
+      "goal": 171,
+      "double_hit": 1
+    }
+  },
+  "random_1to3": {
+    "goals": 104,
+    "shots": 200,
+    "accuracy": 0.52,
+    "outcomes": {
+      "goal": 104,
+      "missed": 94,
+      "double_hit": 1,
+      "timeout": 1
+    }
+  },
+  "blocked_1to3": {
+    "goals": 141,
+    "shots": 200,
+    "accuracy": 0.705,
+    "outcomes": {
+      "goal": 141,
+      "missed": 52,
+      "timeout": 4,
+      "double_hit": 3
+    }
+  },
+  "mean_accuracy": 0.67625
+}

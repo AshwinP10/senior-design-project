@@ -27,7 +27,29 @@ python -m scripts.eval_suite --run models/tacc-2026-10/W1-seed2 --seed 50000    
 To keep training one of them: `python -m scripts.train_precision_striker --resume models/tacc-2026-10/W1-seed2 ...`
 (add `--resume-new-task` when changing task options; see `scripts/tacc/strict_node.sh`).
 
-## Results
+## Best model: AB-seed3-bank (strict one-contact task, learned bank shots)
+
+Trained with the strict task: one paddle contact (a second touch or a returning puck ends the shot), paddle
+restitution 0.8 (no speed-up), 1-3 obstacles anywhere, the straight line to the goal blocked in half the
+episodes, layouts verified makeable with the trajectory calculator, plus the aim reward (`--aim-shaping 5`).
+Started from W1-seed2 and trained 30M more PPO steps (Lonestar6 job 3510342). Chosen on validation seed 50000.
+
+Strict suite (`scripts/eval_suite.py`, 200 shots per condition):
+
+| Condition | Test (seed 30000) | Validation 50000 | Validation 60000 | W1-seed2 (val 50000) | Strike controller (val 50000) |
+|---|---|---|---|---|---|
+| 1 random block | 72.0% | 62.5% | 67.0% | 78.5% | 83.5% |
+| 1 block on the straight line | 85.5% | 85.5% | 79.5% | 7.0% | 58.5% |
+| 1-3 random blocks | 50.0% | 52.0% | 51.0% | 28.0% | 78.5% |
+| 1-3 blocks, straight line blocked | 70.5% | 70.5% | 65.0% | 5.5% | 56.0% |
+| **Mean** | **69.5%** | **67.6%** | **65.6%** | 29.8% | 69.1% |
+
+It now prefers bank shots even when the straight line is open, which is why the random-layout rows trail
+the blocked rows; `scripts/tacc/bank_sweep.slurm` continues training to recover straight shots.
+The demo turns the strict rules on automatically for this model (X toggles them).
+
+## Earlier models (original rules)
+
 
 Test: 200 shots (seed 30000), obstacle bounce rule, one obstacle anywhere a user may place it, paddle
 restitution 1.0, a second paddle touch allowed. Models were chosen on validation seed 50000, not on test.

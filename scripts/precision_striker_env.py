@@ -33,7 +33,7 @@ MAX_OBSTACLES = 3
 def task_version(require_hit=False, timeout_penalty=2.0, obstacle_bounce=False,
                  extra_obs=False, goal_shaping=False, paddle_restitution=None,
                  wide_obstacles=False, obstacles_max=None, single_hit=False, block_line_prob=0.0,
-                 layout_check="geometry"):
+                 layout_check="geometry", aim_shaping=0.0):
     if extra_obs:
         base = TASK_VERSION_V5
     elif obstacle_bounce:
@@ -53,6 +53,8 @@ def task_version(require_hit=False, timeout_penalty=2.0, obstacle_bounce=False,
         base += f"-blockline{block_line_prob:g}"   # share of episodes with a block on the straight shot
     if layout_check == "trajectory":
         base += "-trajcheck"                 # random layouts verified with the trajectory calculator
+    if aim_shaping:
+        base += f"-aim{aim_shaping:g}"       # reward for leaving the paddle along a clear shot line
     return base
 
 
@@ -61,7 +63,7 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
                  speed_min=0.3, speed_max=1.5, require_hit=False, timeout_penalty=2.0,
                  obstacle_bounce=False, extra_obs=False, goal_shaping=False, paddle_restitution=None,
                  wide_obstacles=False, obstacles_max=None, single_hit=False, block_line_prob=0.0,
-                 layout_check="geometry"):
+                 layout_check="geometry", aim_shaping=0.0):
         if not 0 <= obstacles <= MAX_OBSTACLES or max_steps < 1:
             raise ValueError("Require 0..3 obstacles and positive max_steps")
         if timeout_penalty < 0:
@@ -101,10 +103,16 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
             raise ValueError("layout_check must be 'geometry' or 'trajectory'")
         self.layout_check = layout_check
         self.layout_redraws = 0
+        # aim_shaping: when the puck leaves the paddle, reward up to this much for heading along a clear
+        # straight or bank line into the goal (trajectory calculator), falling off with angle error
+        # (half at ~3 degrees; scoring shots measure under 1 degree). Gives immediate credit for bank shots, which rarely score by chance.
+        if aim_shaping < 0:
+            raise ValueError("aim_shaping must be >= 0")
+        self.aim_shaping = float(aim_shaping)
         self.task_version = task_version(self.require_hit, self.timeout_penalty, self.obstacle_bounce,
                                          self.extra_obs, self.goal_shaping, self.paddle_restitution,
                                          self.wide_obstacles, self.obstacles_max, self.single_hit,
-                                         self.block_line_prob, self.layout_check)
+                                         self.block_line_prob, self.layout_check, self.aim_shaping)
         self.obstacle_count = int(obstacles)
         if not 0 < speed_min <= speed_max <= 2.0:
             raise ValueError("Require 0 < speed_min <= speed_max <= 2 m/s")
@@ -176,6 +184,7 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         self._options = options or {}
         self._hit = False
         self._separated = False
+        self._aimed = False
         self._collision = False
         self._steps = 0
         obs, info = super().reset(seed=seed, **kwargs)
@@ -241,6 +250,17 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
             for body in (self.simulator.pucks["puck_0"], self.simulator.paddles["paddle_ego"]):
                 for fixture in body.fixtures:
                     fixture.restitution = self.paddle_restitution
+
+    def _aim_error(self, puck, velocity):
+        """Angle (degrees) between the puck's heading and the nearest clear straight or bank shot."""
+        v = np.asarray(velocity, dtype=float)
+        if v[0] >= 0 or np.linalg.norm(v) < 1e-6:
+            return 180.0
+        shots = sg._candidate_shots(np.asarray(puck, dtype=float), list(self.user_block_positions))
+        if not shots:
+            return 180.0
+        heading = v / np.linalg.norm(v)
+        return float(min(np.degrees(np.arccos(np.clip(np.dot(heading, sh["direction"]), -1, 1))) for sh in shots))
 
     def _layout_ok(self, puck, velocity, blocks):
         if not scorable(puck, velocity, blocks):
@@ -335,6 +355,14 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
             double_hit = hit and self._separated
             missed = self._separated and not double_hit and obs[4] > 0.05 and obs[6] > 0
         reward = -0.005 + (1.0 if hit and not self._hit else 0)
+        aim_error = None
+        if self.aim_shaping and self._hit and not self._aimed and not hit:
+            gap = float(np.linalg.norm(obs[:2] - obs[4:6])) - (self.paddle_radius + self.puck_radius)
+            if gap > 0.02:
+                self._aimed = True
+                aim_error = self._aim_error(obs[4:6], obs[6:8])
+                speed = float(np.linalg.norm(obs[6:8]))
+                reward += self.aim_shaping * float(np.exp(-0.5 * (aim_error / 2.5) ** 2)) * min(1.0, speed / 1.5)
         # Progress terms telescope; waiting far from the puck does not earn idle reward.
         distance = self._intercept_distance(obs)
         if not self._hit:
@@ -380,6 +408,8 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
                     obstacle_collision=bool(self._collision), hit=bool(self._hit),
                     workspace_clip=bool(workspace_clip), command=self.last_command.tolist(),
                     puck_within_ego_goal=score, puck_within_alt_goal=conceded)
+        if aim_error is not None:
+            info["aim_error"] = aim_error
         return obs, float(reward), terminated, truncated, info
 
     def terminal_frame(self, columns=31, rows=17):
