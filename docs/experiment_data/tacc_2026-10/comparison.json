@@ -82,5 +82,21 @@
    192
   ],
   "group": "controller"
+ },
+ {
+  "label": "Residual PPO on controller",
+  "runs": [
+   196,
+   194,
+   194
+  ],
+  "group": "hybrid"
+ },
+ {
+  "label": "Controller, residual's base settings",
+  "runs": [
+   197
+  ],
+  "group": "controller"
  }
 ]

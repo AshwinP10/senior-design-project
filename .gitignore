@@ -232,3 +232,6 @@ tmp/
 
 # Presentation export scratch folders
 .chart-data-*/
+
+# Trained precision-striker models are committed on purpose (policy.zip is otherwise ignored).
+!models/**/policy.zip

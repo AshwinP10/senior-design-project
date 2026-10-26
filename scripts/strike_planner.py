@@ -58,24 +58,39 @@ def predict(p, v, damping=0.15, horizon=3.0, dt=0.01):
     return k[:n] * dt, np.stack([xs, ys], 1)[:n], np.stack([vx, vy], 1)[:n]
 
 
-def solve_strike(v_in, u, k):
-    """Contact normal n and paddle speed s that send a puck with velocity v_in along u at speed k."""
+# Treat the servo-driven paddle as infinitely heavy (mass factor 1.0). A stationary paddle does give way
+# slightly (a rebound keeps 92% of the speed at restitution 1.0, which would fit 0.961), but using 0.961
+# made validation accuracy worse (64.9% vs 69.1% mean on the one-contact suite), so it stays an option.
+MASS_FACTOR = 1.0
+
+
+def solve_strike(v_in, u, k, restitution=1.0, mass_factor=MASS_FACTOR):
+    """Contact normal n and paddle speed s that send a puck with velocity v_in along u at speed k.
+
+    With restitution e the outgoing velocity is v' = v + g ((w - v)·n) n, g = (1 + e) * mass_factor,
+    so with n ∥ (k u - v) the paddle speed along n is s = v·n + |k u - v| / g.
+    """
     want = k * np.asarray(u) - np.asarray(v_in)
     norm = np.linalg.norm(want)
     n = want / norm
-    s = float(np.dot(v_in, n) + norm / 2)
+    s = float(np.dot(v_in, n) + norm / ((1.0 + restitution) * mass_factor))
     return n, s
 
 
 class StrikePlanner:
     def __init__(self, damping=0.15, out_speed=2.4, max_strike=1.7, tau=0.08,
                  kp_move=6.0, kp_track=4.0, kp_lat=4.0, min_slack=0.0, x_window=(0.12, 0.82),
-                 shot_chooser=None):
+                 shot_chooser=None, restitution=1.0, mass_factor=MASS_FACTOR, safe_clearance=None):
         self.damping, self.out_speed, self.max_strike, self.tau = damping, out_speed, max_strike, tau
         self.kp_move, self.kp_track, self.x_window = kp_move, kp_track, x_window
         # kp_lat: extra gain on tracking error perpendicular to the strike direction (sets aim accuracy).
         # min_slack: prefer interceptions that leave at least this much spare time to line up (s).
         self.kp_lat, self.min_slack = kp_lat, min_slack
+        self.restitution = restitution          # paddle-puck restitution the collision solve assumes
+        self.mass_factor = mass_factor          # 1.0 reproduces the earlier infinite-mass assumption
+        # safe_clearance (m): rank shots by obstacle clearance up to this value before preferring direct
+        # shots. None keeps the original order (any direct shot first, even one that barely clears a block).
+        self.safe_clearance = safe_clearance
         # Optional callable(strike_point, shots, obs) -> shot dict, used by learned shot selection.
         self.shot_chooser = shot_chooser
         self.reset()
@@ -105,7 +120,7 @@ class StrikePlanner:
         u = shot["direction"]
         k = self.out_speed if k is None else k
         for _ in range(8):                       # lower the shot speed until the paddle can deliver it
-            n, s = solve_strike(v_at, u, k)
+            n, s = solve_strike(v_at, u, k, self.restitution, self.mass_factor)
             if s <= self.max_strike:
                 break
             k *= 0.85
@@ -147,12 +162,20 @@ class StrikePlanner:
             shots = sg.candidate_shots(S, blocks)
             if not shots:
                 continue
-            shot = self.shot_chooser(S, shots, obs) if self.shot_chooser else shots[0]
+            if self.shot_chooser:
+                shot = self.shot_chooser(S, shots, obs)
+            elif self.safe_clearance:
+                shot = max(shots, key=lambda sh: (min(sh["clearance"], self.safe_clearance),
+                                                  sh["kind"] == "direct", -abs(sh["goal_y"])))
+            else:
+                shot = shots[0]
             plan = self._make_plan(obs, ts[i], S, vs[i], shot)
             if plan is None:
                 continue
             score = (shot["kind"] == "direct", min(shot["clearance"], 0.15),
                      min(plan["slack"], self.min_slack), -ts[i])
+            if self.safe_clearance:
+                score = (min(shot["clearance"], self.safe_clearance),) + score
             if best is None or score > best[0]:
                 best = (score, plan)
         return None if best is None else best[1]
@@ -165,7 +188,7 @@ class StrikePlanner:
         i = min(int(round(remaining / 0.01)), len(ts) - 1)
         if i <= 0:
             return
-        n, s = solve_strike(vs[i], plan["shot"]["direction"], plan["k"])
+        n, s = solve_strike(vs[i], plan["shot"]["direction"], plan["k"], self.restitution, self.mass_factor)
         if s > MAX_PADDLE or s <= 0:
             return
         plan.update(S=ps[i], n=n, s=s, C=ps[i] - n * CONTACT)

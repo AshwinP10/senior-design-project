@@ -18,9 +18,29 @@ goals that follow a paddle hit, with the bounce rule (the puck rebounds off obst
 | Imitation, then PPO fine-tuning (pure neural policy) | 121, 140, 132 | 65.5% |
 | Strike controller, default settings | 173 | 86.5% |
 | **Strike controller, tuned settings** | **192** | **96.0%** |
+| Residual PPO (RL corrects the controller's commands) | 196, 194, 194 | 97.3% |
+| Controller with the residual runs' base settings | 197 | 98.5% |
 
 The tuned controller also scored 93% with two obstacles, 89% with three, and 90.5% with pucks
 faster than any seen in tuning (1.5-2.0 m/s). These conditions were never used for tuning.
+
+**Reading the top rows.** The reported result is the tuned controller, 96.0%, because its settings
+were chosen on validation shots before the test was run. Residual PPO was built on a slightly
+different setting (`kp_lat 16, min_slack 0.15`, picked from 60 validation shots), which scores 98.5%
+on the test alone; residual PPO scored 97.3%, so the learned corrections did not improve on their
+base controller. On the two validation sets the two settings are tied (391 vs 393 of 400), so good
+controller settings land between about 96% and 98.5%, a spread consistent with 200-shot sampling
+noise.
+
+## Learning curves
+
+* **Shot choice (PPO, SAC):** flat at 62-66% from the first checkpoint
+  ([chart](figures/tacc_2026-10/sweep3_learning_curves_shot_choice.png)). More training would not help.
+* **Residual PPO:** 94-97% throughout, never clearly above its base controller
+  ([chart](figures/tacc_2026-10/sweep3_learning_curves_residual_imitation.png)).
+* **Imitation, then PPO:** rose from 53% to 64% (best run 70%) and was still rising at 4M steps,
+  so it is being trained longer.
+* **Earlier RL versions (A-C):** C peaked early and degraded (see below).
 
 ## What was wrong with the original approach
 
@@ -72,15 +92,14 @@ python -m unittest discover -s tests                           # 14 tests
 sbatch -A OTH24028 -p development scripts/tacc/sweep3_all.slurm   # RL strategies on 4 nodes
 ```
 
-## Still running when this was written (October 7, about 14:30)
+## Still queued when this was written (October 7, about 15:30)
 
-* Residual PPO (correction on top of the controller): training success rose from 73% to 93%; final test pending.
-* Longer fine-tuning for imitation then PPO (one run was still improving at 4M steps) and residual PPO
+* Longer fine-tuning for imitation then PPO (+8M steps) and residual PPO (+5M steps)
   (`scripts/tacc/followup3.slurm`).
-* Learning curves for the strategies above (`scripts/tacc/curves3.slurm`) and the earlier E-I sweep.
+* The E-I sweep (pure PPO with bounce rule, extra inputs, aim reward, tuned settings) and its curves.
 
 ## Data
 
-`docs/experiment_data/tacc_2026-10/`: comparison table, first-sweep learning curves (both rule sets),
-planner search stages 1-3, sweep-3 evaluations with manifests, and the bounce-rule re-scoring of the
-first sweep and the original model.
+`docs/experiment_data/tacc_2026-10/`: comparison table, learning curves for both sweeps, planner
+search stages 1-3 (plus the residual base settings on the test), sweep-3 evaluations with manifests,
+and the bounce-rule re-scoring of the first sweep and the original model.

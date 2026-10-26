@@ -188,6 +188,41 @@ class PrecisionStrikerTests(unittest.TestCase):
         finally:
             env.close()
 
+    def test_single_hit_ends_on_second_touch_or_return(self):
+        env = PrecisionStrikerEnv(obstacles=1, randomize=False, require_hit=True, obstacle_bounce=True,
+                                  single_hit=True)
+        try:
+            self.assertTrue(env.task_version.endswith("-single"))
+            # Puck drives into a stationary paddle, bounces away, and the paddle chases it: second touch.
+            env.reset(seed=3, options={"blocks": [], "puck_position": [0.45, 0.0], "puck_velocity": [0.6, 0.0]})
+            outcomes = []
+            for _ in range(40):
+                gap = env.current_state["pucks"][0]["position"][0] - env.current_state["paddles"]["paddle_ego"]["position"][0]
+                _, _, terminated, truncated, info = env.step(np.array([np.sign(gap), 0.0]))
+                outcomes.append(info["outcome"])
+                if terminated or truncated:
+                    break
+            self.assertIn(info["outcome"], ("double_hit", "missed"))
+            self.assertTrue(info["hit"])
+            self.assertFalse(info["is_success"])
+        finally:
+            env.close()
+
+    def test_block_line_prob_blocks_the_straight_shot(self):
+        from scripts.scoring_geometry import shot_paths
+        env = PrecisionStrikerEnv(obstacles=1, wide_obstacles=True, block_line_prob=1.0)
+        try:
+            blocked = 0
+            for seed in range(20):
+                obs, info = env.reset(seed=seed)
+                self.assertTrue(info["scorable"])
+                strike = (0.45, float(np.clip(obs[5] + obs[7] / obs[6] * (0.45 - obs[4]), -0.35, 0.35)))
+                straight = shot_paths(strike, info["blocks"])
+                blocked += "direct" not in straight or len(straight) == 1
+            self.assertGreaterEqual(blocked, 12)   # most episodes need a bank shot or a narrow aim
+        finally:
+            env.close()
+
     def test_scoring_geometry_detects_blocked_and_open_tables(self):
         from scripts.scoring_geometry import scorable, shot_paths
         incoming = ((-0.05, 0.0), (1.0, 0.0))
@@ -207,6 +242,40 @@ class PrecisionStrikerTests(unittest.TestCase):
                     self.assertTrue(info["scorable"])
             finally:
                 env.close()
+
+    def test_trajectory_checked_multi_block_layouts_are_makeable(self):
+        from scripts.layout_check import verified
+        env = PrecisionStrikerEnv(obstacles=2, obstacles_max=3, wide_obstacles=True, block_line_prob=0.5,
+                                  paddle_restitution=0.8, layout_check="trajectory")
+        try:
+            self.assertTrue(env.task_version.endswith("-trajcheck"))
+            for seed in range(25):
+                _, info = env.reset(seed=seed)
+                self.assertIn(len(info["blocks"]), (2, 3))
+                check = dict(paddle=env._spawn_paddle, restitution=0.8)
+                puck = env._spawn_puck
+                self.assertTrue(verified(puck, info["initial_velocity"], info["blocks"], **check)
+                                or not verified(puck, info["initial_velocity"], [], **check))
+        finally:
+            env.close()
+        self.assertFalse(verified((0.0, 0.0), (1.0, 0.0), [(-0.5, y) for y in np.arange(-0.32, 0.33, 0.09)]))
+
+    def test_aim_shaping_rewards_clear_shot_lines(self):
+        env = PrecisionStrikerEnv(obstacles=1, randomize=False, require_hit=True, obstacle_bounce=True,
+                                  aim_shaping=5.0)
+        try:
+            self.assertTrue(env.task_version.endswith("-aim5"))
+            env.reset(seed=1, options={"blocks": [(-0.5, 0.0)]})
+            self.assertLess(env._aim_error((0.4, 0.0), (-2.0, 0.0)), 180)
+            straight = env._aim_error((0.4, 0.0), (-2.0, 0.0))      # aimed through the block
+            from scripts import scoring_geometry as sg
+            shots = [s for s in sg._candidate_shots(np.array([0.4, 0.0]), [(-0.5, 0.0)]) if s["kind"] == "bank"]
+            bank = env._aim_error((0.4, 0.0), 2.0 * shots[0]["direction"])
+            self.assertGreater(straight, 2.0)
+            self.assertLess(bank, 0.5)
+            self.assertEqual(env._aim_error((0.4, 0.0), (1.0, 0.0)), 180.0)
+        finally:
+            env.close()
 
     def test_reject_unreachable_or_overlapping_setup(self):
         with self.assertRaises(ValueError):
