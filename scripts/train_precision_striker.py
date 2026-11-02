@@ -53,6 +53,8 @@ def main():
                    help="Share of episodes with an obstacle on the straight line to the goal")
     p.add_argument("--aim-shaping", type=float, default=0.0,
                    help="Reward (up to this) for the puck leaving the paddle along a clear shot line")
+    p.add_argument("--prefer-direct", action="store_true",
+                   help="With --aim-shaping, reward bank-shot aim only when direct shots are blocked")
     p.add_argument("--layout-check", choices=["geometry", "trajectory"], default="geometry",
                    help="trajectory: random layouts verified as makeable with the trajectory calculator")
     p.add_argument("--goal-shaping", action="store_true",
@@ -84,7 +86,7 @@ def main():
                        ("paddle_restitution", args.paddle_restitution), ("single_hit", args.single_hit),
                        ("block_line_prob", args.block_line_prob or None),
                        ("layout_check", None if args.layout_check == "geometry" else args.layout_check),
-                       ("aim_shaping", args.aim_shaping or None)):
+                       ("aim_shaping", args.aim_shaping or None), ("prefer_direct", args.prefer_direct)):
         if value not in (False, None):
             task_options[key] = value
     TASK_VERSION = task_version(**task_options)
@@ -125,6 +127,7 @@ def main():
         venv.training = True
         Algo = SAC if previous.get("algo", "ppo") == "sac" else PPO
         model = Algo.load(str(args.resume / "policy.zip"), env=venv, device=args.device)
+        model.tensorboard_log = str(args.output / "tensorboard")
         # load() re-seeds everything with the saved model's seed; use this run's --seed so that
         # several runs resumed from the same model really differ.
         model.set_random_seed(args.seed)

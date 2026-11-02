@@ -1,0 +1,97 @@
+{
+  "protocol": "2026-10-26; 200 shots per obstacle count; seed 30000; obstacle contact ends episode",
+  "controller_historical_protocol": {
+    "1": {
+      "episodes": 200,
+      "goals_after_hit": 176,
+      "outcomes": {
+        "goal": 176,
+        "obstacle_collision": 17,
+        "timeout": 3,
+        "escaped": 4
+      },
+      "hits": 198,
+      "rules": "collision-ends",
+      "accuracy": 0.88,
+      "successes": 176
+    },
+    "2": {
+      "episodes": 200,
+      "goals_after_hit": 161,
+      "outcomes": {
+        "goal": 161,
+        "obstacle_collision": 30,
+        "escaped": 8,
+        "timeout": 1
+      },
+      "hits": 200,
+      "rules": "collision-ends",
+      "accuracy": 0.805,
+      "successes": 161
+    },
+    "3": {
+      "episodes": 200,
+      "goals_after_hit": 143,
+      "outcomes": {
+        "goal": 143,
+        "obstacle_collision": 48,
+        "escaped": 8,
+        "timeout": 1
+      },
+      "hits": 197,
+      "rules": "collision-ends",
+      "accuracy": 0.715,
+      "successes": 143
+    }
+  },
+  "rl_wide_single_hit_protocol": {
+    "run": "models/tacc-2026-10/AB-seed3-bank",
+    "controller": false,
+    "overrides": {},
+    "seed": 30000,
+    "random_1": {
+      "goals": 98,
+      "shots": 200,
+      "accuracy": 0.49,
+      "outcomes": {
+        "obstacle_collision": 39,
+        "goal": 98,
+        "missed": 22,
+        "escaped": 41
+      }
+    },
+    "random_2": {
+      "goals": 87,
+      "shots": 200,
+      "accuracy": 0.435,
+      "outcomes": {
+        "obstacle_collision": 86,
+        "missed": 10,
+        "goal": 87,
+        "escaped": 16,
+        "timeout": 1
+      }
+    },
+    "random_3": {
+      "goals": 41,
+      "shots": 200,
+      "accuracy": 0.205,
+      "outcomes": {
+        "obstacle_collision": 137,
+        "escaped": 11,
+        "goal": 41,
+        "missed": 11
+      }
+    },
+    "mean_accuracy": 0.3766666666666667,
+    "rules": {
+      "require_hit": true,
+      "timeout_penalty": 10.0,
+      "obstacle_bounce": false,
+      "single_hit": true,
+      "paddle_restitution": 0.8,
+      "wide_obstacles": true
+    }
+  },
+  "note": "Different physics and layout protocols: controller and RL rates are not a matched comparison. Controller rates reconfirmed unchanged after scoring fixes. No newly trained policy or 90% claim."
+}

@@ -103,7 +103,7 @@ def _candidate_shots(strike, blocks, clearance=PUCK_R + MARGIN):
         if c >= clearance:
             d = g - s
             shots.append({"kind": "direct", "direction": d / np.linalg.norm(d), "clearance": c,
-                          "aim": g, "goal_y": gy})
+                          "aim": g, "goal_y": gy, "wall": None})
         for wall in (RAIL_Y, -RAIL_Y):
             mirrored = np.array([GOAL_X, 2 * wall - gy])
             f = (wall - s[1]) / (mirrored[1] - s[1])
@@ -116,7 +116,7 @@ def _candidate_shots(strike, blocks, clearance=PUCK_R + MARGIN):
             if c >= clearance:
                 d = bounce - s
                 shots.append({"kind": "bank", "direction": d / np.linalg.norm(d), "clearance": c,
-                              "aim": bounce, "goal_y": gy})
+                              "aim": bounce, "goal_y": gy, "wall": wall})
     shots.sort(key=lambda sh: (sh["kind"] != "direct", -min(sh["clearance"], SAFE_CLEARANCE), abs(sh["goal_y"])))
     return shots
 
@@ -141,3 +141,56 @@ def incoming_strike_points(puck, velocity, n=12):
 def scorable(puck, velocity, blocks):
     """True if at least one strike point on the incoming path has a clear direct or bank shot."""
     return any(shot_paths(s, blocks) for s in incoming_strike_points(puck, velocity))
+
+
+def _block_margins(p0, p1, blocks, samples=60):
+    """(gap beyond the puck radius, distance from p0 to closest approach) per obstacle."""
+    if not blocks:
+        return []
+    t = np.linspace(0.0, 1.0, samples)[:, None]
+    pts = p0 + t * (p1 - p0)
+    seg = float(np.linalg.norm(p1 - p0))
+    half = BLOCK_W / 2
+    out = []
+    for bx, by in blocks:
+        dx = np.maximum(np.abs(pts[:, 0] - bx) - half, 0.0)
+        dy = np.maximum(np.abs(pts[:, 1] - by) - half, 0.0)
+        d = np.hypot(dx, dy)
+        i = int(np.argmin(d))
+        out.append((float(d[i]) - PUCK_R, float(t[i, 0]) * seg))
+    return out
+
+
+def angular_margin(strike, shot, blocks):
+    """Radians the shot can be mis-aimed by before it misses the mouth or clips an obstacle.
+
+    Computed in the unfolded frame, where a bank shot is a straight line to the goal mirrored in its
+    rail and obstacles past the bounce are mirrored with it. One formula then covers both kinds, and a
+    long bank path is penalised correctly: the same angular error at the paddle grows with the distance
+    still to travel, which linear clearance cannot express.
+    """
+    s = np.asarray(strike, dtype=float)
+    gy = float(shot["goal_y"])
+    wall = shot.get("wall")
+    target = np.array([GOAL_X, gy if wall is None else 2 * wall - gy])
+    span = target - s
+    length = float(np.linalg.norm(span))
+    if length < 1e-6:
+        return 0.0
+    margins = [(GOAL_LANE - abs(gy)) / length]
+    if blocks:
+        if wall is None:
+            for gap, dist in _block_margins(s, target, blocks):
+                if dist > 1e-6:
+                    margins.append(gap / dist)
+        else:
+            f = (wall - s[1]) / (target[1] - s[1])
+            bounce = s + f * span
+            for gap, dist in _block_margins(s, bounce, blocks):
+                if dist > 1e-6:
+                    margins.append(gap / dist)
+            run = float(np.linalg.norm(bounce - s))
+            for gap, dist in _block_margins(bounce, target, [(bx, 2 * wall - by) for bx, by in blocks]):
+                if run + dist > 1e-6:
+                    margins.append(gap / (run + dist))
+    return max(0.0, min(margins))

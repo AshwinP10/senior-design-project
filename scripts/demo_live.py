@@ -1,6 +1,6 @@
 """Live demo: the real Box2D simulation playing shots in a window, in real time.
 
-    python -m scripts.demo_live                 # strike controller (96% on the test shots)
+    python -m scripts.demo_live                 # strike controller; obstacle contact ends the shot
     python -m scripts.demo_live --selftest      # run 6 shots without a window, then exit
     python -m scripts.demo_live --rl-run ... --start-rl --showcase 40
                                                 # N cycles through 40 pre-checked shots the RL policy scores
@@ -143,7 +143,7 @@ class Demo:
                       obstacles_max=None, block_line_prob=0.5) if self.strict else {})
         self.planner.restitution = 0.8 if self.strict else 1.0
         self.env = PrecisionStrikerEnv(seed=0, obstacles=self.obstacles, randomize=False, require_hit=True,
-                                       timeout_penalty=10, obstacle_bounce=True, **speed, **self.rl_obs, **rules)
+                                       timeout_penalty=10, obstacle_bounce=False, **speed, **self.rl_obs, **rules)
 
     def _rl_policy(self):
         if self._rl is None:
@@ -187,7 +187,7 @@ class Demo:
             while not done:
                 obs, _, terminated, truncated, info = self.env.step(policy(obs))
                 done = terminated or truncated
-            if info["outcome"] == "goal" and info["hit"]:
+            if info["is_success"]:
                 found.append((self.obstacles, seed))
         print(f"showcase: {len(found)} scoring shots found in {i + 1} tries")
         self.showcase, self.showcase_i = found, 0
@@ -208,7 +208,7 @@ class Demo:
             self.done, self.done_at = True, time.time()
             tally = self.tally[self.mode]
             tally[1] += 1
-            tally[0] += int(self.info["outcome"] == "goal" and self.info["hit"])
+            tally[0] += int(self.info["is_success"])
 
     # ------------------------------------------------------------------- draw
     def frame(self):

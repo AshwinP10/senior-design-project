@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
@@ -77,6 +78,35 @@ class PrecisionStrikerTests(unittest.TestCase):
         self.assertTrue(terminated)
         self.assertFalse(info["is_success"])
         self.assertLess(reward, -18)
+
+    def test_collision_and_goal_in_same_step_never_earn_goal_reward(self):
+        self.env.reset(seed=1, options={"blocks": [(-0.4, 0)]})
+        self.env._hit = True
+        obs = self.env.get_observation(self.env.current_state).copy()
+        obs[4:8] = [-1.01, 0, -2, 0]
+        self.env.last_command = np.zeros(2)
+        self.env.simulator.collision_listener.collision_forces.append(
+            {"bodyA": "user_block_0", "bodyB": "puck_0"})
+        with patch.object(self.env, "_advance_physics", return_value=(obs, False)):
+            _, reward, terminated, _, info = self.env.step(np.zeros(2))
+        self.assertTrue(terminated)
+        self.assertEqual(info["outcome"], "obstacle_collision")
+        self.assertFalse(info["is_success"])
+        self.assertLess(reward, -15)
+
+    def test_live_demo_rejects_obstacle_rebounds_in_both_modes(self):
+        from scripts.demo_live import Demo
+        # Skip model loading and window creation; exercise the actual environment setup.
+        demo = Demo.__new__(Demo)
+        demo.fast, demo.env, demo.obstacles, demo.rl_obs = False, None, 3, {}
+        from scripts.strike_planner import StrikePlanner
+        demo.planner = StrikePlanner()
+        for strict in (False, True):
+            demo.strict = strict
+            demo._make_env()
+            self.assertFalse(demo.env.obstacle_bounce)
+            self.assertTrue(demo.env.require_hit)
+        demo.env.close()
 
     def test_incoming_speed_range_and_servo_limits(self):
         for seed in range(20):
@@ -274,6 +304,23 @@ class PrecisionStrikerTests(unittest.TestCase):
             self.assertGreater(straight, 2.0)
             self.assertLess(bank, 0.5)
             self.assertEqual(env._aim_error((0.4, 0.0), (1.0, 0.0)), 180.0)
+        finally:
+            env.close()
+
+    def test_prefer_direct_rewards_banks_only_when_goal_is_blocked(self):
+        from scripts import scoring_geometry as sg
+        env = PrecisionStrikerEnv(obstacles=1, aim_shaping=5.0, prefer_direct=True)
+        try:
+            self.assertTrue(env.task_version.endswith("-direct"))
+            env.reset(seed=1, options={"blocks": []})
+            strike = np.array([0.4, 0.0])
+            bank = next(sh for sh in sg._candidate_shots(strike, []) if sh["kind"] == "bank")
+            self.assertGreater(env._aim_error(strike, 2 * bank["direction"]), 10)
+            self.assertAlmostEqual(env._aim_error(strike, (-2, 0)), 0)
+            env.reset(seed=1, options={"blocks": [(-0.5, 0)]})
+            shots = sg._candidate_shots(strike, env.user_block_positions)
+            self.assertTrue(all(sh["kind"] == "bank" for sh in shots))
+            self.assertLess(env._aim_error(strike, 2 * shots[0]["direction"]), 0.01)
         finally:
             env.close()
 

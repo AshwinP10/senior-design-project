@@ -13,7 +13,7 @@ from scripts.precision_striker_env import PrecisionStrikerEnv
 from scripts.strike_planner import StrikePlanner
 
 
-def run(layouts=10, shots=20, seed=30000, bounce=True, obstacles=1, planner_kwargs=None, verbose=False,
+def run(layouts=10, shots=20, seed=30000, bounce=False, obstacles=1, planner_kwargs=None, verbose=False,
         speed_min=0.3, speed_max=1.5, paddle_restitution=None):
     env = PrecisionStrikerEnv(seed=seed, obstacles=obstacles, randomize=False, require_hit=True,
                               timeout_penalty=10, obstacle_bounce=bounce, speed_min=speed_min, speed_max=speed_max,
@@ -45,8 +45,9 @@ def run(layouts=10, shots=20, seed=30000, bounce=True, obstacles=1, planner_kwar
     n = len(records)
     summary = {"episodes": n, "goals_after_hit": sum(r["outcome"] == "goal" and r["hit"] for r in records),
                "outcomes": dict(Counter(r["outcome"] for r in records)),
+               "successes": sum(r["success"] for r in records),
                "hits": sum(r["hit"] for r in records), "rules": "bounce" if bounce else "collision-ends"}
-    summary["accuracy"] = summary["goals_after_hit"] / n
+    summary["accuracy"] = summary["successes"] / n
     return summary, records
 
 
@@ -56,7 +57,10 @@ def main():
     p.add_argument("--shots", type=int, default=20)
     p.add_argument("--seed", type=int, default=30000)
     p.add_argument("--obstacles", type=int, default=1)
-    p.add_argument("--no-bounce", action="store_true", help="Collisions end the shot (v3 rules)")
+    rules = p.add_mutually_exclusive_group()
+    rules.add_argument("--no-bounce", dest="bounce", action="store_false", help="Collisions end the shot (default)")
+    rules.add_argument("--obstacle-bounce", dest="bounce", action="store_true", help="Replay historical rules allowing obstacle rebounds")
+    p.set_defaults(bounce=False)
     p.add_argument("--set", nargs="*", default=[], help="Planner overrides, e.g. out_speed=2.5 tau=0.2")
     p.add_argument("--tuned", action="store_true", help="Start from strike_planner.TUNED settings")
     p.add_argument("--paddle-restitution", type=float, help="Paddle-puck restitution (original simulator: 1.0)")
@@ -70,7 +74,7 @@ def main():
     if "x_window" in kwargs:
         kwargs["x_window"] = tuple(float(x) for x in str(kwargs["x_window"]).split(","))
     started = time.perf_counter()
-    summary, records = run(args.layouts, args.shots, args.seed, not args.no_bounce, args.obstacles,
+    summary, records = run(args.layouts, args.shots, args.seed, args.bounce, args.obstacles,
                            kwargs, args.verbose, paddle_restitution=args.paddle_restitution)
     summary.update(planner=kwargs, seconds=round(time.perf_counter() - started, 1))
     print(json.dumps(summary, indent=2))

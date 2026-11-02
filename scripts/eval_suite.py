@@ -1,8 +1,8 @@
-"""Evaluation suite for the "one contact" task: 4 conditions x 200 shots, same shots for every policy.
+"""Evaluation suite for the "one contact" task, same shots for every policy.
 
 Rules for every condition: a goal counts only after a paddle hit, one paddle contact per shot (a second
 touch or the puck coming back ends the shot), paddle-puck restitution 0.8, obstacles anywhere a user may
-place them, puck bounces off obstacles.
+place them, obstacle contact ends the shot.
 
     python -m scripts.eval_suite --controller                 # strike controller (tuned settings)
     python -m scripts.eval_suite --run runs/some-model        # trained PPO policy
@@ -21,10 +21,12 @@ import numpy as np
 from scripts.precision_striker_env import PrecisionStrikerEnv
 from scripts.strike_planner import TUNED, StrikePlanner
 
-RULES = dict(require_hit=True, timeout_penalty=10.0, obstacle_bounce=True, single_hit=True,
+RULES = dict(require_hit=True, timeout_penalty=10.0, obstacle_bounce=False, single_hit=True,
              paddle_restitution=0.8, wide_obstacles=True)
 CONDITIONS = {
     "random_1": dict(obstacles=1),
+    "random_2": dict(obstacles=2),
+    "random_3": dict(obstacles=3),
     "blocked_1": dict(obstacles=1, block_line_prob=1.0),
     "random_1to3": dict(obstacles=1, obstacles_max=3),
     "blocked_1to3": dict(obstacles=1, obstacles_max=3, block_line_prob=1.0),
@@ -62,7 +64,7 @@ def evaluate(job):
         while not done:
             obs, _, terminated, truncated, info = env.step(act(obs))
             done = terminated or truncated
-        good = info["outcome"] == "goal" and info["hit"]
+        good = info["is_success"]
         goals += good
         outcomes[info["outcome"]] += 1
     env.close()
@@ -74,6 +76,7 @@ def run_suite(run=None, controller=False, seed=30000, shots=200, workers=4, over
     with ProcessPoolExecutor(min(workers, len(jobs))) as pool:
         results = dict(pool.map(evaluate, jobs))
     results["mean_accuracy"] = float(np.mean([results[n]["accuracy"] for n in (conditions or CONDITIONS)]))
+    results["rules"] = dict(RULES)
     return results
 
 

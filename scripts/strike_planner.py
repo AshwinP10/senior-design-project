@@ -80,7 +80,8 @@ def solve_strike(v_in, u, k, restitution=1.0, mass_factor=MASS_FACTOR):
 class StrikePlanner:
     def __init__(self, damping=0.15, out_speed=2.4, max_strike=1.7, tau=0.08,
                  kp_move=6.0, kp_track=4.0, kp_lat=4.0, min_slack=0.0, x_window=(0.12, 0.82),
-                 shot_chooser=None, restitution=1.0, mass_factor=MASS_FACTOR, safe_clearance=None):
+                 shot_chooser=None, restitution=1.0, mass_factor=MASS_FACTOR, safe_clearance=None,
+                 aim_margin=False):
         self.damping, self.out_speed, self.max_strike, self.tau = damping, out_speed, max_strike, tau
         self.kp_move, self.kp_track, self.x_window = kp_move, kp_track, x_window
         # kp_lat: extra gain on tracking error perpendicular to the strike direction (sets aim accuracy).
@@ -91,6 +92,13 @@ class StrikePlanner:
         # safe_clearance (m): rank shots by obstacle clearance up to this value before preferring direct
         # shots. None keeps the original order (any direct shot first, even one that barely clears a block).
         self.safe_clearance = safe_clearance
+        # aim_margin: rank shots by the angular error they tolerate rather than by linear clearance.
+        #   "all"  - margin decides outright, direct and bank compared on the same footing
+        #   "bank" - keep preferring direct shots, but pick among banks by margin. Direct shots already
+        #            land 74-84%; it is the banks, at ~53%, whose long path amplifies the same error.
+        if aim_margin not in (False, None, True, "all", "bank"):
+            raise ValueError("aim_margin must be False, 'all' or 'bank'")
+        self.aim_margin = {True: "all", None: False}.get(aim_margin, aim_margin)
         # Optional callable(strike_point, shots, obs) -> shot dict, used by learned shot selection.
         self.shot_chooser = shot_chooser
         self.reset()
@@ -164,6 +172,11 @@ class StrikePlanner:
                 continue
             if self.shot_chooser:
                 shot = self.shot_chooser(S, shots, obs)
+            elif self.aim_margin == "all":
+                shot = max(shots, key=lambda sh: sg.angular_margin(S, sh, blocks))
+            elif self.aim_margin == "bank":
+                shot = max(shots, key=lambda sh: (sh["kind"] == "direct",
+                                                  sg.angular_margin(S, sh, blocks)))
             elif self.safe_clearance:
                 shot = max(shots, key=lambda sh: (min(sh["clearance"], self.safe_clearance),
                                                   sh["kind"] == "direct", -abs(sh["goal_y"])))
@@ -174,7 +187,13 @@ class StrikePlanner:
                 continue
             score = (shot["kind"] == "direct", min(shot["clearance"], 0.15),
                      min(plan["slack"], self.min_slack), -ts[i])
-            if self.safe_clearance:
+            if self.aim_margin == "all":
+                score = (sg.angular_margin(S, shot, blocks),
+                         min(plan["slack"], self.min_slack), -ts[i])
+            elif self.aim_margin == "bank":
+                score = (shot["kind"] == "direct", sg.angular_margin(S, shot, blocks),
+                         min(plan["slack"], self.min_slack), -ts[i])
+            elif self.safe_clearance:
                 score = (min(shot["clearance"], self.safe_clearance),) + score
             if best is None or score > best[0]:
                 best = (score, plan)

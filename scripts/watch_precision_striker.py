@@ -13,7 +13,7 @@ import torch
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
-from scripts.precision_striker_env import PrecisionStrikerEnv, TASK_VERSION, TASK_VERSION_V3, TASK_VERSION_V4
+from scripts.precision_striker_env import PrecisionStrikerEnv, task_version
 
 WINDOW = "RL Air Hockey | Incoming puck + obstacle scoring"
 
@@ -105,9 +105,10 @@ def main():
     if args.no_window and args.episodes < 1:
         p.error("--no-window requires a positive --episodes count")
     manifest = json.loads((args.run / "manifest.json").read_text())
-    options = manifest.get("task_options", {"require_hit": False, "timeout_penalty": 2.0})
-    if manifest["task_version"] not in (TASK_VERSION, TASK_VERSION_V3, TASK_VERSION_V4):
-        p.error("Use a v2/v3 incoming-puck checkpoint, not the superseded stationary-puck model")
+    training_options = manifest.get("task_options", {"require_hit": False, "timeout_penalty": 2.0})
+    if manifest["task_version"] != task_version(**training_options):
+        p.error("Checkpoint task version does not match its training options")
+    options = {**training_options, "require_hit": True, "obstacle_bounce": False}
     model_path, norm_path = args.run / "policy.zip", args.run / "vecnormalize.pkl"
     trained_steps = manifest.get("completed_timesteps", 0)
     if args.checkpoint_steps:

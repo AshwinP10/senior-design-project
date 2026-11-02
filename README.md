@@ -1,5 +1,8 @@
 # Air Hockey Reinforcement Learning Environment
 
+For the corrected obstacle-contact rules, per-obstacle-count baselines, and training with a
+preference for open direct shots, see [clean scoring](docs/CLEAN_SCORING.md).
+
 ## Precision striker and headless TACC training
 
 See [the implementation plan and runbook](docs/PRECISION_STRIKER_PLAN.md) for the

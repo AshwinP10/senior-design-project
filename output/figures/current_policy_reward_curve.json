@@ -1,0 +1,13 @@
+{
+  "source": "/Users/akshatmehta/Dev/senior-design-project/docs/experiment_data/train_curves_strict_aim.csv",
+  "sweep": "aim-long",
+  "run": "AB-seed3",
+  "checkpoint": "models/tacc-2026-10/AB-seed3-bank",
+  "bins": 60,
+  "bin_width_steps": 500000,
+  "additional_smoothing": false,
+  "rules": "Historical training; obstacle rebounds permitted",
+  "omitted": "Incomplete final 30.5M-step bin",
+  "first_mean_return": -5.718,
+  "last_mean_return": 14.645
+}

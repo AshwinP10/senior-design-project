@@ -40,8 +40,8 @@ def main():
     options = manifest.get("task_options", {"require_hit": False, "timeout_penalty": 2.0})
     if manifest["task_version"] != task_version(**options):
         p.error("Checkpoint task version does not match")
-    if args.obstacle_bounce:
-        options = {**options, "obstacle_bounce": True}
+    # Evaluate the requested scoring task even if the checkpoint learned permissive bounce rules.
+    options = {**options, "require_hit": True, "obstacle_bounce": args.obstacle_bounce}
     TASK_VERSION = task_version(**options)
     args.output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
@@ -72,12 +72,12 @@ def main():
             blocks = base_env.sample_layout(args.seed + layout) if fixed_blocks is None else fixed_blocks
             for shot in range(args.shots):
                 seed = args.seed + 1000 + layout * args.shots + shot
-                options = {"blocks": blocks}
+                episode_options = {"blocks": blocks}
                 if args.velocity is not None:
-                    options["puck_velocity"] = args.velocity
+                    episode_options["puck_velocity"] = args.velocity
                 if args.puck is not None:
-                    options["puck_position"] = args.puck
-                obs, reset_info = env.reset(seed=seed, options=options)
+                    episode_options["puck_position"] = args.puck
+                obs, reset_info = env.reset(seed=seed, options=episode_options)
                 observations, actions, rewards, latencies = [obs.copy()], [], [], []
                 done = False
                 info = {}
