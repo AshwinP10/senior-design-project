@@ -1,0 +1,109 @@
+{
+  "task_version": "precision-striker-v5-bounce-extra-obs-nobounce-paddle-e0.8-wide-upto3-single-blockline0.3",
+  "task_options": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": false,
+    "single_hit": true,
+    "paddle_restitution": 0.8,
+    "extra_obs": true,
+    "goal_shaping": true,
+    "wide_obstacles": true,
+    "obstacles_max": 3,
+    "block_line_prob": 0.3
+  },
+  "algo": "ppo",
+  "hybrid": "none",
+  "completed_timesteps": 0,
+  "dagger": true,
+  "best_iteration": 4,
+  "best_validation_accuracy": 0.235,
+  "history": [
+    {
+      "iteration": 0,
+      "beta": 1.0,
+      "new_steps": 250145,
+      "total_steps": 250145,
+      "rollout_success": 0.9761520308036269,
+      "action_mse": 0.008104700607192232,
+      "validation_accuracy": 0.060000000000000005,
+      "validation_by_condition": {
+        "random_1": 0.04,
+        "random_2": 0.08,
+        "random_3": 0.08,
+        "blocked_1": 0.04
+      },
+      "seconds": 590
+    },
+    {
+      "iteration": 1,
+      "beta": 0.5,
+      "new_steps": 250275,
+      "total_steps": 500420,
+      "rollout_success": 0.22205438066465258,
+      "action_mse": 0.024889718238984188,
+      "validation_accuracy": 0.14,
+      "validation_by_condition": {
+        "random_1": 0.2,
+        "random_2": 0.18,
+        "random_3": 0.14,
+        "blocked_1": 0.04
+      },
+      "seconds": 904
+    },
+    {
+      "iteration": 2,
+      "beta": 0.25,
+      "new_steps": 250309,
+      "total_steps": 750729,
+      "rollout_success": 0.14657738095238096,
+      "action_mse": 0.03032391034165773,
+      "validation_accuracy": 0.22000000000000003,
+      "validation_by_condition": {
+        "random_1": 0.4,
+        "random_2": 0.26,
+        "random_3": 0.2,
+        "blocked_1": 0.02
+      },
+      "seconds": 824
+    },
+    {
+      "iteration": 3,
+      "beta": 0.125,
+      "new_steps": 250388,
+      "total_steps": 1001117,
+      "rollout_success": 0.12623079952737298,
+      "action_mse": 0.03306316038535751,
+      "validation_accuracy": 0.18000000000000002,
+      "validation_by_condition": {
+        "random_1": 0.44,
+        "random_2": 0.2,
+        "random_3": 0.04,
+        "blocked_1": 0.04
+      },
+      "seconds": 7782
+    },
+    {
+      "iteration": 4,
+      "beta": 0.0625,
+      "new_steps": 250461,
+      "total_steps": 1251578,
+      "rollout_success": 0.12232710460412252,
+      "action_mse": 0.03459677336007673,
+      "validation_accuracy": 0.235,
+      "validation_by_condition": {
+        "random_1": 0.42,
+        "random_2": 0.26,
+        "random_3": 0.12,
+        "blocked_1": 0.14
+      },
+      "seconds": 677
+    }
+  ],
+  "planner": {},
+  "sim_teacher": true,
+  "net": 256,
+  "obstacles": 1,
+  "speed_min": 0.3,
+  "speed_max": 1.5
+}
