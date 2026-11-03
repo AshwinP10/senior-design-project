@@ -1,0 +1,51 @@
+{
+ "groups": {
+  "D1": {
+   "pure_imitation_iter0": 10.25,
+   "best_dagger_iteration_val100": 35.25,
+   "imitation_suite_val200": 33.75,
+   "best_ppo_val": 16.75,
+   "best_ppo_source": "D1-ppo-seed1 @ 3.0M",
+   "ppo_gain_points": -17.0,
+   "labelled_steps_millions": 5.017526
+  },
+  "D2": {
+   "pure_imitation_iter0": 15.25,
+   "best_dagger_iteration_val100": 37.25,
+   "imitation_suite_val200": 36.0,
+   "best_ppo_val": 10.750000000000002,
+   "best_ppo_source": "D2-ppo-seed1 @ 3.0M",
+   "ppo_gain_points": -25.25,
+   "labelled_steps_millions": 5.018378
+  },
+  "D3": {
+   "pure_imitation_iter0": 20.0,
+   "best_dagger_iteration_val100": 40.25,
+   "imitation_suite_val200": 42.875,
+   "best_ppo_val": 16.75,
+   "best_ppo_source": "D3-ppo-seed1 @ 2.0M",
+   "ppo_gain_points": -26.125,
+   "labelled_steps_millions": 10.016186
+  },
+  "D4": {
+   "pure_imitation_iter0": 16.5,
+   "best_dagger_iteration_val100": 33.0,
+   "imitation_suite_val200": 31.25,
+   "best_ppo_val": 16.0,
+   "best_ppo_source": "D4-ppo-seed1 @ 2.0M",
+   "ppo_gain_points": -15.25,
+   "labelled_steps_millions": 5.018551
+  }
+ },
+ "teacher_val": 0.9875,
+ "chosen": {
+  "Physics striker": null,
+  "Imitation": "/work/11815/ap63726/ls6/airhockey-runs/imitation-dev/D3-imitation",
+  "Imitation + PPO": "/work/11815/ap63726/ls6/airhockey-runs/imitation-dev/D3-ppo-seed1/curve/ckpt-2000000"
+ },
+ "test": {
+  "Physics striker": 0.97125,
+  "Imitation": 0.37875000000000003,
+  "Imitation + PPO": 0.165
+ }
+}
