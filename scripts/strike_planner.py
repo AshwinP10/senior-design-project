@@ -81,7 +81,7 @@ class StrikePlanner:
     def __init__(self, damping=0.15, out_speed=2.4, max_strike=1.7, tau=0.08,
                  kp_move=6.0, kp_track=4.0, kp_lat=4.0, min_slack=0.0, x_window=(0.12, 0.82),
                  shot_chooser=None, restitution=1.0, mass_factor=MASS_FACTOR, safe_clearance=None,
-                 aim_margin=False):
+                 aim_margin=False, travel_speed=1.8, reaction=0.12):
         self.damping, self.out_speed, self.max_strike, self.tau = damping, out_speed, max_strike, tau
         self.kp_move, self.kp_track, self.x_window = kp_move, kp_track, x_window
         # kp_lat: extra gain on tracking error perpendicular to the strike direction (sets aim accuracy).
@@ -92,6 +92,8 @@ class StrikePlanner:
         # safe_clearance (m): rank shots by obstacle clearance up to this value before preferring direct
         # shots. None keeps the original order (any direct shot first, even one that barely clears a block).
         self.safe_clearance = safe_clearance
+        # Timing assumptions for reaching the run-up point: average travel speed (m/s) and fixed overhead (s).
+        self.travel_speed, self.reaction = travel_speed, reaction
         # aim_margin: rank shots by the angular error they tolerate rather than by linear clearance.
         #   "all"  - margin decides outright, direct and bank compared on the same footing
         #   "bank" - keep preferring direct shots, but pick among banks by margin. Direct shots already
@@ -144,7 +146,7 @@ class StrikePlanner:
         if not (WORK_X[0] <= Q[0] <= WORK_X[1] and abs(Q[1]) <= WORK_Y):
             return None
         travel = np.linalg.norm(Q - obs[:2])
-        slack = (T - tau) - (travel / 1.8 + 0.12)
+        slack = (T - tau) - (travel / self.travel_speed + self.reaction)
         if slack < 0:
             return None
         return {"T": self.t + T, "S": S, "n": n, "s": s, "k": k, "C": C, "Q": Q, "shot": shot,

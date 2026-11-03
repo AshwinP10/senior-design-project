@@ -1,0 +1,9 @@
+{
+  "note": "Deterministic and stochastic evaluation, validation seed 50000, 50 shots per case (random_1, random_2, random_3, blocked_1). Starting network: imitation-dev D3 best DAgger iteration (TACC job 3547783).",
+  "imitation_D3_deterministic": {"mean": 0.405, "per_case": [0.68, 0.34, 0.28, 0.32], "log_std": -1.6},
+  "imitation_D3_stochastic_log_std_-1.6": {"mean": 0.13, "per_case": [0.12, 0.14, 0.12, 0.14]},
+  "old_ppo_settings_0.5M_deterministic": {"mean": 0.22, "per_case": [0.26, 0.30, 0.10, 0.22], "log_std": -1.79},
+  "old_ppo_settings_0.5M_stochastic": {"mean": 0.16, "per_case": [0.34, 0.18, 0.08, 0.04]},
+  "fixed_ppo_0.6M_deterministic": {"mean": 0.45, "per_case": [0.70, 0.48, 0.24, 0.38], "log_std": -3.54},
+  "fixed_ppo_0.8M_deterministic": {"mean": 0.425, "per_case": [0.70, 0.44, 0.14, 0.42], "log_std": -3.55}
+}

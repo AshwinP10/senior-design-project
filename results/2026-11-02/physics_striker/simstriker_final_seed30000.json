@@ -1,0 +1,57 @@
+{
+  "run": "None",
+  "controller": true,
+  "overrides": {
+    "sim": 1.0
+  },
+  "seed": 30000,
+  "random_1": {
+    "goals": 199,
+    "shots": 200,
+    "accuracy": 0.995,
+    "outcomes": {
+      "goal": 199,
+      "missed": 1
+    }
+  },
+  "random_2": {
+    "goals": 194,
+    "shots": 200,
+    "accuracy": 0.97,
+    "outcomes": {
+      "goal": 194,
+      "obstacle_collision": 4,
+      "missed": 2
+    }
+  },
+  "random_3": {
+    "goals": 192,
+    "shots": 200,
+    "accuracy": 0.96,
+    "outcomes": {
+      "goal": 192,
+      "obstacle_collision": 7,
+      "missed": 1
+    }
+  },
+  "blocked_1": {
+    "goals": 192,
+    "shots": 200,
+    "accuracy": 0.96,
+    "outcomes": {
+      "goal": 192,
+      "obstacle_collision": 6,
+      "timeout": 1,
+      "missed": 1
+    }
+  },
+  "mean_accuracy": 0.97125,
+  "rules": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": false,
+    "single_hit": true,
+    "paddle_restitution": 0.8,
+    "wide_obstacles": true
+  }
+}

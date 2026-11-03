@@ -35,7 +35,8 @@ def task_version(require_hit=False, timeout_penalty=2.0, obstacle_bounce=False,
                  wide_obstacles=False, obstacles_max=None, single_hit=False, block_line_prob=0.0,
                  layout_check="geometry", aim_shaping=0.0, prefer_direct=False):
     if extra_obs:
-        base = TASK_VERSION_V5
+        # The v5 name says "bounce" because every v5 run before November 2026 had obstacle_bounce on.
+        base = TASK_VERSION_V5 if obstacle_bounce else TASK_VERSION_V5 + "-nobounce"
     elif obstacle_bounce:
         base = TASK_VERSION_V4
     else:
@@ -393,11 +394,12 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         in_goal_lane = abs(float(y)) + self.puck_radius <= self.simulator.goal_width / 2
         score = bool(x < self.table_x_top - self.puck_radius and in_goal_lane)
         conceded = bool(x > self.table_x_bot + self.puck_radius and in_goal_lane)
-        if self.obstacle_bounce:
-            # v4+: judge the goal where the puck crossed the end line. A fast diagonal puck can cross
-            # inside the mouth and drift sideways behind the line before the next 20 Hz sample.
-            score = score or self._crossed_mouth(previous[4:6], obs[4:6], self.table_x_top)
-            conceded = conceded or self._crossed_mouth(previous[4:6], obs[4:6], self.table_x_bot)
+        # Judge the goal where the puck crossed the end line. A fast diagonal puck (e.g. a bank shot) can
+        # cross inside the mouth and drift sideways behind the line before the next 20 Hz sample. This
+        # used to run only with obstacle_bounce, so under the collision-ends rules such goals were scored
+        # "escaped" (41 of 200 one-block test shots for AB-seed3-bank). It now applies to every rule set.
+        score = score or self._crossed_mouth(previous[4:6], obs[4:6], self.table_x_top)
+        conceded = conceded or self._crossed_mouth(previous[4:6], obs[4:6], self.table_x_bot)
         workspace = bool(obs[0] < self.paddle_radius - 1e-4 or obs[0] > 0.8801 or abs(obs[1]) > 0.3501)
         escaped = bool(abs(x) > self.length / 2 + 0.2 or abs(y) > self.width / 2 + 0.1)
         # v4: the obstacle is just another wall for the puck.

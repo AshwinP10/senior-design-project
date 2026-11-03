@@ -111,7 +111,8 @@ def _dashed(d, a, b, colour, width, dash):
 
 OUTCOME_TEXT = {"goal": ("GOAL", True), "timeout": ("TIME RAN OUT", False), "conceded": ("CONCEDED", False),
                 "obstacle_collision": ("HIT OBSTACLE", False), "escaped": ("LEFT TABLE", False),
-                "workspace_violation": ("OUT OF BOUNDS", False)}
+                "workspace_violation": ("OUT OF BOUNDS", False), "missed": ("NO GOAL", False),
+                "double_hit": ("TOUCHED TWICE", False)}
 
 
 def record(env, actor, reset_kwargs, title, planner=None, overlay=False, canvas=None):

@@ -66,6 +66,16 @@ def main():
     p.add_argument("--ent-coef", type=float, default=0.01)
     p.add_argument("--resume-ent-coef", type=float,
                    help="With --resume: replace the saved model's entropy bonus (DAgger models save 0.0)")
+    # Fine-tuning an imitation network. Its skill needs about +-1 degree of aim, so PPO's default
+    # exploration noise (log std -1.6, about 0.4 m/s) cuts it from 40% to 13% and PPO then learns from
+    # that broken behaviour. These keep the starting skill intact while PPO improves it.
+    p.add_argument("--resume-log-std", type=float, help="With --resume: set the policy's log std (exploration noise)")
+    p.add_argument("--resume-lr", type=float, help="With --resume: replace the saved constant learning rate")
+    p.add_argument("--target-kl", type=float, help="Stop each PPO update early once the policy moves this far (KL)")
+    p.add_argument("--critic-warmup", type=int, default=0,
+                   help="First train only the value network for this many steps (the policy stays fixed)")
+    p.add_argument("--freeze-norm", action="store_true",
+                   help="Keep the observation normalisation fixed (the network was trained with these statistics)")
     p.add_argument("--gamma", type=float, default=0.99)
     p.add_argument("--n-epochs", type=int, default=10)
     p.add_argument("--batch-size", type=int, default=256)
@@ -124,7 +134,7 @@ def main():
             raise ValueError("Resume task version/options do not match; pass the same task flags "
                              "or --resume-new-task to fine-tune on a different task")
         venv = VecNormalize.load(str(args.resume / "vecnormalize.pkl"), venv)
-        venv.training = True
+        venv.training = not args.freeze_norm
         Algo = SAC if previous.get("algo", "ppo") == "sac" else PPO
         model = Algo.load(str(args.resume / "policy.zip"), env=venv, device=args.device)
         model.tensorboard_log = str(args.output / "tensorboard")
@@ -133,6 +143,15 @@ def main():
         model.set_random_seed(args.seed)
         if args.resume_ent_coef is not None:
             model.ent_coef = args.resume_ent_coef
+        if args.resume_log_std is not None and hasattr(model.policy, "log_std"):
+            with torch.no_grad():
+                model.policy.log_std.fill_(args.resume_log_std)
+        if args.resume_lr is not None:
+            from stable_baselines3.common.utils import get_schedule_fn
+            model.learning_rate = args.resume_lr
+            model.lr_schedule = get_schedule_fn(args.resume_lr)
+        if args.target_kl is not None:
+            model.target_kl = args.target_kl
     else:
         venv = VecNormalize(venv, norm_obs=True, norm_reward=False)
         batch = min(args.batch_size, args.rollout * args.envs)
@@ -172,7 +191,10 @@ def main():
     manifest["actual_batch_size"] = model.batch_size
     manifest["policy_architecture"] = str(model.policy)
     if isinstance(model, PPO):
-        manifest["ppo"] = {"learning_rate": args.lr, "lr_schedule": args.lr_schedule,
+        manifest["ppo"] = {"learning_rate": args.resume_lr if args.resume_lr is not None else args.lr,
+                           "lr_schedule": "constant" if args.resume_lr is not None else args.lr_schedule,
+                           "log_std": args.resume_log_std, "target_kl": args.target_kl,
+                           "critic_warmup": args.critic_warmup, "freeze_norm": args.freeze_norm,
                            "gamma": model.gamma, "gae_lambda": model.gae_lambda,
                            "n_epochs": model.n_epochs, "ent_coef": model.ent_coef,
                            "vf_coef": model.vf_coef, "max_grad_norm": model.max_grad_norm}
@@ -185,8 +207,21 @@ def main():
                                   name_prefix="policy", save_vecnormalize=True)
     print(json.dumps(manifest, indent=2), flush=True)
     try:
-        model.learn(total_timesteps=args.steps, callback=callback,
-                    reset_num_timesteps=args.resume is None, progress_bar=False)
+        remaining = args.steps
+        if args.critic_warmup > 0:
+            # Value network only: freeze the actor so the untrained critic cannot push the policy around.
+            actor = [p for n, p in model.policy.named_parameters()
+                     if not (n.startswith("mlp_extractor.value_net") or n.startswith("value_net"))]
+            for prm in actor:
+                prm.requires_grad_(False)
+            model.learn(total_timesteps=min(args.critic_warmup, args.steps), callback=callback,
+                        reset_num_timesteps=args.resume is None, progress_bar=False)
+            for prm in actor:
+                prm.requires_grad_(True)
+            remaining = max(args.steps - args.critic_warmup, 0)
+        if remaining > 0:
+            model.learn(total_timesteps=remaining, callback=callback,
+                        reset_num_timesteps=args.resume is None and args.critic_warmup <= 0, progress_bar=False)
     finally:
         model.save(str(args.output / "policy"))
         venv.save(str(args.output / "vecnormalize.pkl"))

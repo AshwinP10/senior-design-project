@@ -26,14 +26,26 @@ from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
 from scripts.precision_striker_env import PrecisionStrikerEnv, task_version
-from scripts.strike_planner import StrikePlanner
+from scripts.strike_planner import TUNED, StrikePlanner
 
 TASK = {"require_hit": True, "timeout_penalty": 10.0, "obstacle_bounce": True}
+# --clean: the corrected scoring task (scripts/eval_suite.py RULES): one paddle contact, paddle restitution
+# 0.8, obstacle contact ends the shot.
+CLEAN_TASK = {"require_hit": True, "timeout_penalty": 10.0, "obstacle_bounce": False, "single_hit": True,
+              "paddle_restitution": 0.8}
 
 
-def _load(run):
+def _teacher(task, obs_options, planner_kwargs, sim):
+    if not sim:
+        return StrikePlanner(**planner_kwargs)
+    from scripts.sim_striker import SimStrikePlanner
+    settings = {**TUNED, "restitution": task.get("paddle_restitution") or 1.0, **planner_kwargs}
+    return SimStrikePlanner(env_kwargs={**task, **obs_options}, **settings)
+
+
+def _load(run, task=TASK):
     model = PPO.load(str(Path(run) / "policy.zip"), device="cpu")
-    probe = PrecisionStrikerEnv(obstacles=1, **TASK, **json.loads((Path(run) / "obs_options.json").read_text()))
+    probe = PrecisionStrikerEnv(obstacles=1, **task, **json.loads((Path(run) / "obs_options.json").read_text()))
     norm = VecNormalize.load(str(Path(run) / "vecnormalize.pkl"), DummyVecEnv([lambda: probe]))
     norm.training = False
     return model, norm
@@ -41,12 +53,12 @@ def _load(run):
 
 def collect(job):
     """Roll out the current network (or the controller with probability beta); label with the controller."""
-    seed, steps, run, beta, obs_options, planner_kwargs, gamma = job
+    seed, steps, run, beta, obs_options, planner_kwargs, gamma, task, sim = job
     torch.set_num_threads(1)
     rng = np.random.default_rng(seed)
-    env = PrecisionStrikerEnv(seed=seed, obstacles=1, **TASK, **obs_options)
-    planner = StrikePlanner(**planner_kwargs)
-    model, norm = (None, None) if beta >= 1.0 else _load(run)
+    env = PrecisionStrikerEnv(seed=seed, obstacles=1, **task, **obs_options)
+    planner = _teacher(task, obs_options, planner_kwargs, sim)
+    model, norm = (None, None) if beta >= 1.0 else _load(run, task)
     X, Y, R, wins, episodes = [], [], [], 0, 0
     while len(X) < steps:
         obs, _ = env.reset(seed=int(rng.integers(0, 2**31 - 1)))
@@ -131,13 +143,26 @@ def main():
     p.add_argument("--val-layouts", type=int, default=10)
     p.add_argument("--wide-obstacles", action="store_true", help="Obstacles anywhere a user may place one")
     p.add_argument("--obstacles-max", type=int, help="Random obstacle count per episode: 1..this")
+    p.add_argument("--clean", action="store_true",
+                   help="Corrected scoring task (one contact, restitution 0.8, obstacle contact ends the shot); "
+                        "validation uses the strict suite (scripts/eval_suite.py) on seed 50000")
+    p.add_argument("--sim-teacher", action="store_true",
+                   help="Teacher = physics striker with simulator-in-the-loop aim correction (scripts/sim_striker.py)")
+    p.add_argument("--block-line-prob", type=float, default=0.0)
+    p.add_argument("--layout-check", choices=["geometry", "trajectory"], default="geometry")
+    p.add_argument("--val-shots", type=int, default=50, help="--clean: validation shots per suite condition")
     args = p.parse_args()
+    task = CLEAN_TASK if args.clean else TASK
     # Environment options beyond the fixed task rules (saved with every iteration and in the manifest).
     obs_options = {"extra_obs": args.extra_obs, "goal_shaping": args.goal_shaping}
     if args.wide_obstacles:
         obs_options["wide_obstacles"] = True
     if args.obstacles_max:
         obs_options["obstacles_max"] = args.obstacles_max
+    if args.block_line_prob:
+        obs_options["block_line_prob"] = args.block_line_prob
+    if args.layout_check != "geometry":
+        obs_options["layout_check"] = args.layout_check
     planner_kwargs = json.loads(args.planner)
     args.output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(8)
@@ -153,13 +178,14 @@ def main():
             prev = args.output / f"iter{k - 1}" if k else None
             per = -(-args.steps_per_iter // args.workers)
             parts = pool.map(collect, [(args.seed * 100_000 + k * 1000 + i, per, prev, beta, obs_options,
-                                        planner_kwargs, args.gamma) for i in range(args.workers)])
+                                        planner_kwargs, args.gamma, task, args.sim_teacher)
+                                       for i in range(args.workers)])
             X = np.concatenate([q[0] for q in parts]); Y = np.concatenate([q[1] for q in parts])
             R = np.concatenate([q[2] for q in parts])
             rollout_success = sum(q[3] for q in parts) / max(1, sum(q[4] for q in parts))
             data = (X, Y, R) if data is None else tuple(np.concatenate([a, b]) for a, b in zip(data, (X, Y, R)))
             if model is None:                         # normalisation fixed from the controller's own states
-                venv = VecNormalize(DummyVecEnv([lambda: PrecisionStrikerEnv(obstacles=1, **TASK, **obs_options)]),
+                venv = VecNormalize(DummyVecEnv([lambda: PrecisionStrikerEnv(obstacles=1, **task, **obs_options)]),
                                     norm_obs=True, norm_reward=False)
                 venv.obs_rms.mean = X.mean(0).astype(np.float64)
                 venv.obs_rms.var = X.var(0).astype(np.float64) + 1e-8
@@ -173,11 +199,21 @@ def main():
             mse = fit(model, norm, *data, epochs=args.epochs if k else 3 * args.epochs, lr=1e-3 if k == 0 else 3e-4)
             model.save(str(it_dir / "policy")); norm.save(str(it_dir / "vecnormalize.pkl"))
             (it_dir / "obs_options.json").write_text(json.dumps(obs_options))
-            chunks = [[l] for l in range(args.val_layouts)]
-            vals = pool.map(validate, [(it_dir, c, obs_options) for c in chunks])
-            val = sum(g for g, _ in vals) / max(1, sum(s for _, s in vals))
+            per_condition = {}
+            if args.clean:
+                from scripts.eval_suite import evaluate
+                (it_dir / "manifest.json").write_text(json.dumps({"task_options": {**task, **obs_options}}))
+                conds = ["random_1", "random_2", "random_3", "blocked_1"]
+                res = dict(pool.map(evaluate, [(c, str(it_dir), False, 50000, args.val_shots, None) for c in conds]))
+                per_condition = {c: res[c]["accuracy"] for c in conds}
+                val = float(np.mean(list(per_condition.values())))
+            else:
+                chunks = [[l] for l in range(args.val_layouts)]
+                vals = pool.map(validate, [(it_dir, c, obs_options) for c in chunks])
+                val = sum(g for g, _ in vals) / max(1, sum(s for _, s in vals))
             history.append({"iteration": k, "beta": beta, "new_steps": int(len(X)), "total_steps": int(len(data[0])),
                             "rollout_success": rollout_success, "action_mse": mse, "validation_accuracy": val,
+                            "validation_by_condition": per_condition,
                             "seconds": round(time.perf_counter() - started)})
             print(json.dumps(history[-1]), flush=True)
             if val > best[0]:
@@ -186,10 +222,11 @@ def main():
     src = args.output / f"iter{k}"
     for name in ("policy.zip", "vecnormalize.pkl"):
         (args.output / name).write_bytes((src / name).read_bytes())
-    task_options = {**TASK, **obs_options}
+    task_options = {**task, **obs_options}
     manifest = {"task_version": task_version(**task_options), "task_options": task_options, "algo": "ppo",
                 "hybrid": "none", "completed_timesteps": 0, "dagger": True, "best_iteration": k,
                 "best_validation_accuracy": best[0], "history": history, "planner": planner_kwargs,
+                "sim_teacher": args.sim_teacher,
                 "net": args.net, "obstacles": 1, "speed_min": 0.3, "speed_max": 1.5}
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2))
     print(f"Best iteration {k}: validation {best[0]:.3f}. Saved to {args.output}")

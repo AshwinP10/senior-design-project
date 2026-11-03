@@ -36,7 +36,15 @@ CONDITIONS = {
 def _policy(run, controller, overrides=None):
     overrides = {k: v for k, v in (overrides or {}).items() if k != "layout_check"}
     if controller:
-        planner = StrikePlanner(**{**TUNED, "restitution": RULES["paddle_restitution"], **overrides})
+        settings = {**TUNED, "restitution": RULES["paddle_restitution"], **overrides}
+        if settings.pop("sim", 0):
+            from scripts.sim_striker import SimStrikePlanner
+            for k in ("iterations", "alternatives"):
+                if k in settings:
+                    settings[k] = int(settings[k])
+            planner = SimStrikePlanner(env_kwargs=dict(RULES), **settings)
+            return planner.act, planner.reset, {}
+        planner = StrikePlanner(**settings)
         return planner.act, planner.reset, {}
     import torch
     from stable_baselines3 import PPO

@@ -324,6 +324,43 @@ class PrecisionStrikerTests(unittest.TestCase):
         finally:
             env.close()
 
+    def test_fast_diagonal_goal_counts_without_obstacle_bounce(self):
+        env = PrecisionStrikerEnv(obstacles=1, randomize=False, require_hit=False, obstacle_bounce=False,
+                                  single_hit=True, paddle_restitution=0.8)
+        try:
+            env.reset(seed=1, options={"blocks": []})
+            puck = env.simulator.pucks["puck_0"]
+            puck.position = env.simulator.base_coord_to_box2d((-0.80, 0.0))
+            puck.linearVelocity = env.simulator.base_coord_to_box2d((-2.3, -1.1))
+            for _ in range(10):
+                _, _, terminated, _, info = env.step(np.zeros(2))
+                if terminated:
+                    break
+            self.assertEqual(info["outcome"], "goal")
+        finally:
+            env.close()
+
+    def test_sim_striker_scores_under_clean_rules(self):
+        from scripts.eval_suite import RULES
+        from scripts.sim_striker import SimStrikePlanner
+        from scripts.strike_planner import TUNED
+        env = PrecisionStrikerEnv(seed=50000, obstacles=2, randomize=False, **RULES)
+        planner = SimStrikePlanner(env_kwargs=dict(RULES), **{**TUNED, "restitution": 0.8})
+        try:
+            goals = 0
+            for seed in range(51000, 51010):
+                obs, _ = env.reset(seed=seed)
+                planner.reset()
+                done = False
+                while not done:
+                    obs, _, terminated, truncated, info = env.step(planner.act(obs))
+                    done = terminated or truncated
+                goals += info["is_success"]
+            self.assertGreaterEqual(goals, 9)
+            self.assertGreaterEqual(planner.stats["checked"], 9)
+        finally:
+            env.close()
+
     def test_reject_unreachable_or_overlapping_setup(self):
         with self.assertRaises(ValueError):
             self.env.reset(options={"puck_position": [-0.5, 0]})
