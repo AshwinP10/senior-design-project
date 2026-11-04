@@ -33,14 +33,22 @@ CONDS=(random_1 random_2 random_3 blocked_1)
 IM="$OUT/$GROUP-imitation"
 echo "$(hostname) group $GROUP start $(date)"
 
-# 1. Imitation (behaviour cloning, then DAgger)
-"$PY" -u -m scripts.train_dagger --output "$IM" --seed "$SEED" --workers 120 --iterations "$ITERS" \
-    --steps-per-iter "$PER" --epochs 8 --net "$NET" --clean --sim-teacher --val-shots 100 \
-    "${ENV_FLAGS[@]}" > "$OUT/$GROUP-imitation.log" 2>&1 || { echo "DAgger failed"; exit 1; }
+if [ -n "${IMITATION_FROM:-}" ]; then
+    # PPO only: reuse the imitation networks of an earlier sweep (linked, not copied or retrained).
+    ln -sfn "$IMITATION_FROM/$GROUP-imitation" "$IM"
+    cp "$IMITATION_FROM/$GROUP-imitation.log" "$OUT/" 2>/dev/null
+    [ -f "$IM/suite_val50000.json" ] || "$PY" -u -m scripts.eval_suite --run "$IM" --seed 50000 --workers 4 \
+        --only "${CONDS[@]}" --output "$IM/suite_val50000.json" > "$OUT/$GROUP-imitation-suite.log" 2>&1
+else
+    # 1. Imitation (behaviour cloning, then DAgger)
+    "$PY" -u -m scripts.train_dagger --output "$IM" --seed "$SEED" --workers 120 --iterations "$ITERS" \
+        --steps-per-iter "$PER" --epochs 8 --net "$NET" --clean --sim-teacher --val-shots 100 \
+        "${ENV_FLAGS[@]}" > "$OUT/$GROUP-imitation.log" 2>&1 || { echo "DAgger failed"; exit 1; }
 
-# 2. Best imitation network on the full validation suite
-"$PY" -u -m scripts.eval_suite --run "$IM" --seed 50000 --workers 4 --only "${CONDS[@]}" \
-    --output "$IM/suite_val50000.json" > "$IM/suite.log" 2>&1
+    # 2. Best imitation network on the full validation suite
+    "$PY" -u -m scripts.eval_suite --run "$IM" --seed 50000 --workers 4 --only "${CONDS[@]}" \
+        --output "$IM/suite_val50000.json" > "$IM/suite.log" 2>&1
+fi
 
 # 3. PPO fine-tuning from the best imitation network, 3 seeds. Small exploration noise, low learning rate,
 #    capped update size, value-network warm-up and fixed normalisation: with PPO defaults the noise alone
@@ -63,7 +71,7 @@ for s in 1 2 3; do
     run="$OUT/$GROUP-ppo-seed$s"
     [ -f "$run/policy.zip" ] && "$PY" -u -m scripts.eval_suite --run "$run" --seed 50000 --workers 4 \
         --only "${CONDS[@]}" --output "$run/suite_val50000.json" > "$run/suite.log" 2>&1 &
-    for n in $(ls "$run/checkpoints" 2>/dev/null | grep -o 'policy_[0-9]*_steps.zip' | grep -o '[0-9]*' | sort -n | awk 'NR % 4 == 0'); do
+    for n in $(ls "$run/checkpoints" 2>/dev/null | grep -o 'policy_[0-9]*_steps.zip' | grep -o '[0-9]*' | sort -n | awk -v k="${CURVE_EVERY:-4}" 'NR % k == 0'); do
         d="$run/curve/ckpt-$n"; mkdir -p "$d"
         cp "$run/checkpoints/policy_${n}_steps.zip" "$d/policy.zip"
         cp "$run/checkpoints/policy_vecnormalize_${n}_steps.pkl" "$d/vecnormalize.pkl"

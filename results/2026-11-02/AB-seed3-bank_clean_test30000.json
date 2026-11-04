@@ -1,0 +1,56 @@
+{
+  "run": "models\\tacc-2026-10\\AB-seed3-bank",
+  "controller": false,
+  "overrides": {},
+  "seed": 30000,
+  "random_1": {
+    "goals": 139,
+    "shots": 200,
+    "accuracy": 0.695,
+    "outcomes": {
+      "obstacle_collision": 39,
+      "goal": 139,
+      "missed": 22
+    }
+  },
+  "random_2": {
+    "goals": 104,
+    "shots": 200,
+    "accuracy": 0.52,
+    "outcomes": {
+      "obstacle_collision": 86,
+      "missed": 10,
+      "goal": 104
+    }
+  },
+  "random_3": {
+    "goals": 52,
+    "shots": 200,
+    "accuracy": 0.26,
+    "outcomes": {
+      "obstacle_collision": 137,
+      "goal": 52,
+      "missed": 11
+    }
+  },
+  "blocked_1": {
+    "goals": 168,
+    "shots": 200,
+    "accuracy": 0.84,
+    "outcomes": {
+      "missed": 9,
+      "goal": 168,
+      "double_hit": 1,
+      "obstacle_collision": 22
+    }
+  },
+  "mean_accuracy": 0.57875,
+  "rules": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": false,
+    "single_hit": true,
+    "paddle_restitution": 0.8,
+    "wide_obstacles": true
+  }
+}
