@@ -4,7 +4,8 @@
 # starts in a fresh <sweep>-retryN folder). The push runs here on the login node, which can reach GitHub.
 # Run it inside tmux on a TACC login node, from the code folder, so it keeps going without a laptop:
 #   tmux new-session -d -s striker 'bash scripts/tacc/supervise.sh imitation-hints "H1 H2 H3 H4" ITERS=10,PPO_STEPS=20000000'
-# Progress: logs/supervise-<name>.log.   Attach: tmux attach -t striker   (detach: Ctrl-b then d)
+# Training queue: PARTITION and TIME_LIMIT in the environment (default normal, 24:00:00), e.g. PARTITION=development
+# TIME_LIMIT=02:00:00 for a short run. Progress: logs/supervise-<name>.log.   Attach: tmux attach -t striker   (detach: Ctrl-b then d)
 set -uo pipefail
 NAME="$1"; SWEEP_GROUPS="$2"; EXPORTS="${3:-}"
 CODE="$(pwd)"
@@ -24,7 +25,7 @@ for attempt in 0 1 2; do
         if [ -f "$SWEEP/TRAINING_DONE" ]; then
             say "training already done in $SWEEP"
         else
-            J=$(sbatch --parsable -A "$ACCOUNT" -p normal -t 24:00:00 \
+            J=$(sbatch --parsable -A "$ACCOUNT" -p "${PARTITION:-normal}" -t "${TIME_LIMIT:-24:00:00}" \
                 --export=ALL,SWEEP_DIR="$SWEEP",SWEEP_GROUPS="$SWEEP_GROUPS"${EXPORTS:+,$EXPORTS} \
                 scripts/tacc/imitation_sweep.slurm | jobid)
             say "training job $J submitted (attempt $attempt, $SWEEP)"
