@@ -53,6 +53,8 @@ def main():
                    help="Share of episodes with an obstacle on the straight line to the goal")
     p.add_argument("--aim-shaping", type=float, default=0.0,
                    help="Reward (up to this) for the puck leaving the paddle along a clear shot line")
+    p.add_argument("--hint-obs", action="store_true",
+                   help="Also observe the trajectory calculator's hints (strike point, clear shot direction)")
     p.add_argument("--prefer-direct", action="store_true",
                    help="With --aim-shaping, reward bank-shot aim only when direct shots are blocked")
     p.add_argument("--layout-check", choices=["geometry", "trajectory"], default="geometry",
@@ -96,7 +98,8 @@ def main():
                        ("paddle_restitution", args.paddle_restitution), ("single_hit", args.single_hit),
                        ("block_line_prob", args.block_line_prob or None),
                        ("layout_check", None if args.layout_check == "geometry" else args.layout_check),
-                       ("aim_shaping", args.aim_shaping or None), ("prefer_direct", args.prefer_direct)):
+                       ("aim_shaping", args.aim_shaping or None), ("prefer_direct", args.prefer_direct),
+                       ("hint_obs", args.hint_obs)):
         if value not in (False, None):
             task_options[key] = value
     TASK_VERSION = task_version(**task_options)
@@ -127,8 +130,8 @@ def main():
                             "extra_obs": False, "goal_shaping": False, **previous.get("task_options", {})}
         previous_options = {k: v for k, v in previous_options.items() if v not in (False, None) or k in
                             ("require_hit", "obstacle_bounce", "extra_obs", "goal_shaping")}
-        if previous_options["extra_obs"] != args.extra_obs:
-            raise ValueError("Cannot resume across observation sizes (--extra-obs must match)")
+        if previous_options["extra_obs"] != args.extra_obs or bool(previous_options.get("hint_obs")) != args.hint_obs:
+            raise ValueError("Cannot resume across observation sizes (--extra-obs and --hint-obs must match)")
         if not args.resume_new_task and (previous["task_version"] != TASK_VERSION
                                          or previous_options != task_options):
             raise ValueError("Resume task version/options do not match; pass the same task flags "

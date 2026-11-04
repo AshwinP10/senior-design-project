@@ -108,7 +108,7 @@ class Demo:
         # imitation + PPO network also sees "already hit" and "time used"). The controller ignores them.
         manifest = json.loads((self.rl_run / "manifest.json").read_text()) if (self.rl_run / "manifest.json").exists() else {}
         opts = manifest.get("task_options", {})
-        self.rl_obs = {k: bool(opts.get(k, False)) for k in ("extra_obs", "goal_shaping")}
+        self.rl_obs = {k: bool(opts.get(k, False)) for k in ("extra_obs", "goal_shaping", "hint_obs")}
         # Random demo layouts use the model's training region, so N shows the setups it trained on.
         if opts.get("wide_obstacles"):
             self.rl_obs["wide_obstacles"] = True

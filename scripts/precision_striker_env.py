@@ -28,12 +28,18 @@ TASK_VERSION_V4 = "precision-striker-v4-obstacle-bounce"
 # Observation length 22 instead of 20, so v5 checkpoints are not interchangeable with v2-v4.
 TASK_VERSION_V5 = "precision-striker-v5-bounce-extra-obs"
 MAX_OBSTACLES = 3
+# hint_obs: 7 inputs computed from the observation itself by the trajectory calculator (no hidden state):
+# [valid, strike x, strike y, time to strike (s), best clear shot direction x, y, bank shot].
+# The strike point is where the predicted incoming path first reaches x = HINT_X; the shot is the
+# best clear straight or bank line from there (scoring_geometry.candidate_shots, first choice).
+HINT_X = 0.55
+HINT_LOW, HINT_HIGH = [0, -1, -0.5, 0, -1, -1, 0], [1, 1, 0.5, 3, 1, 1, 1]
 
 
 def task_version(require_hit=False, timeout_penalty=2.0, obstacle_bounce=False,
                  extra_obs=False, goal_shaping=False, paddle_restitution=None,
                  wide_obstacles=False, obstacles_max=None, single_hit=False, block_line_prob=0.0,
-                 layout_check="geometry", aim_shaping=0.0, prefer_direct=False):
+                 layout_check="geometry", aim_shaping=0.0, prefer_direct=False, hint_obs=False):
     if extra_obs:
         # The v5 name says "bounce" because every v5 run before November 2026 had obstacle_bounce on.
         base = TASK_VERSION_V5 if obstacle_bounce else TASK_VERSION_V5 + "-nobounce"
@@ -58,6 +64,8 @@ def task_version(require_hit=False, timeout_penalty=2.0, obstacle_bounce=False,
         base += f"-aim{aim_shaping:g}"       # reward for leaving the paddle along a clear shot line
     if prefer_direct:
         base += "-direct"
+    if hint_obs:
+        base += "-hints"                     # 7 trajectory-calculator hint inputs (HINT_OBS)
     return base
 
 
@@ -66,7 +74,7 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
                  speed_min=0.3, speed_max=1.5, require_hit=False, timeout_penalty=2.0,
                  obstacle_bounce=False, extra_obs=False, goal_shaping=False, paddle_restitution=None,
                  wide_obstacles=False, obstacles_max=None, single_hit=False, block_line_prob=0.0,
-                 layout_check="geometry", aim_shaping=0.0, prefer_direct=False):
+                 layout_check="geometry", aim_shaping=0.0, prefer_direct=False, hint_obs=False):
         if not 0 <= obstacles <= MAX_OBSTACLES or max_steps < 1:
             raise ValueError("Require 0..3 obstacles and positive max_steps")
         if timeout_penalty < 0:
@@ -75,6 +83,7 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         self.timeout_penalty = float(timeout_penalty)
         self.obstacle_bounce = bool(obstacle_bounce)
         self.extra_obs = bool(extra_obs)
+        self.hint_obs = bool(hint_obs)
         # After the hit, reward progress toward the goal mouth instead of plain -x progress.
         self.goal_shaping = bool(goal_shaping)
         # Paddle-puck restitution (None keeps the original simulator's 1.0). Box2D uses the larger of the
@@ -118,7 +127,7 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
                                          self.extra_obs, self.goal_shaping, self.paddle_restitution,
                                          self.wide_obstacles, self.obstacles_max, self.single_hit,
                                          self.block_line_prob, self.layout_check, self.aim_shaping,
-                                         self.prefer_direct)
+                                         self.prefer_direct, self.hint_obs)
         self.obstacle_count = int(obstacles)
         if not 0 < speed_min <= speed_max <= 2.0:
             raise ValueError("Require 0 < speed_min <= speed_max <= 2 m/s")
@@ -150,6 +159,8 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         high = list(self.observation_space.high) + [1, 0.5, 0.2, 1] * MAX_OBSTACLES
         # Terminal puck positions may be just outside the table.
         low[4:6], high[4:6] = [-2, -1], [2, 1]
+        if self.hint_obs:                       # before extra_obs, which must stay the last 2 values
+            low, high = low + HINT_LOW, high + HINT_HIGH
         if self.extra_obs:
             low, high = low + [0, 0], high + [1, 1]
         self.observation_space = self.single_observation_space = Box(
@@ -161,10 +172,33 @@ class PrecisionStrikerEnv(AirHockeyFlatTableEnv):
         for i, pos in enumerate(self.user_block_positions):
             slots[i] = (*pos, self.block_width, 1)
         parts = [state, slots.ravel()]
+        if self.hint_obs:
+            parts.append(self._hints(state))
         if self.extra_obs:
             elapsed = min(1.0, getattr(self, "_steps", 0) / self.max_timesteps)
             parts.append(np.array([float(getattr(self, "_hit", False)), elapsed], dtype=np.float32))
         return np.concatenate(parts).astype(np.float32)
+
+    def _hints(self, state):
+        """Trajectory-calculator hints (see HINT_OBS). Zeros once the puck is hit or not coming in."""
+        out = np.zeros(7, dtype=np.float32)
+        puck, v = np.asarray(state[4:6], float), np.asarray(state[6:8], float)
+        if v[0] <= 0.02 or getattr(self, "_hit", False):
+            return out
+        from scripts.strike_planner import predict
+        ts, ps, _ = predict(puck, v, 0.15)
+        inside = np.where((ps[:, 0] >= 0.12) & (ps[:, 0] <= 0.82) & (np.abs(ps[:, 1]) <= 0.34))[0]
+        if not len(inside):
+            return out
+        ahead = inside[ps[inside, 0] >= HINT_X]
+        i = int(ahead[0] if len(ahead) else inside[-1])
+        shots = sg.candidate_shots(ps[i], list(self.user_block_positions))
+        if not shots:
+            out[:4] = (1, ps[i, 0], ps[i, 1], min(ts[i], 3.0))
+            return out
+        d = shots[0]["direction"]
+        out[:] = (1, ps[i, 0], ps[i, 1], min(ts[i], 3.0), d[0], d[1], float(shots[0]["kind"] == "bank"))
+        return out
 
     def get_puck_configuration(self, bad_regions=None):
         return self._spawn_puck, self._spawn_velocity

@@ -17,21 +17,21 @@ fi
 cd "$REPO" || fail "cd"
 git fetch -q origin || fail "fetch"
 git checkout -q main && git reset -q --hard origin/main || fail "checkout"
-mkdir -p "$DEST/report/gifs" "$DEST/runs"
+mkdir -p "$DEST/report/animations" "$DEST/run_files"   # "gifs/" and "runs/" are gitignored
 cp "$SWEEP"/report/*.png "$SWEEP"/report/*.md "$SWEEP"/report/*.json "$DEST/report/" 2>/dev/null
 # GIFs up to 8 MB each (GitHub warns above 50 MB per file; keep the repository light).
-find "$SWEEP/report/gifs" -name '*.gif' -size -8M -exec cp {} "$DEST/report/gifs/" \; 2>/dev/null
-cp "$SWEEP"/teacher_suite_val50000.json "$DEST/runs/" 2>/dev/null
+find "$SWEEP/report/gifs" -name '*.gif' -size -8M -exec cp {} "$DEST/report/animations/" \; 2>/dev/null
+cp "$SWEEP"/teacher_suite_val50000.json "$DEST/run_files/" 2>/dev/null
 for d in "$SWEEP"/D*-imitation "$SWEEP"/D*-ppo-seed*; do
     [ -d "$d" ] || continue
-    n=$(basename "$d"); mkdir -p "$DEST/runs/$n"
-    cp "$d"/manifest.json "$d"/suite_val50000.json "$DEST/runs/$n/" 2>/dev/null
+    n=$(basename "$d"); mkdir -p "$DEST/run_files/$n"
+    cp "$d"/manifest.json "$d"/suite_val50000.json "$DEST/run_files/$n/" 2>/dev/null
     for f in "$d"/curve/ckpt-*/suite_val50000.json; do
         [ -f "$f" ] || continue
-        c=$(basename "$(dirname "$f")"); mkdir -p "$DEST/runs/$n/curve/$c"; cp "$f" "$DEST/runs/$n/curve/$c/"
+        c=$(basename "$(dirname "$f")"); mkdir -p "$DEST/run_files/$n/curve/$c"; cp "$f" "$DEST/run_files/$n/curve/$c/"
     done
 done
-cp "$SWEEP"/*-imitation.log "$DEST/runs/" 2>/dev/null
+cp "$SWEEP"/*-imitation.log "$DEST/run_files/" 2>/dev/null
 # The models the report chose on validation (imitation and imitation + PPO), so others can run them.
 python3 - "$SWEEP/report/summary.json" "$REPO/models/tacc-2026-11/$NAME" <<'PY'
 import json, shutil, sys
@@ -47,7 +47,7 @@ for label, run in summary.get("chosen", {}).items():
             shutil.copy(Path(run) / f, out / f)
     (out / "SOURCE.txt").write_text(f"{run}\n")
 PY
-git add "$DEST" "models/tacc-2026-11/$NAME" 2>/dev/null
+git add -f "$DEST" "models/tacc-2026-11/$NAME" 2>/dev/null   # -f: *.gif, *.log are gitignored repo-wide
 if git diff --cached --quiet; then echo "nothing new to publish"; rm -f "$SWEEP/PUBLISH_FAILED"; exit 0; fi
 MSG="Add TACC results: $NAME
 

@@ -25,9 +25,13 @@ import numpy as np
 
 CONDS = ["random_1", "random_2", "random_3", "blocked_1"]
 COND_LABEL = {"random_1": "1 block", "random_2": "2 blocks", "random_3": "3 blocks", "blocked_1": "block on\nstraight line"}
-GROUP_TEXT = {"D1": "D1: 1M steps/iter, 256 net", "D2": "D2: 1M steps/iter, 512 net",
-              "D3": "D3: 2M steps/iter, 512 net", "D4": "D4: 1M steps/iter, 256 net, 50% blocked"}
-COL = {"D1": "#2a78d6", "D2": "#eb6834", "D3": "#1baf7a", "D4": "#6250d6"}
+GROUP_TEXT = {"D1": "D1: 1M examples per loop, 256 net", "D2": "D2: 1M examples per loop, 512 net",
+              "D3": "D3: 2M examples per loop, 512 net", "D4": "D4: 1M examples per loop, 256 net, 50% blocked",
+              "H1": "H1: hints, 1M examples per loop, 512 net", "H2": "H2: hints, 0.5M examples per loop, 512 net",
+              "H3": "H3: hints, 2M examples per loop, 512 net", "H4": "H4: hints, 1M per loop, PPO on 2-3 blocks"}
+GROUP_TEXT = type("Labels", (dict,), {"__missing__": lambda self, k: k})(GROUP_TEXT)
+COL = {"D1": "#2a78d6", "D2": "#eb6834", "D3": "#1baf7a", "D4": "#6250d6",
+       "H1": "#2a78d6", "H2": "#eb6834", "H3": "#1baf7a", "H4": "#6250d6"}
 GREY, INK, MUTED = "#a9a8a2", "#0b0b0b", "#52514e"
 
 
@@ -124,16 +128,18 @@ def charts(data, teacher, out):
     for g, e in data.items():
         if not e["history"]:
             continue
-        x = [h["total_steps"] / 1e6 for h in e["history"]]
+        # x = DAgger round, so setups with different data per round line up round for round.
+        x = [h["iteration"] for h in e["history"]]
         y = [100 * h["validation_accuracy"] for h in e["history"]]
-        ax.plot(x, y, marker="o", ms=4, lw=1.8, color=COL[g], label=GROUP_TEXT[g])
-        ax.annotate("pure imitation" if g == "D1" else "", (x[0], y[0]), textcoords="offset points", xytext=(6, -12), fontsize=7, color=MUTED)
+        ax.plot(x, y, marker="o", ms=4, lw=1.8, color=COL.get(g, GREY), label=GROUP_TEXT[g])
     if tmean:
         ax.axhline(tmean, ls="--", color=INK, lw=1)
         ax.text(ax.get_xlim()[0], tmean + 1.5, f"teacher (physics striker) {tmean:.1f}%", fontsize=8, color=INK)
     _style(ax, "Validation goals (mean of 4 cases)")
-    ax.set_xlabel("Labelled training examples (millions of steps)", color=MUTED, fontsize=9)
-    ax.set_title("Imitation only: first point = plain copying, later points = DAgger iterations", loc="left", fontsize=10.5)
+    ax.set_xlabel("Training loop number (loop 0 = the striker plays and the network only copies)", color=MUTED, fontsize=9)
+    ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+    ax.set_title("Imitation only. One loop = play new shots, the striker says the right move at every step, retrain",
+                 loc="left", fontsize=9.5)
     ax.legend(frameon=False, fontsize=8, loc="lower right")
     fig.savefig(out / "imitation_curve.png", dpi=180, bbox_inches="tight"); plt.close(fig)
     # 2. PPO curve
@@ -147,7 +153,7 @@ def charts(data, teacher, out):
             xs += [n / 1e6 for n, _ in r["curve"]]
             ys += [100 * d["mean_accuracy"] for _, d in r["curve"]]
             if len(xs) > 1:
-                ax.plot(xs, ys, color=COL[g], lw=1.4, alpha=0.85, marker="o", ms=3, label=GROUP_TEXT[g] if first else None)
+                ax.plot(xs, ys, color=COL.get(g, GREY), lw=1.4, alpha=0.85, marker="o", ms=3, label=GROUP_TEXT[g] if first else None)
                 first = False
     if tmean:
         ax.axhline(tmean, ls="--", color=INK, lw=1)
@@ -291,10 +297,12 @@ def write_summary(rows, teacher, test, out):
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--sweep", type=Path, required=True)
-    p.add_argument("--groups", nargs="*", default=["D1", "D2", "D3", "D4"])
+    p.add_argument("--groups", nargs="*", help="Default: every <group>-imitation in the sweep")
     p.add_argument("--parallel", type=int, default=24, help="Evaluations at once (each uses 4 processes)")
     p.add_argument("--no-gifs", action="store_true")
     args = p.parse_args()
+    if not args.groups:
+        args.groups = sorted({p.name.split("-imitation")[0] for p in args.sweep.glob("*-imitation*")})
     groups = [g for g in args.groups if (args.sweep / f"{g}-imitation").exists() or (args.sweep / f"{g}-imitation.log").exists()]
     out = args.sweep / "report"
     out.mkdir(exist_ok=True)

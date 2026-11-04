@@ -51,7 +51,7 @@ def _policy(run, controller, overrides=None):
     from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
     torch.set_num_threads(1)
     manifest = json.loads((Path(run) / "manifest.json").read_text())
-    obs_opts = {k: True for k in ("extra_obs", "goal_shaping") if manifest.get("task_options", {}).get(k)}
+    obs_opts = {k: True for k in ("extra_obs", "goal_shaping", "hint_obs") if manifest.get("task_options", {}).get(k)}
     probe = PrecisionStrikerEnv(obstacles=1, **{**RULES, **obs_opts})
     norm = VecNormalize.load(str(Path(run) / "vecnormalize.pkl"), DummyVecEnv([lambda: probe]))
     norm.training = False

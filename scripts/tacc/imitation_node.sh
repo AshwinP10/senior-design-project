@@ -13,6 +13,12 @@
 #   D2  1M per iteration, 512-wide network
 #   D3  2M per iteration (more data), 512-wide network
 #   D4  1M per iteration, 256-wide network, straight line blocked in 50% of episodes (others 30%)
+# Hint groups: the network also sees the trajectory calculator's hints (--hint-obs: predicted strike point,
+# time to it, best clear shot direction). Compare H1 with D2 (same data and network, no hints).
+#   H1  hints, 1M per loop, 10 loops, 512 network
+#   H2  hints, 0.5M per loop, 20 loops (more correction loops, same total data as H1), 512 network
+#   H3  hints, 2M per loop, 10 loops, 512 network
+#   H4  as H1, but PPO practises on 2-3 obstacles only (3 obstacles is the weakest case)
 set -uo pipefail
 GROUP="$1"; OUT="$2"
 cd "${SLURM_SUBMIT_DIR:?}"
@@ -20,15 +26,20 @@ export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONUNBUFFER
 PY="${TACC_PYTHON:-$WORK/venvs/precision-striker-cpu/bin/python}"
 PPO_STEPS="${PPO_STEPS:-20000000}"
 ITERS="${ITERS:-10}"
+HINTS=(); PPO_MIN_OBS=1
 case "$GROUP" in
     D1) PER=1000000; NET=256; BLOCK=0.3 ;;
     D2) PER=1000000; NET=512; BLOCK=0.3 ;;
     D3) PER=2000000; NET=512; BLOCK=0.3 ;;
     D4) PER=1000000; NET=256; BLOCK=0.5 ;;
+    H1) PER=1000000; NET=512; BLOCK=0.3; HINTS=(--hint-obs) ;;
+    H2) PER=500000;  NET=512; BLOCK=0.3; HINTS=(--hint-obs); ITERS=$(( ITERS * 2 )) ;;
+    H3) PER=2000000; NET=512; BLOCK=0.3; HINTS=(--hint-obs) ;;
+    H4) PER=1000000; NET=512; BLOCK=0.3; HINTS=(--hint-obs); PPO_MIN_OBS=2 ;;
     *) echo "unknown group $GROUP"; exit 1 ;;
 esac
-SEED="${GROUP#D}"
-ENV_FLAGS=(--extra-obs --goal-shaping --wide-obstacles --obstacles-max 3 --block-line-prob "$BLOCK")
+SEED="${GROUP#?}"
+ENV_FLAGS=(--extra-obs --goal-shaping --wide-obstacles --obstacles-max 3 --block-line-prob "$BLOCK" "${HINTS[@]}")
 CONDS=(random_1 random_2 random_3 blocked_1)
 IM="$OUT/$GROUP-imitation"
 echo "$(hostname) group $GROUP start $(date)"
@@ -59,9 +70,9 @@ for s in 1 2 3; do
     name="$GROUP-ppo-seed$s"
     "$PY" -u -m scripts.train_precision_striker --envs 32 --vector subproc --rollout 256 --device cpu \
         --checkpoint-every 500000 --steps "$PPO_STEPS" --seed "$s" \
-        --require-hit --timeout-penalty 10 --extra-obs --goal-shaping --wide-obstacles --obstacles 1 \
+        --require-hit --timeout-penalty 10 --extra-obs --goal-shaping --wide-obstacles --obstacles "$PPO_MIN_OBS" \
         --obstacles-max 3 --paddle-restitution 0.8 --single-hit --block-line-prob "$BLOCK" \
-        --aim-shaping 5 --prefer-direct "${PPO_FT[@]}" \
+        --aim-shaping 5 --prefer-direct "${HINTS[@]}" "${PPO_FT[@]}" \
         --resume "$IM" --resume-new-task --output "$OUT/$name" > "$OUT/$name.log" 2>&1 &
 done
 wait

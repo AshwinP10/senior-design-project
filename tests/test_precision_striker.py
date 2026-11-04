@@ -361,6 +361,26 @@ class PrecisionStrikerTests(unittest.TestCase):
         finally:
             env.close()
 
+    def test_hint_obs_give_strike_point_and_clear_shot(self):
+        env = PrecisionStrikerEnv(obstacles=1, randomize=False, extra_obs=True, hint_obs=True)
+        try:
+            self.assertTrue(env.task_version.endswith("-hints"))
+            obs, _ = env.reset(seed=3, options={"blocks": [], "puck_position": [0.0, 0.0], "puck_velocity": [1.0, 0.0]})
+            self.assertEqual(obs.shape, (29,))
+            self.assertTrue(env.observation_space.contains(obs))
+            valid, sx, sy, t, ux, uy, bank = obs[20:27]
+            self.assertEqual(valid, 1)
+            self.assertAlmostEqual(float(sx), 0.55, delta=0.02)
+            self.assertAlmostEqual(float(sy), 0.0, delta=0.01)
+            self.assertGreater(t, 0.4)
+            self.assertLess(ux, -0.99)                  # straight at the goal on an empty table
+            self.assertEqual(bank, 0)
+            np.testing.assert_allclose(obs[-2:], [0, 0])  # extra_obs stays last
+            obs, _ = env.reset(seed=3, options={"blocks": [], "puck_position": [0.0, 0.0], "puck_velocity": [-1.0, 0.0]})
+            np.testing.assert_allclose(obs[20:27], 0)  # puck going away: no hint
+        finally:
+            env.close()
+
     def test_reject_unreachable_or_overlapping_setup(self):
         with self.assertRaises(ValueError):
             self.env.reset(options={"puck_position": [-0.5, 0]})

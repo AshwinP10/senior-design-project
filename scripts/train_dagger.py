@@ -151,6 +151,8 @@ def main():
     p.add_argument("--block-line-prob", type=float, default=0.0)
     p.add_argument("--layout-check", choices=["geometry", "trajectory"], default="geometry")
     p.add_argument("--val-shots", type=int, default=50, help="--clean: validation shots per suite condition")
+    p.add_argument("--hint-obs", action="store_true",
+                   help="Also observe the trajectory calculator's hints (strike point, clear shot direction)")
     args = p.parse_args()
     task = CLEAN_TASK if args.clean else TASK
     # Environment options beyond the fixed task rules (saved with every iteration and in the manifest).
@@ -163,6 +165,8 @@ def main():
         obs_options["block_line_prob"] = args.block_line_prob
     if args.layout_check != "geometry":
         obs_options["layout_check"] = args.layout_check
+    if args.hint_obs:
+        obs_options["hint_obs"] = True
     planner_kwargs = json.loads(args.planner)
     args.output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(8)
