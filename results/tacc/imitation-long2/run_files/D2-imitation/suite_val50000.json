@@ -1,0 +1,59 @@
+{
+  "run": "/work/11815/ap63726/ls6/airhockey-runs/imitation-long2/D2-imitation",
+  "controller": false,
+  "overrides": {},
+  "seed": 50000,
+  "random_1": {
+    "goals": 115,
+    "shots": 200,
+    "accuracy": 0.575,
+    "outcomes": {
+      "goal": 115,
+      "obstacle_collision": 28,
+      "missed": 54,
+      "timeout": 3
+    }
+  },
+  "random_2": {
+    "goals": 75,
+    "shots": 200,
+    "accuracy": 0.375,
+    "outcomes": {
+      "goal": 75,
+      "obstacle_collision": 73,
+      "missed": 48,
+      "timeout": 4
+    }
+  },
+  "random_3": {
+    "goals": 58,
+    "shots": 200,
+    "accuracy": 0.29,
+    "outcomes": {
+      "goal": 58,
+      "obstacle_collision": 103,
+      "missed": 32,
+      "timeout": 7
+    }
+  },
+  "blocked_1": {
+    "goals": 85,
+    "shots": 200,
+    "accuracy": 0.425,
+    "outcomes": {
+      "goal": 85,
+      "missed": 51,
+      "obstacle_collision": 52,
+      "timeout": 12
+    }
+  },
+  "mean_accuracy": 0.41625,
+  "rules": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": false,
+    "single_hit": true,
+    "paddle_restitution": 0.8,
+    "wide_obstacles": true
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "run": "/work/11815/ap63726/ls6/airhockey-runs/imitation-long2/D1-ppo-seed3/curve/ckpt-8000000",
+  "controller": false,
+  "overrides": {},
+  "seed": 50000,
+  "random_1": {
+    "goals": 81,
+    "shots": 100,
+    "accuracy": 0.81,
+    "outcomes": {
+      "goal": 81,
+      "obstacle_collision": 7,
+      "missed": 12
+    }
+  },
+  "random_2": {
+    "goals": 51,
+    "shots": 100,
+    "accuracy": 0.51,
+    "outcomes": {
+      "goal": 51,
+      "obstacle_collision": 30,
+      "missed": 18,
+      "timeout": 1
+    }
+  },
+  "random_3": {
+    "goals": 34,
+    "shots": 100,
+    "accuracy": 0.34,
+    "outcomes": {
+      "obstacle_collision": 54,
+      "goal": 34,
+      "missed": 11,
+      "timeout": 1
+    }
+  },
+  "blocked_1": {
+    "goals": 57,
+    "shots": 100,
+    "accuracy": 0.57,
+    "outcomes": {
+      "goal": 57,
+      "missed": 21,
+      "obstacle_collision": 18,
+      "timeout": 4
+    }
+  },
+  "mean_accuracy": 0.5575,
+  "rules": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": false,
+    "single_hit": true,
+    "paddle_restitution": 0.8,
+    "wide_obstacles": true
+  }
+}

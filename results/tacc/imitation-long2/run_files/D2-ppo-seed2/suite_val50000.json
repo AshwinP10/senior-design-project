@@ -1,0 +1,60 @@
+{
+  "run": "/work/11815/ap63726/ls6/airhockey-runs/imitation-long2/D2-ppo-seed2",
+  "controller": false,
+  "overrides": {},
+  "seed": 50000,
+  "random_1": {
+    "goals": 160,
+    "shots": 200,
+    "accuracy": 0.8,
+    "outcomes": {
+      "goal": 160,
+      "obstacle_collision": 18,
+      "missed": 20,
+      "timeout": 2
+    }
+  },
+  "random_2": {
+    "goals": 93,
+    "shots": 200,
+    "accuracy": 0.465,
+    "outcomes": {
+      "goal": 93,
+      "missed": 47,
+      "obstacle_collision": 59,
+      "double_hit": 1
+    }
+  },
+  "random_3": {
+    "goals": 58,
+    "shots": 200,
+    "accuracy": 0.29,
+    "outcomes": {
+      "goal": 58,
+      "obstacle_collision": 100,
+      "missed": 40,
+      "timeout": 1,
+      "double_hit": 1
+    }
+  },
+  "blocked_1": {
+    "goals": 124,
+    "shots": 200,
+    "accuracy": 0.62,
+    "outcomes": {
+      "goal": 124,
+      "missed": 32,
+      "obstacle_collision": 41,
+      "timeout": 3
+    }
+  },
+  "mean_accuracy": 0.5437500000000001,
+  "rules": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": false,
+    "single_hit": true,
+    "paddle_restitution": 0.8,
+    "wide_obstacles": true
+  }
+}

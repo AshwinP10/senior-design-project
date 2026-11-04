@@ -1,0 +1,189 @@
+{
+  "task_version": "precision-striker-v5-bounce-extra-obs-nobounce-paddle-e0.8-wide-upto3-single-blockline0.3",
+  "task_options": {
+    "require_hit": true,
+    "timeout_penalty": 10.0,
+    "obstacle_bounce": false,
+    "single_hit": true,
+    "paddle_restitution": 0.8,
+    "extra_obs": true,
+    "goal_shaping": true,
+    "wide_obstacles": true,
+    "obstacles_max": 3,
+    "block_line_prob": 0.3
+  },
+  "algo": "ppo",
+  "hybrid": "none",
+  "completed_timesteps": 0,
+  "dagger": true,
+  "best_iteration": 5,
+  "best_validation_accuracy": 0.3675,
+  "history": [
+    {
+      "iteration": 0,
+      "beta": 1.0,
+      "new_steps": 1002327,
+      "total_steps": 1002327,
+      "rollout_success": 0.9742395261306843,
+      "action_mse": 0.0056886495061814766,
+      "validation_accuracy": 0.10250000000000001,
+      "validation_by_condition": {
+        "random_1": 0.09,
+        "random_2": 0.07,
+        "random_3": 0.09,
+        "blocked_1": 0.16
+      },
+      "seconds": 196
+    },
+    {
+      "iteration": 1,
+      "beta": 0.5,
+      "new_steps": 1004063,
+      "total_steps": 2006390,
+      "rollout_success": 0.21822454519671003,
+      "action_mse": 0.02022355262019973,
+      "validation_accuracy": 0.265,
+      "validation_by_condition": {
+        "random_1": 0.54,
+        "random_2": 0.23,
+        "random_3": 0.2,
+        "blocked_1": 0.09
+      },
+      "seconds": 143
+    },
+    {
+      "iteration": 2,
+      "beta": 0.25,
+      "new_steps": 1004172,
+      "total_steps": 3010562,
+      "rollout_success": 0.156519432285449,
+      "action_mse": 0.024684708073406007,
+      "validation_accuracy": 0.1575,
+      "validation_by_condition": {
+        "random_1": 0.24,
+        "random_2": 0.15,
+        "random_3": 0.04,
+        "blocked_1": 0.2
+      },
+      "seconds": 181
+    },
+    {
+      "iteration": 3,
+      "beta": 0.125,
+      "new_steps": 1005039,
+      "total_steps": 4015601,
+      "rollout_success": 0.12952106070172273,
+      "action_mse": 0.027740892353784834,
+      "validation_accuracy": 0.355,
+      "validation_by_condition": {
+        "random_1": 0.57,
+        "random_2": 0.31,
+        "random_3": 0.21,
+        "blocked_1": 0.33
+      },
+      "seconds": 225
+    },
+    {
+      "iteration": 4,
+      "beta": 0.0625,
+      "new_steps": 1003768,
+      "total_steps": 5019369,
+      "rollout_success": 0.13198626165306213,
+      "action_mse": 0.029391764400705945,
+      "validation_accuracy": 0.36000000000000004,
+      "validation_by_condition": {
+        "random_1": 0.54,
+        "random_2": 0.39,
+        "random_3": 0.2,
+        "blocked_1": 0.31
+      },
+      "seconds": 260
+    },
+    {
+      "iteration": 5,
+      "beta": 0.03125,
+      "new_steps": 1003615,
+      "total_steps": 6022984,
+      "rollout_success": 0.12711786793662425,
+      "action_mse": 0.030243528028928632,
+      "validation_accuracy": 0.3675,
+      "validation_by_condition": {
+        "random_1": 0.58,
+        "random_2": 0.32,
+        "random_3": 0.23,
+        "blocked_1": 0.34
+      },
+      "seconds": 308
+    },
+    {
+      "iteration": 6,
+      "beta": 0.015625,
+      "new_steps": 1004685,
+      "total_steps": 7027669,
+      "rollout_success": 0.13199145803989276,
+      "action_mse": 0.030427224841172256,
+      "validation_accuracy": 0.27,
+      "validation_by_condition": {
+        "random_1": 0.42,
+        "random_2": 0.26,
+        "random_3": 0.16,
+        "blocked_1": 0.24
+      },
+      "seconds": 324
+    },
+    {
+      "iteration": 7,
+      "beta": 0.0078125,
+      "new_steps": 1003674,
+      "total_steps": 8031343,
+      "rollout_success": 0.12991339107261826,
+      "action_mse": 0.030437878150313194,
+      "validation_accuracy": 0.365,
+      "validation_by_condition": {
+        "random_1": 0.59,
+        "random_2": 0.32,
+        "random_3": 0.2,
+        "blocked_1": 0.35
+      },
+      "seconds": 384
+    },
+    {
+      "iteration": 8,
+      "beta": 0.00390625,
+      "new_steps": 1004560,
+      "total_steps": 9035903,
+      "rollout_success": 0.13028169014084506,
+      "action_mse": 0.03022213860294726,
+      "validation_accuracy": 0.26499999999999996,
+      "validation_by_condition": {
+        "random_1": 0.42,
+        "random_2": 0.24,
+        "random_3": 0.2,
+        "blocked_1": 0.2
+      },
+      "seconds": 425
+    },
+    {
+      "iteration": 9,
+      "beta": 0.001953125,
+      "new_steps": 1004641,
+      "total_steps": 10040544,
+      "rollout_success": 0.13202220758445468,
+      "action_mse": 0.029989711032067455,
+      "validation_accuracy": 0.36000000000000004,
+      "validation_by_condition": {
+        "random_1": 0.44,
+        "random_2": 0.37,
+        "random_3": 0.32,
+        "blocked_1": 0.31
+      },
+      "seconds": 463
+    }
+  ],
+  "planner": {},
+  "sim_teacher": true,
+  "net": 256,
+  "obstacles": 1,
+  "speed_min": 0.3,
+  "speed_max": 1.5
+}
