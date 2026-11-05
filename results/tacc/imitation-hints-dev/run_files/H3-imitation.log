@@ -1,0 +1,12 @@
+Robosuite not loaded. Cannot use Robosuite environment on Aple Silicon
+Some air hockey components not installed. Does not work on Apple Silicon
+/work/11815/ap63726/ls6/venvs/precision-striker-cpu/lib64/python3.11/site-packages/stable_baselines3/ppo/ppo.py:155: UserWarning: You have specified a mini-batch size of 1024, but because the `RolloutBuffer` is of size `n_steps * n_envs = 512`, after every 0 untruncated mini-batches, there will be a truncated mini-batch of size 512
+We recommend using a `batch_size` that is a factor of `n_steps * n_envs`.
+Info: (n_steps=512 and n_envs=1)
+  warnings.warn(
+{"iteration": 0, "beta": 1.0, "new_steps": 2002218, "total_steps": 2002218, "rollout_success": 0.9728557760562946, "action_mse": 0.003490934238020162, "validation_accuracy": 0.27499999999999997, "validation_by_condition": {"random_1": 0.4, "random_2": 0.3, "random_3": 0.2, "blocked_1": 0.2}, "seconds": 720}
+{"iteration": 1, "beta": 0.5, "new_steps": 2002852, "total_steps": 4005070, "rollout_success": 0.22242501190287256, "action_mse": 0.014456194836319177, "validation_accuracy": 0.595, "validation_by_condition": {"random_1": 0.81, "random_2": 0.61, "random_3": 0.54, "blocked_1": 0.42}, "seconds": 516}
+{"iteration": 2, "beta": 0.25, "new_steps": 2003062, "total_steps": 6008132, "rollout_success": 0.1687039115100994, "action_mse": 0.01750428144049821, "validation_accuracy": 0.565, "validation_by_condition": {"random_1": 0.73, "random_2": 0.6, "random_3": 0.43, "blocked_1": 0.5}, "seconds": 714}
+{"iteration": 3, "beta": 0.125, "new_steps": 2003434, "total_steps": 8011566, "rollout_success": 0.15103676741237576, "action_mse": 0.01956891812532908, "validation_accuracy": 0.5625, "validation_by_condition": {"random_1": 0.66, "random_2": 0.47, "random_3": 0.47, "blocked_1": 0.65}, "seconds": 916}
+{"iteration": 4, "beta": 0.0625, "new_steps": 2003046, "total_steps": 10014612, "rollout_success": 0.14487907465825448, "action_mse": 0.02072887021148597, "validation_accuracy": 0.6925, "validation_by_condition": {"random_1": 0.81, "random_2": 0.76, "random_3": 0.61, "blocked_1": 0.59}, "seconds": 1115}
+Best iteration 4: validation 0.693. Saved to /work/11815/ap63726/ls6/airhockey-runs/imitation-hints-dev/H3-imitation
